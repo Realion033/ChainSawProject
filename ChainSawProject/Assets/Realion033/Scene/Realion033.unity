@@ -185,7 +185,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -527,7 +527,7 @@ GameObject:
   - component: {fileID: 1600663577}
   - component: {fileID: 1600663576}
   - component: {fileID: 1600663578}
-  - component: {fileID: 1600663579}
+  - component: {fileID: 1600663581}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -601,7 +601,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 10
+  m_GravityScale: 8
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -637,7 +637,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96125bd90ea661748b27bd3959acde3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 10
 --- !u!114 &1600663578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -648,18 +648,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c6672465b860704ca6fa836e9f6ba84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1600663579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1600663571}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2ea5f0e63852714f84a144f9f6a5180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!96 &1600663580
@@ -704,7 +692,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.1
+  m_Time: 0.3
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
@@ -775,6 +763,20 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!114 &1600663581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1600663571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eee0fc22e27c4440896abe5cf785d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashDistance: 5
+  dashSpeed: 30
 --- !u!1 &1786463050
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,7 +816,7 @@ MonoBehaviour:
   m_Follow: {fileID: 1600663572}
   m_Lens:
     FieldOfView: 40
-    OrthographicSize: 5
+    OrthographicSize: 7
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
