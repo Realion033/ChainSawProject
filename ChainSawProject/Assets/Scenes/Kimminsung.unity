@@ -435,7 +435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 1832008975}
-  health: 120
+  health: 100
 --- !u!1 &1832008971
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,6 +449,7 @@ GameObject:
   - component: {fileID: 1832008973}
   - component: {fileID: 1832008972}
   - component: {fileID: 1832008976}
+  - component: {fileID: 1832008977}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -599,6 +600,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   jumpForce: 5
+--- !u!114 &1832008977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832008971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17d60459c337191449e21bcaa4faaa13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
 --- !u!1 &2006375533
 GameObject:
   m_ObjectHideFlags: 0
