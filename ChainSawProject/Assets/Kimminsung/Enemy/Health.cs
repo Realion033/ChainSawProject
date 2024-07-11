@@ -15,9 +15,8 @@ public class Health : MonoBehaviour, IDamageable
         }
     }
 
-    void Die()
+    void Die()//죽었을 떄
     {
-        // 적이 죽었을 때의 로직
         Destroy(gameObject);
     }
 }
