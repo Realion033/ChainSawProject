@@ -32,9 +32,25 @@ public class ChaseState : State
 
     public void Chase()
     {
+        // 플레이어를 향하는 방향 벡터 계산
         Vector2 direction = (playerTransform.position - gameObject.transform.position).normalized;
+
+        // 캐릭터의 위치를 플레이어 쪽으로 이동
         gameObject.transform.position = Vector2.MoveTowards(gameObject.transform.position, playerTransform.position, moveSpeed * Time.deltaTime);
 
+        // 방향에 따라 캐릭터의 스케일을 설정하여 방향을 반전
+        if (direction.x > 0)
+        {
+            // 플레이어가 오른쪽에 있을 경우
+            gameObject.transform.localScale = new Vector3(1f, 1f, 1f); // 원래 방향
+        }
+        else if (direction.x < 0)
+        {
+            // 플레이어가 왼쪽에 있을 경우
+            gameObject.transform.localScale = new Vector3(-1f, 1f, 1f); // x축을 -1로 설정하여 반전
+        }
+
+        // 공격 가능 거리 내에 있으면 공격 상태로 전환
         if (Vector2.Distance(gameObject.transform.position, playerTransform.position) <= attackDistance)
         {
             attackTimer += Time.deltaTime;
