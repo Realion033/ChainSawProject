@@ -12,7 +12,7 @@ public class Enemy_Knife : MonoBehaviour
     {
         stateMachine = GetComponent<StateMachine>();
 
-        // ÇÃ·¹ÀÌ¾î Æ®·£½ºÆûÀ» StateMachine¿¡ ÇÒ´ç
+        // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ StateMachineï¿½ï¿½ ï¿½Ò´ï¿½
         stateMachine.playerTransform = playerTransform;
     }
 
@@ -27,7 +27,7 @@ public class Enemy_Knife : MonoBehaviour
 
     private void Die()
     {
-        // Àû »ç¸Á ·ÎÁ÷ ±¸Çö
+        // ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         Debug.Log("Enemy Died");
         Destroy(gameObject);
     }

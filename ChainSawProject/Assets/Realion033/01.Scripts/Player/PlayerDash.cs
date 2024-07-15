@@ -51,11 +51,17 @@ public class PlayerDash : PlayerInput
 
     public void StartDash(Vector3 mousePos)
     {
-        mousePos.z = 0;  // Z ÁÂÇ¥´Â ¹«½Ã
+        mousePos.z = 0;  // Z ï¿½ï¿½Ç¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
         Vector2 direction = (mousePos - transform.position).normalized;
 
         dashTarget = (Vector2)transform.position + direction * player.dashDistance;
-        isDashing = true;  // ´ë½¬ ½ÃÀÛ
+        isDashing = true;  // ï¿½ë½¬ ï¿½ï¿½ï¿½ï¿½
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        isDashing = false;
+        rb.velocity = Vector2.zero;
     }
 }
