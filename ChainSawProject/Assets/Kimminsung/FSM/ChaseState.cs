@@ -10,6 +10,7 @@ public class ChaseState : State
     private float attackDelay = 1.5f;
     private float attackTimer = 0f;
 
+   
     public ChaseState(GameObject gameObject, StateMachine stateMachine, Transform playerTransform) : base(gameObject, stateMachine)
     {
         this.playerTransform = playerTransform;
@@ -43,6 +44,7 @@ public class ChaseState : State
         {
             // 플레이어가 오른쪽에 있을 경우
             gameObject.transform.localScale = new Vector3(1f, 1f, 1f); // 원래 방향
+            
         }
         else if (direction.x < 0)
         {

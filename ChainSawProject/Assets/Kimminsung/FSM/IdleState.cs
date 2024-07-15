@@ -5,7 +5,7 @@ public class IdleState : State
     private Transform playerTransform;
     private float chaseDistance = 10f;
 
-    public IdleState(GameObject gameObject, StateMachine stateMachine, Transform playerTransform) : base(gameObject, stateMachine)
+    public IdleState(GameObject gameObject, StateMachine stateMachine, Transform playerTransform) :     base(gameObject, stateMachine)
     {
         this.playerTransform = playerTransform;
     }
