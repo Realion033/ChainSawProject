@@ -7,7 +7,6 @@ public enum GradeType
 }
 public class UpgradeUI_Grade
 {
-    // 2차원 배열 드가자
     public void FormDetermination_GradeUp()
     {
         //UpgradeUI_Form.GradeUp();

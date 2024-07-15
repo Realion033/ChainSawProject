@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class UpgradeObject : MonoBehaviour
 {
-    private GameObject UpGradeUI;
+    [SerializeField] GameObject UpGradeUI;
     private void Awake()
     {
-        UpGradeUI = GameObject.Find("UpGradeUI");
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
 
     public void UpGeadeAwake()
