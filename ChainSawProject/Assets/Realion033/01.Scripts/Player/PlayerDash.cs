@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class PlayerDash : PlayerInput
 {
-    [SerializeField] private float dashDistance = 5f; 
-    [SerializeField] private float dashSpeed = 20f;   
+    private Player player;
 
     private Rigidbody2D rb;
     private Vector2 dashTarget;
@@ -13,6 +12,7 @@ public class PlayerDash : PlayerInput
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        player = GetComponent<Player>();
     }
 
     private void Update()
@@ -36,7 +36,7 @@ public class PlayerDash : PlayerInput
     {
         Vector2 direction = (dashTarget - rb.position).normalized;
         Debug.Log("adsf");
-        rb.velocity = direction * dashSpeed;
+        rb.velocity = direction * player.dashSpeed;
     }
 
     private void CheckDashTargetReached()
@@ -55,7 +55,7 @@ public class PlayerDash : PlayerInput
 
         Vector2 direction = (mousePos - transform.position).normalized;
 
-        dashTarget = (Vector2)transform.position + direction * dashDistance;
+        dashTarget = (Vector2)transform.position + direction * player.dashDistance;
         isDashing = true;  // 대쉬 시작
     }
 }

@@ -3,7 +3,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float speed = 5f;
+    public float speed = 5f;
+
+    public float dashDistance = 5f;
+    public float dashSpeed = 20f;
 
     private PlayerInput playerInput;
     private PlayerMovement playerMovement;
