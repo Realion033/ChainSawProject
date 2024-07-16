@@ -21,6 +21,11 @@ public class PlayerDash : PlayerInput
         {
             CheckDashTargetReached();
         }
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            player.TakeDamage(10);
+        }
     }
 
     private void FixedUpdate()

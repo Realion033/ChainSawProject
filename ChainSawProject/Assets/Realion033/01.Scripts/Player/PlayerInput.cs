@@ -7,11 +7,25 @@ public class PlayerInput : MonoBehaviour
 
     public Vector3 mousePos { get; private set; }
     public bool isDash { get; private set; } = false;
+    public bool isSlash { get; private set; } = false;
 
     void Update()
     {
         ProcessInput();
         DashInput();
+        AttackInput();
+    }
+
+    private void AttackInput()
+    {
+        if(Input.GetMouseButtonDown(0))
+        {
+            isSlash = true;
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            isSlash = false;
+        }
     }
 
     private void DashInput()

@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     private PlayerMovement playerMovement;
     private PlayerDash playerDash;
 
+    public int health { get; set; } = 10;
+
     void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
@@ -37,5 +39,19 @@ public class Player : MonoBehaviour
     {
         Vector2 moveVelocity = playerInput.GetMoveVelocity();
         playerMovement.Move(moveVelocity * speed);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        
     }
 }
