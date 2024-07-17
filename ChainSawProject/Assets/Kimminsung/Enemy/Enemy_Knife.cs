@@ -1,21 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy_Knife : MonoBehaviour
 {
     private StateMachine stateMachine;
     public Transform playerTransform;
-    public Animator anim { get; private set; }
+    public EnemyAnim anim;
+    
+    
     [SerializeField] private float health = 100;
 
     void Awake()
     {
         stateMachine = GetComponent<StateMachine>();
-        anim = GetComponent<Animator>();
+       anim = GetComponent<EnemyAnim>();
 
-        // 플레이어 트랜스폼을 StateMachine에 할당
-        stateMachine.playerTransform = playerTransform;
+        stateMachine.Initialize(this);
     }
 }

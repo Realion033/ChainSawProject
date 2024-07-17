@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class EnemyAnim : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    Animator anim;
+    private void Awake()
     {
-        
+        anim = GetComponent<Animator>();
+    }
+    public void KnifeEnemRun()
+    {
+        anim.SetBool("Knife_Run", true);
+    }
+    public void KnifeEnemRunf()
+    {
+        anim.SetBool("Knife_Run", false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void KnifeEnemDie()
     {
-        
+        anim.SetBool("Knife_Die", true);
     }
 }

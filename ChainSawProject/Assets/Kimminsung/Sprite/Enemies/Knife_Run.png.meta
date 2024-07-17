@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e214931925631fa46a6cb0955056e4df
+guid: 4631626c2f43200489fff8b3c488dd67
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 200
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Gunner_Run_0
+      name: Knife_Run_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 55507c82e2332db4686b91f8f95f760e
-      internalID: -1016566162
+      spriteID: d84e9d5c0ee922a44a4fdb17ff7950b0
+      internalID: -1003936222
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gunner_Run_1
+      name: Knife_Run_1
       rect:
         serializedVersion: 2
         x: 304
@@ -158,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 21a83e76416a96e48b8021536f121482
-      internalID: -1730596816
+      spriteID: 0517617878c0795408eb5af1428a0b08
+      internalID: 1413530123
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gunner_Run_2
+      name: Knife_Run_2
       rect:
         serializedVersion: 2
         x: 0
@@ -179,14 +179,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 23fdede0402ae71489d62087882e5aac
-      internalID: -1380905378
+      spriteID: 9f82540a86010fd4eb8164b4d7fd4e82
+      internalID: 421999894
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gunner_Run_3
+      name: Knife_Run_3
       rect:
         serializedVersion: 2
         x: 304
@@ -200,8 +200,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bd6022e05753f9547af38f0fd0d0634d
-      internalID: -1028946676
+      spriteID: eec40c96b4926744a8db54eb8d82cf01
+      internalID: 1192030799
       vertices: []
       indices: 
       edges: []
@@ -217,10 +217,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Gunner_Run_0: -1016566162
-      Gunner_Run_1: -1730596816
-      Gunner_Run_2: -1380905378
-      Gunner_Run_3: -1028946676
+      Knife_Run_0: -1003936222
+      Knife_Run_1: 1413530123
+      Knife_Run_2: 421999894
+      Knife_Run_3: 1192030799
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

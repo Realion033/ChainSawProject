@@ -1,13 +1,11 @@
     using UnityEngine;
 
-public class IdleState : State
+public class IdleState : EnemyState
 {
-    private Transform playerTransform;
     private float chaseDistance = 10f;
 
-    public IdleState(GameObject gameObject, StateMachine stateMachine, Transform playerTransform) :     base(gameObject, stateMachine)
+    public IdleState(Enemy_Knife enemy, StateMachine stateMachine) : base(enemy, stateMachine)
     {
-        this.playerTransform = playerTransform;
     }
 
     public override void Enter()
@@ -18,9 +16,9 @@ public class IdleState : State
     public override void Update()
     {
         // 플레이어가 일정 거리 이내에 있는지 확인
-        if (Vector2.Distance(gameObject.transform.position, playerTransform.position) < chaseDistance)
+        if (Vector2.Distance(_owner.transform.position, GameManager.instance.PlayerTrm.position) < chaseDistance)
         {
-            stateMachine.ChangeState(new ChaseState(gameObject, stateMachine, playerTransform));
+            stateMachine.ChangeState(new ChaseState(_owner, stateMachine));
         }
     }
 
