@@ -20,7 +20,7 @@ public class UpgradeUI_Form
     {
         upGradeCount = 1;
     }
-    public virtual Player ChangeInformation(Player player, int upGradeCount)
+    public virtual Player ChangeInformation(Player player)
     {
         return player;
     }
@@ -30,12 +30,10 @@ public class UpgradeUI_Form
         get { return upGradeCount; }
     }
 
-    protected int UpGradeCount_UP()
+    protected void UpGradeCount_UP()
     {
-        if(upGradeCount == 5)
-        {
-            return 0;
-        }
-        return upGradeCount + 1;
+        upGradeCount += 1;
     }
 }
+// 일단 원래 만들어야하는 것 카운트가 5일때 리스트에서 뺴줘야한다.
+// 그렇다면 다른 코드에서 직접 해주는것은 불가능 하므로 bool 값을 리턴해줘서 아 아?
