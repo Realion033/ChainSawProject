@@ -1610,7 +1610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 0, a: 0.392}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1987,6 +1987,7 @@ GameObject:
   - component: {fileID: 1873353596}
   - component: {fileID: 1873353595}
   - component: {fileID: 1873353594}
+  - component: {fileID: 1873353597}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -2010,8 +2011,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -654.6456, y: 441.20776}
-  m_SizeDelta: {x: 114.8055, y: 59.926}
+  m_AnchoredPosition: {x: -398.57373, y: 425.53076}
+  m_SizeDelta: {x: 660.8525, y: 76.8644}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1873353594
 MonoBehaviour:
@@ -2030,7 +2031,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 3
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -2077,6 +2078,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1873353592}
   m_CullTransparentMesh: 1
+--- !u!114 &1873353597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873353592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40d76e4e9f851b141a8b0624e546ce2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImagePrefabs: {fileID: 3156572910038406908, guid: 4d9876e9953063041897de9720476cd5, type: 3}
+  EffectPanel: {fileID: 1873353592}
+  Health_UpImage: {fileID: 21300000, guid: bfe380d4869f5094db6aad8f5f870813, type: 3}
+  EnergyRecovery_UpImage: {fileID: 21300000, guid: d7cd63636513ba14090ce951e69b2751, type: 3}
+  EnergyChargeAmount_UpImage: {fileID: 21300000, guid: 649f62b5cb9fca448a0f6160c86cfd76, type: 3}
+  DashSpeed_UpImage: {fileID: 21300000, guid: 8aa3c772e5f17e74d9085ae818a594f2, type: 3}
+  Atk_UPImage: {fileID: 21300000, guid: 8706ea5ae8cd80f4d89888497d5fd608, type: 3}
+  AtkSpeed_UpImage: {fileID: 21300000, guid: b36377fb48911ca4d8ff8b37901b27d3, type: 3}
 --- !u!1 &1879202158
 GameObject:
   m_ObjectHideFlags: 0
@@ -2133,9 +2154,6 @@ MonoBehaviour:
   player: {fileID: 1258822315}
   form1: {fileID: 1834310367}
   form2: {fileID: 1724788691}
-  form3: {fileID: 204158096}
-  form4: {fileID: 1353257160}
-  form5: {fileID: 1763004675}
   Health_UpImage: {fileID: 21300000, guid: bfe380d4869f5094db6aad8f5f870813, type: 3}
   EnergyRecovery_UpImage: {fileID: 21300000, guid: d7cd63636513ba14090ce951e69b2751, type: 3}
   EnergyChargeAmount_UpImage: {fileID: 21300000, guid: 649f62b5cb9fca448a0f6160c86cfd76, type: 3}
@@ -2145,13 +2163,6 @@ MonoBehaviour:
   None: {fileID: 21300000, guid: 583a2cab781db0d4cae48667568dd280, type: 3}
   form1_Text: {fileID: 1569759430}
   form2_Text: {fileID: 1786217128}
-  form3_Text: {fileID: 2128807952}
-  form4_Text: {fileID: 326618765}
-  form5_Text: {fileID: 799552309}
-  panel1: {fileID: 989227230}
-  panel2: {fileID: 1003846858}
-  panel3: {fileID: 2006061690}
-  panel4: {fileID: 2108180095}
 --- !u!1 &2006061688
 GameObject:
   m_ObjectHideFlags: 0
@@ -2205,7 +2216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0, g: 1, b: 1, a: 0.392}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2327,7 +2338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0, g: 1, b: 1, a: 0.392}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

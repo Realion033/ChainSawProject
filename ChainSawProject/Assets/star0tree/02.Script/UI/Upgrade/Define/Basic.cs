@@ -15,6 +15,18 @@ public class Basic : UpgradeUI_Form
     {
         this.type = type;
     }
+
+    public BasicType BasiType
+    {
+        get
+        {
+            return this.type;
+        }
+        private set
+        {
+            type = value;
+        }
+    }
 }
 class Health_Up : Basic
 {

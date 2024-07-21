@@ -1,32 +1,30 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
+
 public class UpgradeUI_System : MonoBehaviour
 {
+    public delegate void OnDisplay(int BasicType, int count);
+    public OnDisplay onDisplay;
+
     [SerializeField] private Player player;
-    private Basic Health_Up = new Health_Up();
-    private Basic EnergyRecovery_Up = new EnergyRecovery_Up();
-    private Basic EnergyChargeAmount_Up = new EnergyChargeAmount_Up();
-    private Basic DashSpeed_Up = new DashSpeed_Up();
-    private Basic Atk_UP = new Atk_UP();
-    private Basic AtkSpeed_Up = new AtkSpeed_Up();
 
-    private SpecialStat specialStat = null;
+    private readonly Dictionary<BasicType, Basic> upgrades = new Dictionary<BasicType, Basic>
+    {
+        { BasicType.Health_Up, new Health_Up() },
+        { BasicType.EnergyRecovery_Up, new EnergyRecovery_Up() },
+        { BasicType.EnergyChargeAmount_Up, new EnergyChargeAmount_Up() },
+        { BasicType.DashSpeed_Up, new DashSpeed_Up() },
+        { BasicType.Atk_UP, new Atk_UP() },
+        { BasicType.AtkSpeed_Up, new AtkSpeed_Up() }
+    };
 
-    private Special special = null;
+    private BasicType? lastSelectedType = null;
 
-    private int TypeNomber;
-    //Image
     [SerializeField] private Image form1;
     [SerializeField] private Image form2;
-    [SerializeField] private Image form3;
-    [SerializeField] private Image form4;
-    [SerializeField] private Image form5;
     [SerializeField] private Sprite Health_UpImage;
     [SerializeField] private Sprite EnergyRecovery_UpImage;
     [SerializeField] private Sprite EnergyChargeAmount_UpImage;
@@ -34,105 +32,83 @@ public class UpgradeUI_System : MonoBehaviour
     [SerializeField] private Sprite Atk_UPImage;
     [SerializeField] private Sprite AtkSpeed_UpImage;
     [SerializeField] private Sprite None;
-    BasicType basicType;
 
-    //Text
     [SerializeField] private TMP_Text form1_Text;
     [SerializeField] private TMP_Text form2_Text;
-    [SerializeField] private TMP_Text form3_Text;
-    [SerializeField] private TMP_Text form4_Text;
-    [SerializeField] private TMP_Text form5_Text;
 
-    //color
-    [SerializeField] private Image panel1;
-    [SerializeField] private Image panel2;
-    [SerializeField] private Image panel3;
-    [SerializeField] private Image panel4;
-
-
-    List<BasicType> BasicList = new List<BasicType>();
-    // selected photo
+    private List<BasicType> BasicList = new List<BasicType>();
     private Sprite sprite;
-    // selected letters
-    private Basic basic;
-    // selected grade
     private string effectName;
+
     private void Awake()
     {
         gameObject.SetActive(false);
-        BasicList.Add(BasicType.Health_Up);
-        BasicList.Add(BasicType.EnergyRecovery_Up);
-        BasicList.Add(BasicType.EnergyChargeAmount_Up);
-        BasicList.Add(BasicType.DashSpeed_Up);
-        BasicList.Add(BasicType.Atk_UP);
-        BasicList.Add(BasicType.AtkSpeed_Up);
+        BasicList.AddRange(upgrades.Keys);
     }
 
     private void OnEnable()
     {
-        RandBasic(form1, form2);
-        RandSpecialStat();
-        RandSpecial();
+        RandBasic(form1, form1_Text);
+        RandBasic(form2, form2_Text, lastSelectedType);
     }
 
-    private void RandBasic(Image form1, Image form2)
+    private void RandBasic(Image form, TMP_Text formText, BasicType? excludeType = null)
     {
-        for (int i = 0; i < 3;  i++) {
-        TypeNomber = Random.Range(0, BasicList.Count);
-
-            if (BasicList.Count == 0)
+        if (BasicList.Count < 1)
+        {
+            form.sprite = None;
+            form.color = Color.white;
+            formText.text = "모든 업그레이드가 다 되었습니다.";
+        }
+        else
+        {
+            List<BasicType> availableTypes = new List<BasicType>(BasicList);
+            if (excludeType.HasValue && BasicList.Count > 1)
             {
-                sprite = None;
-                effectName = "모든 업그레이드가 다 되었습니다.";
+                availableTypes.Remove(excludeType.Value);
+            }
+            int typeIndex = Random.Range(0, availableTypes.Count);
+            Debug.Log(availableTypes[typeIndex]);
+            if (upgrades[availableTypes[typeIndex]].UpGradeCount > 5)
+            {
+                form.sprite = None;
+                form.color = Color.white;
+                formText.text = "모든 업그레이드가 다 되었습니다.";
             }
             else
             {
-                basicType = BasicList[TypeNomber];
-                switch (basicType)
+                BasicType selectedType = availableTypes[typeIndex];
+                lastSelectedType = selectedType;
+                switch (selectedType)
                 {
                     case BasicType.Health_Up:
                         sprite = Health_UpImage;
                         effectName = "체력 증가";
-                        basic = Health_Up;
                         break;
                     case BasicType.EnergyRecovery_Up:
                         sprite = EnergyRecovery_UpImage;
                         effectName = "에너지 회복\n속도 증가";
-                        basic = EnergyRecovery_Up;
                         break;
                     case BasicType.EnergyChargeAmount_Up:
                         sprite = EnergyChargeAmount_UpImage;
                         effectName = "에너지 충전량 증가";
-                        basic = EnergyChargeAmount_Up;
                         break;
                     case BasicType.DashSpeed_Up:
                         sprite = DashSpeed_UpImage;
                         effectName = "대쉬 거리와\n대쉬 속도 증가";
-                        basic = DashSpeed_Up;
                         break;
                     case BasicType.Atk_UP:
                         sprite = Atk_UPImage;
                         effectName = "공격력 증가";
-                        basic = Atk_UP;
                         break;
                     case BasicType.AtkSpeed_Up:
                         sprite = AtkSpeed_UpImage;
                         effectName = "공격 속도 증가";
-                        basic = AtkSpeed_Up;
                         break;
                 }
-            }
-            if (i == 1)
-            {
-                BasicColor(basic.UpGradeCount, panel1);
-                form1.sprite = sprite;
-                form1_Text.text = effectName;
-            }
-            else if (i == 2)
-            {
-                BasicColor(basic.UpGradeCount, panel2);
-                form2.sprite = sprite;
-                form2_Text.text = effectName;
+                BasicColor(selectedType, form);
+                form.sprite = sprite;
+                formText.text = effectName;
             }
         }
     }
@@ -142,101 +118,70 @@ public class UpgradeUI_System : MonoBehaviour
         switch (clickTarget.name)
         {
             case "Panel":
-                Effective(form1_Text.text);
+                ApplyEffect(form1_Text.text);
                 break;
             case "Panel (1)":
-                Effective(form2_Text.text);
+                ApplyEffect(form2_Text.text);
                 break;
         }
         gameObject.SetActive(false);
     }
-    private void Effective(string text)
+    private void ApplyEffect(string text)
     {
-        Debug.Log("{text} 효과작동 적용");
+        Debug.Log($"{text} 효과작동 적용");
         switch (text)
         {
             case "체력 증가":
-                Health_Up.ChangeInformation(player);
-                if (Health_Up.UpGradeCount == 6)
-                {
-                    Debug.Log("체력업 삭제");
-                    BasicList.Remove(BasicType.Health_Up);
-                }
+                ApplyUpgrade(BasicType.Health_Up, 1);
                 break;
             case "에너지 회복\n속도 증가":
-                EnergyRecovery_Up.ChangeInformation(player);
-                if (EnergyRecovery_Up.UpGradeCount == 6)
-                {
-                    Debug.Log("에너지 회복 속도 삭제");
-                    BasicList.Remove(BasicType.EnergyRecovery_Up);
-                }
+                ApplyUpgrade(BasicType.EnergyRecovery_Up, 2);
                 break;
             case "에너지 충전량 증가":
-                EnergyChargeAmount_Up.ChangeInformation(player);
-                if (EnergyChargeAmount_Up.UpGradeCount == 6)
-                {
-                    Debug.Log("에너지 최대 양 삭제");
-                    BasicList.Remove(BasicType.EnergyChargeAmount_Up);
-                }
+                ApplyUpgrade(BasicType.EnergyChargeAmount_Up, 3);
                 break;
             case "대쉬 거리와\n대쉬 속도 증가":
-                DashSpeed_Up.ChangeInformation(player);
-                if (DashSpeed_Up.UpGradeCount == 6)
-                {
-                    Debug.Log("대쉬 최대 사거리 삭제");
-                    BasicList.Remove(BasicType.DashSpeed_Up);
-                }
+                ApplyUpgrade(BasicType.DashSpeed_Up, 4);
                 break;
             case "공격력 증가":
-                Atk_UP.ChangeInformation(player);
-                if (Atk_UP.UpGradeCount == 6)
-                {
-                    Debug.Log("공격력 증가 삭제");
-                    BasicList.Remove(BasicType.Atk_UP);
-                }
+                ApplyUpgrade(BasicType.Atk_UP, 5);
                 break;
             case "공격 속도 증가":
-                AtkSpeed_Up.ChangeInformation(player);
-                if (AtkSpeed_Up.UpGradeCount == 6)
-                {
-                    Debug.Log("공속 삭제");
-                    BasicList.Remove(BasicType.AtkSpeed_Up);
-                }
+                ApplyUpgrade(BasicType.AtkSpeed_Up, 6);
                 break;
             default:
                 break;
         }
-
     }
-
-    private void RandSpecialStat()
+    private void ApplyUpgrade(BasicType type, int id)
     {
-
+        upgrades[type].ChangeInformation(player);
+        onDisplay?.Invoke(id, upgrades[type].UpGradeCount);
+        if (upgrades[type].UpGradeCount == 6)
+        {
+            Debug.Log(BasicList.Count);
+            BasicList.Remove(type);
+        }
     }
-
-    private void RandSpecial()
+    private void BasicColor(BasicType type, Image Icon)
     {
-
-    }
-
-    private void BasicColor(int Grade, Image panel)
-    {
-        switch(Grade)
+        int Grade = upgrades[type].UpGradeCount;
+        switch (Grade)
         {
             case 1:
-                panel.color = Color.gray;
+                Icon.color = Color.black;
                 break;
             case 2:
-                panel.color = Color.blue;
+                Icon.color = Color.blue;
                 break;
             case 3:
-                panel.color = Color.magenta;
+                Icon.color = Color.magenta;
                 break;
             case 4:
-                panel.color = Color.yellow;
+                Icon.color = Color.yellow;
                 break;
             case 5:
-                panel.color = Color.red;
+                Icon.color = Color.red;
                 break;
         }
     }
