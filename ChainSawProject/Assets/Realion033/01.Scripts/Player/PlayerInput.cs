@@ -3,22 +3,42 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
+    private PlayerPhysics _playerPhysics;
     private Vector2 moveVelocity;
 
     public Vector3 mousePos { get; private set; }
     public bool isDash { get; private set; } = false;
     public bool isSlash { get; private set; } = false;
+    public bool isLeft { get; private set; } = false;
+
+    private void Awake()
+    {
+        _playerPhysics = GetComponent<PlayerPhysics>();
+    }
 
     void Update()
     {
         ProcessInput();
         DashInput();
         AttackInput();
+        AirControlInput();
+    }
+
+    private void AirControlInput()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            isLeft = true;
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            isLeft = false;
+        }
     }
 
     private void AttackInput()
     {
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             isSlash = true;
         }
@@ -31,7 +51,8 @@ public class PlayerInput : MonoBehaviour
     private void DashInput()
     {
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        if(Input.GetKeyDown(KeyCode.Space)){
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
             isDash = true;
         }
         else

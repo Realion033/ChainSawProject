@@ -2,34 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_Knife : MonoBehaviour
+public class Enemy_Knife : LivingEntity
 {
     private StateMachine stateMachine;
     public Transform playerTransform;
-    public int health = 120;
 
     void Awake()
     {
         stateMachine = GetComponent<StateMachine>();
-
-        // �÷��̾� Ʈ�������� StateMachine�� �Ҵ�
         stateMachine.playerTransform = playerTransform;
+
+        health = 120;
     }
 
-    public void TakeDamage(int damage)
+    private void Update()
     {
-        health -= damage;
-        if (health <= 0)
-        {
-            Die();
-        }
+        Debug.Log(health);
     }
-
-    private void Die()
-    {
-        // �� ��� ���� ����
-        Debug.Log("Enemy Died");
-        Destroy(gameObject);
-    }
-
 }

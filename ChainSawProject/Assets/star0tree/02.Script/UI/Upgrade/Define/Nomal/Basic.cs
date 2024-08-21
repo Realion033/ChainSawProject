@@ -53,24 +53,24 @@ class DashSpeed_Up : Basic
         switch(upGradeCount)
         {
             case 1:
-                player.dashDistance *= 1.2f;
-                player.dashSpeed *= 1.2f;
+                player._playerStat.dashDistance *= 1.2f;
+                player._playerStat.dashSpeed *= 1.2f;
                 break;
             case 2:
-                player.dashDistance *= 1.4f;
-                player.dashSpeed *= 1.4f;
+                player._playerStat.dashDistance *= 1.4f;
+                player._playerStat.dashSpeed *= 1.4f;
                 break;
             case 3:
-                player.dashDistance *= 1.6f;
-                player.dashSpeed *= 1.6f;
+                player._playerStat.dashDistance *= 1.6f;
+                player._playerStat.dashSpeed *= 1.6f;
                 break;
             case 4:
-                player.dashDistance *= 1.8f;
-                player.dashSpeed *= 1.8f;
+                player._playerStat.dashDistance *= 1.8f;
+                player._playerStat.dashSpeed *= 1.8f;
                 break;
             case 5:
-                player.dashDistance *= 2f;
-                player.dashSpeed *= 2f;
+                player._playerStat.dashDistance *= 2f;
+                player._playerStat.dashSpeed *= 2f;
                 break;
         }
         UpGradeCount_UP();

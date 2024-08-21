@@ -17,6 +17,12 @@ public class PlayerAnimationController : MonoBehaviour
     private void Update()
     {
         SlashAni();
+        TowardRotateAni();
+    }
+
+    private void TowardRotateAni()
+    {
+        
     }
 
     private void SlashAni()

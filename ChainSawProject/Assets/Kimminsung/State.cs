@@ -9,6 +9,7 @@ public abstract class State
     {
         this.gameObject = gameObject;
         this.stateMachine = stateMachine;
+
     }
 
     public virtual void Enter() { }

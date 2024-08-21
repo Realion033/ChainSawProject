@@ -21,11 +21,6 @@ public class PlayerDash : PlayerInput
         {
             CheckDashTargetReached();
         }
-
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            player.TakeDamage(10);
-        }
     }
 
     private void FixedUpdate()
@@ -40,8 +35,7 @@ public class PlayerDash : PlayerInput
     private void Dash()
     {
         Vector2 direction = (dashTarget - rb.position).normalized;
-        Debug.Log("adsf");
-        rb.velocity = direction * player.dashSpeed;
+        rb.velocity = direction * player._playerStat.dashSpeed;
     }
 
     private void CheckDashTargetReached()
@@ -60,7 +54,7 @@ public class PlayerDash : PlayerInput
 
         Vector2 direction = (mousePos - transform.position).normalized;
 
-        dashTarget = (Vector2)transform.position + direction * player.dashDistance;
+        dashTarget = (Vector2)transform.position + direction * player._playerStat.dashDistance;
         isDashing = true;  // �뽬 ����
     }
 
