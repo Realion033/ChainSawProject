@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9a4bf3b31f10c445b28a5e019ac60b3, type: 3}
+  m_Name: AttackSpeed
+  m_EditorClassIdentifier: 
+  name: AttackSpeed
+  rank: 0
+  points:
+  - 20
+  - 40
+  - 60
+  - 80
+  - 90
+  icon:
+  - {fileID: 174312668, guid: d46a1e007e7464a42b25bf065d3c1db5, type: 3}
+  - {fileID: -1946953535, guid: d46a1e007e7464a42b25bf065d3c1db5, type: 3}
+  - {fileID: -1050162836, guid: d46a1e007e7464a42b25bf065d3c1db5, type: 3}
+  - {fileID: 1019643982, guid: d46a1e007e7464a42b25bf065d3c1db5, type: 3}
+  - {fileID: -271632880, guid: d46a1e007e7464a42b25bf065d3c1db5, type: 3}
+  bg: {fileID: 0}
+  text1: 
+  text2: 

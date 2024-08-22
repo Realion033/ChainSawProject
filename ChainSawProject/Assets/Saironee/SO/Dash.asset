@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9a4bf3b31f10c445b28a5e019ac60b3, type: 3}
+  m_Name: Dash
+  m_EditorClassIdentifier: 
+  name: 
+  rank: 0
+  points:
+  - 1.2
+  - 1.4
+  - 1.6
+  - 1.8
+  - 2
+  icon:
+  - {fileID: 2063823212, guid: 11c382685cbbf914ba9617a148ea57d6, type: 3}
+  - {fileID: -1324674878, guid: 11c382685cbbf914ba9617a148ea57d6, type: 3}
+  - {fileID: -1097332006, guid: 11c382685cbbf914ba9617a148ea57d6, type: 3}
+  - {fileID: -396190667, guid: 11c382685cbbf914ba9617a148ea57d6, type: 3}
+  - {fileID: -2004935754, guid: 11c382685cbbf914ba9617a148ea57d6, type: 3}
+  bg: {fileID: 0}
+  text1: "\uB300\uC26C\uAC70\uB9AC\uC640 \uB300\uC26C \uC18D\uB3C4\uAC00"
+  text2: "\uBC30 \uC99D\uAC00\uD55C\uB2E4."
