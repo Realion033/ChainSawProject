@@ -22,6 +22,7 @@ public class PlayerInput : MonoBehaviour
         DashInput();
         AttackInput();
         AirControlInput();
+        Debug.Log(PlayerCooldownManager.Instance._dashCool);
     }
 
     private void AirControlInput()
@@ -53,7 +54,10 @@ public class PlayerInput : MonoBehaviour
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            isDash = true;
+            if (PlayerCooldownManager.Instance.UseDash())
+            {
+                isDash = true;
+            }
         }
         else
         {

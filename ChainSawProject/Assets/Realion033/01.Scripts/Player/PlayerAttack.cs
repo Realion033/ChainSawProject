@@ -11,12 +11,11 @@ public class PlayerAttack : MonoBehaviour
         _playerInput = GetComponent<PlayerInput>();
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnCollisionStay2D(Collision2D other)
     {
         if (_playerInput.isSlash)
         {
-            LivingEntity livingEntity = other.gameObject.GetComponent<LivingEntity>();
-            livingEntity.TakeHit(30, Vector2.zero);
+            other.gameObject.GetComponent<LivingEntity>().TakeHit(30, Vector2.zero);
         }
     }
 }
