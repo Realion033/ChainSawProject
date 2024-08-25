@@ -9,7 +9,7 @@ public class M_PlayerHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
-        Debug.Log("Player Health: " + health);
+        //Debug.Log("Player Health: " + health);
         if (health <= 0)
         {
             Die();
@@ -18,8 +18,8 @@ public class M_PlayerHealth : MonoBehaviour
 
     private void Die()
     {
-        // ÇÃ·¹ÀÌ¾î »ç¸Á ·ÎÁ÷
-        Debug.Log("Player Died");
-        // ÇÊ¿ä¿¡ µû¶ó Ãß°¡ »ç¸Á Ã³¸® ·ÎÁ÷À» ±¸Çö
+        // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        //Debug.Log("Player Died");
+        // ï¿½Ê¿ä¿¡ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     }
 }

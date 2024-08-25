@@ -22,7 +22,6 @@ public class PlayerInput : MonoBehaviour
         DashInput();
         AttackInput();
         AirControlInput();
-        Debug.Log(PlayerCooldownManager.Instance._dashCool);
     }
 
     private void AirControlInput()

@@ -12,12 +12,12 @@ public class IdleState : State
 
     public override void Enter()
     {
-        Debug.Log("Entering Idle State");
+        //Debug.Log("Entering Idle State");
     }
 
     public override void Update()
     {
-        // ÇÃ·¹ÀÌ¾î°¡ ÀÏÁ¤ °Å¸® ÀÌ³»¿¡ ÀÖ´ÂÁö È®ÀÎ
+        // ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ ï¿½Ì³ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ È®ï¿½ï¿½
         if (Vector2.Distance(gameObject.transform.position, playerTransform.position) < chaseDistance)
         {
             stateMachine.ChangeState(new ChaseState(gameObject, stateMachine, playerTransform));
@@ -26,7 +26,7 @@ public class IdleState : State
 
     public override void Exit()
     {
-        Debug.Log("Exiting Idle State");
+        //Debug.Log("Exiting Idle State");
     }
 }
 
@@ -45,7 +45,7 @@ public class ChaseState : State
 
     public override void Enter()
     {
-        Debug.Log("Entering Chase State");
+        //Debug.Log("Entering Chase State");
         attackTimer = 0f;
     }
 

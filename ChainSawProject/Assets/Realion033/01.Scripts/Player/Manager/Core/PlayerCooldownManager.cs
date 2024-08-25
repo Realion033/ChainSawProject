@@ -8,9 +8,9 @@ public class PlayerCooldownManager : MonoSingleton<PlayerCooldownManager>
     public PlayerCooldownSO playerCooldownSO;
 
     public float _dashCool;
-    private float _attackEnergeCool;
-    private float _attackTick;
-    private float _ultmateCool;
+    public float _attackEnergeCool;
+    public float _attackTick;
+    public float _ultmateCool;
 
     private void Start()
     {
@@ -25,12 +25,15 @@ public class PlayerCooldownManager : MonoSingleton<PlayerCooldownManager>
     }
 
     private void CooltimeManage()
-    {  
-        if (_dashCool != playerCooldownSO.DashCoolDown)
+    {
+        if (_dashCool < playerCooldownSO.DashCoolDown)
         {
             _dashCool += Time.deltaTime;
         }
-        //else if(_dashCool > )
+        else if (_dashCool >= playerCooldownSO.DashCoolDown)
+        {
+            _dashCool = playerCooldownSO.DashCoolDown;
+        }
     }
 
     public bool UseDash()

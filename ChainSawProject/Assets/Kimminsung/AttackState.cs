@@ -17,7 +17,7 @@ public class AttackState : State
 
     public override void Enter()
     {
-        Debug.Log("Entering Attack State");
+        //Debug.Log("Entering Attack State");
         attackTimer = 0f;
     }
 
@@ -39,14 +39,14 @@ public class AttackState : State
 
     public override void Exit()
     {
-        Debug.Log("Exiting Attack State");
+        //Debug.Log("Exiting Attack State");
     }
 
     private void PerformAttack()
     {
-        // °ø°Ý ·ÎÁ÷ ±¸Çö
-        Debug.Log("Performing Attack");
-        // ¿©±â¿¡ ÇÃ·¹ÀÌ¾î¿¡°Ô µ¥¹ÌÁö¸¦ ÁÖ´Â ·ÎÁ÷À» Ãß°¡
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        //Debug.Log("Performing Attack");
+        // ï¿½ï¿½ï¿½â¿¡ ï¿½Ã·ï¿½ï¿½Ì¾î¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
         M_PlayerHealth playerHealth = playerTransform.GetComponent<M_PlayerHealth>();
         if (playerHealth != null)
         {
