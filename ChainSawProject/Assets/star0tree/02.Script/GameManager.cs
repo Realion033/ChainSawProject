@@ -19,6 +19,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
-
+    [field:SerializeField] private Transform _playerTrm;
+    public Transform PlayerTrm { get => _playerTrm; private set => _playerTrm = value; }
 }
