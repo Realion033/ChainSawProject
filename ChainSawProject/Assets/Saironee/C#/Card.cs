@@ -23,7 +23,7 @@ public class Card : ScriptableObject
 
     private void OnValidate()
     {
-        string assetPath = "Assets/Saironee/SO/BG.asset";
+        string assetPath = "Assets/Saironee/SO/blas/BG.asset";
         bg = AssetDatabase.LoadAssetAtPath<CardBg>(assetPath);
     }
 }

@@ -26,6 +26,6 @@ MonoBehaviour:
   - {fileID: -1050162836, guid: d46a1e007e7464a42b25bf065d3c1db5, type: 3}
   - {fileID: 1019643982, guid: d46a1e007e7464a42b25bf065d3c1db5, type: 3}
   - {fileID: -271632880, guid: d46a1e007e7464a42b25bf065d3c1db5, type: 3}
-  bg: {fileID: 0}
-  text1: 
-  text2: 
+  bg: {fileID: 11400000, guid: f2b151327e6aebe40a9aa63243c82609, type: 2}
+  text1: "\uAE30\uBCF8 \uACF5\uACA9 \uC18D\uB3C4\uAC00"
+  text2: "%\uC99D\uAC00\uD55C\uB2E4."

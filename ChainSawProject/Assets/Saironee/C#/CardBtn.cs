@@ -22,4 +22,13 @@ public class CardBtn : MonoBehaviour
         _background.sprite = _card.bg.bg[_rank];
         _text.text = _card.discription;
     }
+
+    // public void SetAlpha(bool bOnoff)
+    // {
+    //     if (bOnoff)
+    //     {
+    //         
+    //         _icon.color = new Color32(255, 255, 255, 0);
+    //     }
+    // }
 }

@@ -15,17 +15,17 @@ MonoBehaviour:
   name: Health
   rank: 4
   points:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  - 20
+  - 40
+  - 60
+  - 80
+  - 100
   icon:
   - {fileID: 332109849, guid: cdd7cf07aff0bf343ae5b14709df89be, type: 3}
   - {fileID: -817910400, guid: cdd7cf07aff0bf343ae5b14709df89be, type: 3}
   - {fileID: 14162062, guid: cdd7cf07aff0bf343ae5b14709df89be, type: 3}
   - {fileID: 1782889247, guid: cdd7cf07aff0bf343ae5b14709df89be, type: 3}
   - {fileID: -67639392, guid: cdd7cf07aff0bf343ae5b14709df89be, type: 3}
-  bg: {fileID: 0}
+  bg: {fileID: 11400000, guid: f2b151327e6aebe40a9aa63243c82609, type: 2}
   text1: "\uCD5C\uB300\uCCB4\uB825\uC774 "
   text2: "\uC99D\uAC00\uD55C\uB2E4."
