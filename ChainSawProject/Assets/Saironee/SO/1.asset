@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b9a4bf3b31f10c445b28a5e019ac60b3, type: 3}
-  m_Name: AttackPower
+  m_Name: 1
   m_EditorClassIdentifier: 
   name: AttackPower
   rank: 0
@@ -26,6 +26,6 @@ MonoBehaviour:
   - {fileID: 1945965807, guid: a9c191177b118c245850dc83e0ecd483, type: 3}
   - {fileID: 1687018245, guid: a9c191177b118c245850dc83e0ecd483, type: 3}
   - {fileID: -1855121206, guid: a9c191177b118c245850dc83e0ecd483, type: 3}
-  bg: {fileID: 0}
+  bg: {fileID: 11400000, guid: f2b151327e6aebe40a9aa63243c82609, type: 2}
   text1: "\uAE30\uBCF8 \uACF5\uACA9\uB825\uC774"
   text2: "% \uC99D\uAC00\uD55C\uB2E4."

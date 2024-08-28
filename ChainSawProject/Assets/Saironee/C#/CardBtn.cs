@@ -11,24 +11,24 @@ public class CardBtn : MonoBehaviour
     [SerializeField] private Image _background;
     [SerializeField] private TextMeshProUGUI _text;
     
-    [SerializeField] private Card _card;
+    public Card _card;
     
     private short _rank;
     
     private void Awake()
     {
+        if (_card == null)
+        {
+            _icon.color = Color.clear;
+            _background.color = Color.clear;
+            _text.text = "";
+
+            Debug.Log("Card is Null!");
+        }
         _rank = _card.rank;
         _icon.sprite = _card.icon[_rank];
         _background.sprite = _card.bg.bg[_rank];
         _text.text = _card.discription;
-    }
 
-    // public void SetAlpha(bool bOnoff)
-    // {
-    //     if (bOnoff)
-    //     {
-    //         
-    //         _icon.color = new Color32(255, 255, 255, 0);
-    //     }
-    // }
+    }
 }
