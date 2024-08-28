@@ -168,6 +168,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCooldownSO: {fileID: 11400000, guid: f3434f42ab3b1e342b0f3bfc8799f6f1, type: 2}
   _dashCool: 0
+  _attackEnergeCool: 0
+  _attackTick: 0
+  _ultmateCool: 0
 --- !u!1 &827272519
 GameObject:
   m_ObjectHideFlags: 0
@@ -748,7 +751,7 @@ Transform:
   m_GameObject: {fileID: 1561307775}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.131973, y: -1.2120234, z: -0.06380131}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

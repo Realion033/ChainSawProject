@@ -26,6 +26,7 @@ public class PlayerCooldownManager : MonoSingleton<PlayerCooldownManager>
 
     private void CooltimeManage()
     {
+        //dash cool
         if (_dashCool < playerCooldownSO.DashCoolDown)
         {
             _dashCool += Time.deltaTime;
@@ -33,6 +34,16 @@ public class PlayerCooldownManager : MonoSingleton<PlayerCooldownManager>
         else if (_dashCool >= playerCooldownSO.DashCoolDown)
         {
             _dashCool = playerCooldownSO.DashCoolDown;
+        }
+
+        //attackTick
+        if (_attackTick < playerCooldownSO.AttackTick)
+        {
+            _attackTick += Time.deltaTime;
+        }
+        else if (_attackTick >= playerCooldownSO.AttackTick)
+        {
+            _attackTick = playerCooldownSO.AttackTick;
         }
     }
 
@@ -45,11 +56,16 @@ public class PlayerCooldownManager : MonoSingleton<PlayerCooldownManager>
         }
         return false;
     }
-    private bool AttackEnerge()
+    public bool AttackTick()
     {
-        throw new NotImplementedException();
+        if (_attackTick == playerCooldownSO.AttackTick)
+        {
+            _attackTick = 0;
+            return true;
+        }
+        return false;
     }
-    private bool AttackTick()
+    private bool AttackEnerge()
     {
         throw new NotImplementedException();
     }

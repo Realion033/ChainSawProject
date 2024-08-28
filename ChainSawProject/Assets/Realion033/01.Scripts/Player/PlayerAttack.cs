@@ -19,7 +19,10 @@ public class PlayerAttack : MonoBehaviour
         {
             if (_playerInput.isSlash)
             {
-                other.gameObject.GetComponent<LivingEntity>().TakeHit(30, Vector2.zero);
+                if (PlayerCooldownManager.Instance.AttackTick())
+                {
+                    other.gameObject.GetComponent<LivingEntity>().TakeHit(30, Vector2.zero);
+                }
             }
         }
         catch (Exception e)
