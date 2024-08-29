@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cardPrefab: {fileID: 5747441657194870693, guid: 9f41c3c962963e645b4b5980597a9242, type: 3}
-  Card: 3
+  Card: 5
 --- !u!1 &472015010
 GameObject:
   m_ObjectHideFlags: 0

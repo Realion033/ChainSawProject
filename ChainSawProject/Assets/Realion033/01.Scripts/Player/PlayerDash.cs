@@ -4,15 +4,17 @@ using UnityEngine;
 public class PlayerDash : PlayerInput
 {
     private Player player;
-
+    private TrailRenderer _trailRender;
     private Rigidbody2D rb;
     private Vector2 dashTarget;
+
     private bool isDashing = false;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         player = GetComponent<Player>();
+        _trailRender = GetComponent<TrailRenderer>();
     }
 
     private void Update()
@@ -26,7 +28,7 @@ public class PlayerDash : PlayerInput
     private void FixedUpdate()
     {
         if (isDashing)
-        {   
+        {
             Dash();
         }
     }
@@ -36,6 +38,9 @@ public class PlayerDash : PlayerInput
     {
         Vector2 direction = (dashTarget - rb.position).normalized;
         rb.velocity = direction * player._playerStat.dashSpeed;
+
+        //start trail.
+        _trailRender.time = 0.2f;
     }
 
     private void CheckDashTargetReached()
