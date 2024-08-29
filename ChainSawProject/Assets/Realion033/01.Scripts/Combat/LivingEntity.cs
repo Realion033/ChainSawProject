@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LivingEntity : MonoBehaviour, IDamageable
+public class LivingEntity : MonoBehaviour, IDamageable_real
 {
     protected float health;
     public bool isDead;
@@ -10,7 +10,8 @@ public class LivingEntity : MonoBehaviour, IDamageable
     {
         health -= damage;
 
-        if(health <= 0 &!isDead){
+        if (health <= 0 & !isDead)
+        {
             Die();
         }
     }

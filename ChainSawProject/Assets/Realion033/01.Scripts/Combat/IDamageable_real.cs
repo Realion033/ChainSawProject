@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IDamageable
+public interface IDamageable_real
 {
-    void TakeDamage(float amount);
+    void TakeHit(float damage, Vector2 HitPos);
 }
