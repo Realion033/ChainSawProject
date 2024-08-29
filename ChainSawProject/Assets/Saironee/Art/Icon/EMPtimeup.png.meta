@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cdd7cf07aff0bf343ae5b14709df89be
+guid: 37cf768e921d8fd4488d08e889c3484b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HP_UpSheet_0
+      name: EMPtimeup_0
       rect:
         serializedVersion: 2
         x: 0
@@ -111,14 +111,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c25415f7a216adf40af72807a09b523e
-      internalID: -1703337300
+      spriteID: 98f06b02e564e364bae078b45e498c03
+      internalID: 1700181969
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HP_UpSheet_1
+      name: EMPtimeup_1
       rect:
         serializedVersion: 2
         x: 32
@@ -132,14 +132,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 27baaa921732a3f46b2fe7c6c2c194b9
-      internalID: 332109849
+      spriteID: 5a9d0cc61c5e02641b107f08a1fed1e5
+      internalID: -552123833
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HP_UpSheet_2
+      name: EMPtimeup_2
       rect:
         serializedVersion: 2
         x: 64
@@ -153,14 +153,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 07eaee04b4e490f44bec861af0a57ede
-      internalID: -817910400
+      spriteID: 45c8cfa8afe12314fa29ed9daaae657f
+      internalID: -455451809
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HP_UpSheet_3
+      name: EMPtimeup_3
       rect:
         serializedVersion: 2
         x: 96
@@ -174,14 +174,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a691b848d9c014d4a8927e06bab57210
-      internalID: 14162062
+      spriteID: fb4688340d203fe4bab55c078b57fc61
+      internalID: -1440500220
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HP_UpSheet_4
+      name: EMPtimeup_4
       rect:
         serializedVersion: 2
         x: 128
@@ -195,14 +195,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 48aa8528c434b1b4eb1216941f938781
-      internalID: 1782889247
+      spriteID: e086e511d5ec060469d0d1de9cc2184b
+      internalID: -891013908
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HP_UpSheet_5
+      name: EMPtimeup_5
       rect:
         serializedVersion: 2
         x: 160
@@ -216,8 +216,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a709b6e76ab50d4d80b659ebb68a35e
-      internalID: -67639392
+      spriteID: 6ad95519a3dda6b4fb75c1a6f409779e
+      internalID: -603768976
       vertices: []
       indices: 
       edges: []
@@ -233,12 +233,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      HP_UpSheet_0: -1703337300
-      HP_UpSheet_1: 332109849
-      HP_UpSheet_2: -817910400
-      HP_UpSheet_3: 14162062
-      HP_UpSheet_4: 1782889247
-      HP_UpSheet_5: -67639392
+      EMPtimeup_0: 1700181969
+      EMPtimeup_1: -552123833
+      EMPtimeup_2: -455451809
+      EMPtimeup_3: -1440500220
+      EMPtimeup_4: -891013908
+      EMPtimeup_5: -603768976
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
