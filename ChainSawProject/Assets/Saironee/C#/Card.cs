@@ -1,6 +1,12 @@
 using UnityEditor;
 using UnityEngine;
-using UnityEngine;
+
+enum Rank{
+    COMMON,
+    SKILLUPGRADE,
+    SKILLUNLOCK,
+}
+
 [CreateAssetMenu(fileName = "SO", menuName = "CreateSO / card")]
 public class Card : ScriptableObject
 {
