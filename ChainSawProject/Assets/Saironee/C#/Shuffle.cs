@@ -12,7 +12,7 @@ public class Shuffle : MonoBehaviour
 
     private void Awake()
     {
-        for (int i = 1; i < 6; i++)
+        for (int i = 1; i < 7; i++)
         {
             string assetPath = $"Assets/Saironee/SO/{i}.asset";
             _cards.Add(AssetDatabase.LoadAssetAtPath<Card>(assetPath));

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cdd7cf07aff0bf343ae5b14709df89be
+guid: 9a2b9dba5113e6b4e998d5893ce59189
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HP_UpSheet_0
+      name: Rocketlonglong_0
       rect:
         serializedVersion: 2
         x: 0
@@ -111,14 +111,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c25415f7a216adf40af72807a09b523e
-      internalID: -1703337300
+      spriteID: 2bafe55f8774dc94488dfff855b7e612
+      internalID: -660118877
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HP_UpSheet_1
+      name: Rocketlonglong_1
       rect:
         serializedVersion: 2
         x: 32
@@ -132,14 +132,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 27baaa921732a3f46b2fe7c6c2c194b9
-      internalID: 332109849
+      spriteID: ab1ecdb6c0ce4b94b9905209c3b9a9fc
+      internalID: -1005259163
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HP_UpSheet_2
+      name: Rocketlonglong_2
       rect:
         serializedVersion: 2
         x: 64
@@ -153,14 +153,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 07eaee04b4e490f44bec861af0a57ede
-      internalID: -817910400
+      spriteID: 88d15743eee866340b69f2e07e056ae0
+      internalID: -259447551
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HP_UpSheet_3
+      name: Rocketlonglong_3
       rect:
         serializedVersion: 2
         x: 96
@@ -174,14 +174,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a691b848d9c014d4a8927e06bab57210
-      internalID: 14162062
+      spriteID: 08241ea95c9d467488bbdb3ec7fac29c
+      internalID: -471192567
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HP_UpSheet_4
+      name: Rocketlonglong_4
       rect:
         serializedVersion: 2
         x: 128
@@ -195,14 +195,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 48aa8528c434b1b4eb1216941f938781
-      internalID: 1782889247
+      spriteID: 45b1b88ed3b44d842b64990035e42a61
+      internalID: 1518718200
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HP_UpSheet_5
+      name: Rocketlonglong_5
       rect:
         serializedVersion: 2
         x: 160
@@ -216,8 +216,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a709b6e76ab50d4d80b659ebb68a35e
-      internalID: -67639392
+      spriteID: 322b183bf02957b42b2b10d9a073ef1c
+      internalID: -93953960
       vertices: []
       indices: 
       edges: []
@@ -233,12 +233,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      HP_UpSheet_0: -1703337300
-      HP_UpSheet_1: 332109849
-      HP_UpSheet_2: -817910400
-      HP_UpSheet_3: 14162062
-      HP_UpSheet_4: 1782889247
-      HP_UpSheet_5: -67639392
+      Rocketlonglong_0: -660118877
+      Rocketlonglong_1: -1005259163
+      Rocketlonglong_2: -259447551
+      Rocketlonglong_3: -471192567
+      Rocketlonglong_4: 1518718200
+      Rocketlonglong_5: -93953960
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
