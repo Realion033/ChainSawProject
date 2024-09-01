@@ -12,7 +12,6 @@ public class AttackState : BaseState
     public override void OnStateUpdate()
     {
     }
-
     public override void OnStateExit()
     {
     }
