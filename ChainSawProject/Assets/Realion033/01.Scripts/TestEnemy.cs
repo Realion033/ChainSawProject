@@ -8,4 +8,8 @@ public class TestEnemy : LivingEntity
     {
         health = 300;
     }
+    private void Update()
+    {
+        Debug.Log("current health" + health);
+    }
 }
