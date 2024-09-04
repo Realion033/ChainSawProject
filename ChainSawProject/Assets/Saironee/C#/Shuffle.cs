@@ -10,12 +10,17 @@ public class Shuffle : MonoBehaviour
 
     public int Card;
 
+    int i;
+
     private void Awake()
     {
-        for (int i = 1; i < 7; i++)
+        while(true)
         {
             string assetPath = $"Assets/Saironee/SO/{i}.asset";
+            if (AssetDatabase.LoadAssetAtPath<Card>(assetPath) == null)
+                break;
             _cards.Add(AssetDatabase.LoadAssetAtPath<Card>(assetPath));
+            i++;
         }
     }
 

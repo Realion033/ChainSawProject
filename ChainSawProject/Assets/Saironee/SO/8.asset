@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9a4bf3b31f10c445b28a5e019ac60b3, type: 3}
+  m_Name: 8
+  m_EditorClassIdentifier: 
+  name: RocketDamageUp
+  level: 0
+  rank: 1
+  points:
+  - 200
+  - 250
+  - 300
+  - 350
+  - 400
+  icon:
+  - {fileID: -2022473699, guid: 616de8fd03d2ed044a9d944215b07c40, type: 3}
+  - {fileID: 1961424284, guid: 616de8fd03d2ed044a9d944215b07c40, type: 3}
+  - {fileID: 604797214, guid: 616de8fd03d2ed044a9d944215b07c40, type: 3}
+  - {fileID: 1499215438, guid: 616de8fd03d2ed044a9d944215b07c40, type: 3}
+  - {fileID: 1839431468, guid: 616de8fd03d2ed044a9d944215b07c40, type: 3}
+  bg: {fileID: 11400000, guid: 13ab473e4ab21b348ac84d8ae96a92b8, type: 2}
+  text1: "\uB85C\uCF13\uB7F0 \uB370\uBBF8\uC9C0\uAC00 "
+  text2: "\uC73C\uB85C \uC99D\uAC00\uD55C\uB2E4."

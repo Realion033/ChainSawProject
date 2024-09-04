@@ -263,7 +263,7 @@ MonoBehaviour:
   _icon: {fileID: 2695671630927276816}
   _background: {fileID: 559957759278309935}
   _text: {fileID: 7854581230649551164}
-  _card: {fileID: 11400000, guid: 442b056d8554ce2469e402e483f30ec4, type: 2}
+  _card: {fileID: 11400000, guid: 69b2c7205ceb9d24ba45c17614192225, type: 2}
 --- !u!1 &6747251272591017445
 GameObject:
   m_ObjectHideFlags: 0

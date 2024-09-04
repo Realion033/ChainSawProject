@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: EMPTimeUp
   level: 0
-  rank: 1
+  rank: 0
   points:
   - 25
   - 23
