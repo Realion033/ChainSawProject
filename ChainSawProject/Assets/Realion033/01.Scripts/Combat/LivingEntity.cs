@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LivingEntity : MonoBehaviour, IDamageable_real
+public abstract class LivingEntity : MonoBehaviour, IDamageable_real
 {
     protected float health;
     public bool isDead;

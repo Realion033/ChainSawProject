@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
+    public LayerMask WhatisEnemy;
+    //public bool isHit = false;
     private PlayerInput _playerInput;
 
     private void Awake()
@@ -19,39 +21,22 @@ public class PlayerAttack : MonoBehaviour
 
     private void Attack()
     {
-        Collider2D[] enemys = Physics2D.OverlapCircleAll(transform.position, 0.6f, 1 << 7);
+        Collider2D[] enemys = Physics2D.OverlapCircleAll(transform.position, 0.6f, WhatisEnemy);
 
         if (_playerInput.isSlash)
         {
-            if (PlayerCooldownManager.Instance.AttackTick())
+            for (int i = 0; i < enemys.Length; i++)
             {
-                for (int i = 0; i < enemys.Length; i++)
+                //isHit = true;
+                if (PlayerCooldownManager.Instance.AttackTick())
                 {
                     enemys[i].GetComponent<LivingEntity>().TakeHit(30, Vector2.zero);
                 }
             }
+            //isHit = false;
         }
+
     }
-
-    //사실상 공격처리
-    // private void OnCollisionStay2D(Collision2D other)
-    // {
-    //     try
-    //     {
-    //         if (_playerInput.isSlash)
-    //         {
-    //             if (PlayerCooldownManager.Instance.AttackTick())
-    //             {
-    //                 other.gameObject.GetComponent<LivingEntity>().TakeHit(30, Vector2.zero);
-    //             }
-    //         }
-    //     }
-    //     catch (Exception e)
-    //     {
-    //         Debug.Log($"Collider Not have \"LivingEntitiy\" (No problem) >> {e.Message}");
-    //     }
-    // }
-
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
