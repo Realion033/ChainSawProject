@@ -1,105 +1,75 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KnifeEnemy : EnemyManager
+namespace MIN
 {
-    private enum State
+    public enum KnifeEnum
     {
         Idle,
-        Move,
-        Attack
+        Run,
+        Attack,
+        Dead
     }
-
-    Transform _transform;
-    GameObject _player;
-
-    private void Awake()
+    public class KnifeEnemy : Enemy
     {
-        _transform = GetComponent<Transform>();
-        _player = GetComponent<GameObject>();
-    }
+        public EnemyStateMachine<KnifeEnum> StateMachine { get; private set; }
 
-    private State _curState;
-    private FSM _fsm;
-
-    private void Start()
-    {
-        _curState = State.Idle;
-        _fsm = new FSM(new IdleState(this));
-    }
-
-    private void Update()
-    {
-        switch (_curState)
+        protected override void Awake()
         {
-            case State.Idle:
-                if (CanSeePlayer())
-                {
-                    if (CanAttackPlayer())
-                        ChangeState(State.Attack);
-                    else
-                        ChangeState(State.Move);
-                }
-                break;
-            case State.Move:
-                if (CanSeePlayer())
-                {
-                    if (!CanAttackPlayer())
-                    {
-                        ChangeState(State.Attack);
-                    }
-                }
-                else
-                {
-                    ChangeState(State.Idle);
-                }
-                break;
-            case State.Attack:
-                if (CanSeePlayer())
-                {
-                    if (!CanAttackPlayer())
-                    {
-                        ChangeState(State.Move);
-                    }
-                }
-                else
+            base.Awake();
+            StateMachine = new();
 
-                {
-                    ChangeState(State.Idle);
-                }
+            // CreateState
+            foreach(KnifeEnum stateEnum in Enum.GetValues(typeof(KnifeEnum)))
+            {
+                string typeName = stateEnum.ToString();
+                Type t = Type.GetType($"MIN.Knife{typeName}State");
 
-                break;
+                try
+                {
+                    EnemyState<KnifeEnum> state =
+                        Activator.CreateInstance(t, this, StateMachine, typeName) as EnemyState<KnifeEnum>;
+                    StateMachine.AddState(stateEnum, state);
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogError($"Enemy Hammer : no State found [ {typeName} ] - {ex.Message}");
+                }
+            }
         }
-        _fsm.UpdateState();
-    }
 
-
-    private void ChangeState(State nextState)
-    {
-        _curState = nextState;
-        switch (_curState)
+        private void Start()
         {
-            case State.Idle:
-                _fsm.ChangeState(new IdleState(this));
-                break;
-            case State.Move:
-                _fsm.ChangeState(new MoveState(this));
-                break;
-            case State.Attack:
-                _fsm.ChangeState(new AttackState(this));
-                break;
+            StateMachine.Initialize(KnifeEnum.Idle, this);
         }
-    }
 
+        private void Update()
+        {
+            StateMachine.CurrentState.UpdateState();
+        }
 
-    private bool CanSeePlayer()
-    {
-        return true;
-    }
+        public override void AnimationEndTrigger()
+        {
+            StateMachine.CurrentState.AnimationFinishTrigger();
+        }
 
-    private bool CanAttackPlayer()
-    {
-        return true;
+        public override void Attack()
+        {
+            
+        }
+
+        public override void SetDead()
+        {
+            StateMachine.ChangeState(KnifeEnum.Dead, true);
+            isDead = true;
+            CanStateChangeable = false;
+        }
+
+        protected override void OnDrawGizmosSelected()
+        {
+            base.OnDrawGizmosSelected();
+        }
     }
 }
