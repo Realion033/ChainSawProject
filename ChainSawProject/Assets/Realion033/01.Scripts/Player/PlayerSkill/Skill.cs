@@ -8,10 +8,15 @@ public class Skill : MonoBehaviour
     //this script well base any skill scripts
     private PlayerInput _playerInput;
     private PlayerCooldownSO _playerCooldownSO;
+    public virtual void Init()
+    {
+        _playerInput = GetComponentInParent<PlayerInput>();
+        _playerCooldownSO = new PlayerCooldownSO();
+    }
+
     private void Awake()
     {
-        _playerInput = transform.Find("Player").GetComponent<PlayerInput>();
-        _playerCooldownSO = new PlayerCooldownSO();
+        Init();
     }
     void Start()
     {

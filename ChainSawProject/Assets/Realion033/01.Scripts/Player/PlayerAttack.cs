@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public LayerMask WhatisEnemy;
+    [SerializeField] private LayerMask WhatisEnemy;
+    [SerializeField] private PlayerStatSO _playerStat;
     //public bool isHit = false;
     private PlayerInput _playerInput;
 
@@ -23,20 +24,18 @@ public class PlayerAttack : MonoBehaviour
     {
         Collider2D[] enemys = Physics2D.OverlapCircleAll(transform.position, 0.6f, WhatisEnemy);
 
-        if (_playerInput.isSlash)
+        if (_playerInput.isSlash && enemys != null)
         {
-            for (int i = 0; i < enemys.Length; i++)
+            foreach (var enemy in enemys)
             {
-                //isHit = true;
                 if (PlayerCooldownManager.Instance.AttackTick())
                 {
-                    enemys[i].GetComponent<LivingEntity>().TakeHit(30, Vector2.zero);
+                    enemy.GetComponent<LivingEntity>().TakeHit(_playerStat.playerDamage, Vector2.zero);
                 }
             }
-            //isHit = false;
         }
-
     }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
