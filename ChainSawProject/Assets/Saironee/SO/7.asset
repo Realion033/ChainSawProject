@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: EMPTimeUp
   level: 0
-  rank: 0
+  rank: 1
   points:
   - 25
   - 23
@@ -27,6 +27,6 @@ MonoBehaviour:
   - {fileID: -1440500220, guid: 37cf768e921d8fd4488d08e889c3484b, type: 3}
   - {fileID: -891013908, guid: 37cf768e921d8fd4488d08e889c3484b, type: 3}
   - {fileID: -603768976, guid: 37cf768e921d8fd4488d08e889c3484b, type: 3}
-  bg: {fileID: 11400000, guid: f2b151327e6aebe40a9aa63243c82609, type: 2}
+  bg: {fileID: 11400000, guid: 13ab473e4ab21b348ac84d8ae96a92b8, type: 2}
   text1: "EMP\uC758 \uC7AC\uC0AC\uC6A9 \uB300\uAE30 \uC2DC\uAC04 "
   text2: "\uB85C \uAC10\uC18C\uD55C\uB2E4."

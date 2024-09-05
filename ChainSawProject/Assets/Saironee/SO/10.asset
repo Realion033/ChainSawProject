@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: RocketTimeDown
   level: 0
-  rank: 0
+  rank: 1
   points:
   - 4
   - 5
@@ -27,7 +27,7 @@ MonoBehaviour:
   - {fileID: -1543948544, guid: e5c79d9e7d6a569499d5526ee7b0b8eb, type: 3}
   - {fileID: 708744487, guid: e5c79d9e7d6a569499d5526ee7b0b8eb, type: 3}
   - {fileID: -1566146079, guid: e5c79d9e7d6a569499d5526ee7b0b8eb, type: 3}
-  bg: {fileID: 11400000, guid: f2b151327e6aebe40a9aa63243c82609, type: 2}
+  bg: {fileID: 11400000, guid: 13ab473e4ab21b348ac84d8ae96a92b8, type: 2}
   text1: "\uB85C\uCF13 \uB7F0\uCCD0 \uBBF8\uC0AC\uC77C \uC7AC\uC0AC\uC6A9 \uB300\uAE30
     \uC2DC\uAC04\uC774 "
   text2: "\uB85C \uAC10\uC18C\uD55C\uB2E4."
