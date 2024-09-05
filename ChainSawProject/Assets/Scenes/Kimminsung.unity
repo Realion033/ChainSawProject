@@ -131,7 +131,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 828271722}
-  - component: {fileID: 828271725}
+  - component: {fileID: 828271723}
   m_Layer: 0
   m_Name: KnifeEnemy
   m_TagString: Untagged
@@ -148,34 +148,41 @@ Transform:
   m_GameObject: {fileID: 828271721}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.16, y: -2.7, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1280815842}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &828271725
-Animator:
-  serializedVersion: 5
+--- !u!114 &828271723
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 828271721}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: fc1f84af76c91e347a6297edd5228ff1, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 922c494e77dd2f145bfae790a673d79c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDead: 0
+  moveSpeed: 5
+  battleTime: 5
+  isActive: 0
+  _whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 8
+  _whatIsObstacle:
+    serializedVersion: 2
+    m_Bits: 0
+  runAwayDistance: 5
+  attackDistance: 0.8
+  attackCooldown: 1
+  _maxCheckEnemy: 1
+  lastAttackTime: 0
+  targetTrm: {fileID: 0}
 --- !u!1 &1182882462
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,7 +330,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1280815842}
   - component: {fileID: 1280815844}
-  - component: {fileID: 1280815846}
   - component: {fileID: 1280815845}
   - component: {fileID: 1280815843}
   m_Layer: 0
@@ -415,7 +421,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.0133333, y: 1.0133333}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -456,34 +462,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.5, y: 1}
   m_Direction: 0
---- !u!114 &1280815846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1280815841}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 922c494e77dd2f145bfae790a673d79c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isDead: 0
-  moveSpeed: 5
-  battleTime: 5
-  isActive: 0
-  _whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 8
-  _whatIsObstacle:
-    serializedVersion: 2
-    m_Bits: 0
-  runAwayDistance: 5
-  attackDistance: 0.8
-  attackCooldown: 1
-  _maxCheckEnemy: 1
-  lastAttackTime: 0
-  targetTrm: {fileID: 0}
 --- !u!1 &1832008971
 GameObject:
   m_ObjectHideFlags: 0
@@ -626,7 +604,7 @@ Transform:
   m_GameObject: {fileID: 1832008971}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5, y: -3, z: 0}
+  m_LocalPosition: {x: -5.63, y: -2.94, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children: []
