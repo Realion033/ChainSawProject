@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 3
   m_EditorClassIdentifier: 
   name: Dash
-  level: 0
+  level: 4
   rank: 0
   points:
   - 1.2

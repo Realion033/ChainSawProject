@@ -4,11 +4,19 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SO", menuName = "CreateSO / card")]
 public class Card : ScriptableObject
 {
+    [System.Serializable]
+    public enum RANK
+    {
+        COMMON,
+        UNIQUE,
+        UNLOCK,
+    }
+
     [SerializeField]
     private string name;
 
     public short level;
-    public short rank;
+    public RANK rank;
 
     public float[] points;
 
@@ -28,13 +36,13 @@ public class Card : ScriptableObject
     {
         switch (rank)
         {
-            case 0:
+            case RANK.COMMON:
                 assetPath = "Assets/Saironee/SO/blas/BG.asset";
                 break;
-            case 1:
+            case RANK.UNIQUE:
                 assetPath = "Assets/Saironee/SO/blas/BGBG.asset";
                 break;
-            case 2:
+            case RANK.UNLOCK:
                 assetPath = "Assets/Saironee/SO/blas/BGBGBGB.asset";
                 break;
 

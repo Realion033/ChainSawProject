@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9a4bf3b31f10c445b28a5e019ac60b3, type: 3}
+  m_Name: 9
+  m_EditorClassIdentifier: 
+  name: RocketLonglong
+  level: 0
+  rank: 1
+  points:
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  icon:
+  - {fileID: -1005259163, guid: 9a2b9dba5113e6b4e998d5893ce59189, type: 3}
+  - {fileID: -259447551, guid: 9a2b9dba5113e6b4e998d5893ce59189, type: 3}
+  - {fileID: -471192567, guid: 9a2b9dba5113e6b4e998d5893ce59189, type: 3}
+  - {fileID: 1518718200, guid: 9a2b9dba5113e6b4e998d5893ce59189, type: 3}
+  - {fileID: -93953960, guid: 9a2b9dba5113e6b4e998d5893ce59189, type: 3}
+  bg: {fileID: 11400000, guid: 13ab473e4ab21b348ac84d8ae96a92b8, type: 2}
+  text1: "\uB85C\uCF13 \uB7F0\uCCD0 \uBBF8\uC0AC\uC77C \uC9C0\uC18D\uC2DC\uAC04\uC774 "
+  text2: "\uB85C \uC99D\uAC00\uD55C\uB2E4."
