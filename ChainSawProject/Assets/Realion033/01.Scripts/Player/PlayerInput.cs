@@ -11,6 +11,8 @@ public class PlayerInput : MonoBehaviour
     public bool isSlash { get; private set; } = false;
     public bool isLeft { get; private set; } = false;
 
+    public event Action isSkillUse;
+
     private void Awake()
     {
         _playerPhysics = GetComponent<PlayerPhysics>();
@@ -45,6 +47,11 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             isSlash = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            isSkillUse?.Invoke();
         }
     }
 
