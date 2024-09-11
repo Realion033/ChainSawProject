@@ -2,10 +2,8 @@ using System.Collections;
 using System;
 using UnityEngine;
 
-namespace MIN
-{
-    public abstract class Agent : MonoBehaviour
-    {
+ public abstract class Agent : MonoBehaviour
+ {
         #region component list section
         public Animator AnimatorCompo { get; protected set; }
         //public IMovement MovementCompo { get; protected set; }
@@ -18,9 +16,10 @@ namespace MIN
 
         public bool CanStateChangeable { get; protected set; } = true;
         public bool isDead;
-
+            
         protected virtual void Awake()
         {
+            
             Transform visualTrm = transform.Find("Visual");
             AnimatorCompo = visualTrm.GetComponent<Animator>();
             //MovementCompo = GetComponent<IMovement>();
@@ -61,4 +60,3 @@ namespace MIN
         public abstract void SetDead();
     }
 
-}

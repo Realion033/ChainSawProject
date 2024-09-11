@@ -1,6 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 
 namespace MIN
@@ -12,6 +12,7 @@ namespace MIN
         Attack,
         Dead
     }
+
     public class KnifeEnemy : Enemy
     {
         public EnemyStateMachine<KnifeEnum> StateMachine { get; private set; }
@@ -19,23 +20,42 @@ namespace MIN
         protected override void Awake()
         {
             base.Awake();
-            StateMachine = new();
+            StateMachine = new EnemyStateMachine<KnifeEnum>();
 
             // CreateState
-            foreach(KnifeEnum stateEnum in Enum.GetValues(typeof(KnifeEnum)))
+            foreach (KnifeEnum stateEnum in Enum.GetValues(typeof(KnifeEnum)))
             {
-                string typeName = stateEnum.ToString();
-                Type t = Type.GetType($"MIN.Knife{typeName}State");
+                string typeName = $"MIN.Knife{stateEnum}State";
+                Type t = Type.GetType(typeName);
+
+                if (t == null)
+                {
+                    Debug.LogError($"Type not found using Type.GetType: {typeName}");
+                    // Alternative method to find the type
+                    t = Assembly.GetExecutingAssembly().GetType(typeName);
+
+                    if (t == null)
+                    {
+                        Debug.LogError($"Type still not found using Assembly.GetExecutingAssembly().GetType: {typeName}");
+                        continue;
+                    }
+                }
 
                 try
                 {
-                    EnemyState<KnifeEnum> state =
-                        Activator.CreateInstance(t, this, StateMachine, typeName) as EnemyState<KnifeEnum>;
+                    EnemyState<KnifeEnum> state = Activator.CreateInstance(t, this, StateMachine, stateEnum.ToString()) as EnemyState<KnifeEnum>;
+
+                    if (state == null)
+                    {
+                        Debug.LogError($"Failed to create instance of {typeName}");
+                        continue;
+                    }
+
                     StateMachine.AddState(stateEnum, state);
                 }
                 catch (Exception ex)
                 {
-                    Debug.LogError($"Enemy Hammer : no State found [ {typeName} ] - {ex.Message}");
+                    Debug.LogError($"Error creating state: {ex.Message}");
                 }
             }
         }
@@ -47,17 +67,24 @@ namespace MIN
 
         private void Update()
         {
-            StateMachine.CurrentState.UpdateState();
+            if (StateMachine.CurrentState != null)
+            {
+                StateMachine.CurrentState.UpdateState();
+            }
+            else
+            {
+                Debug.LogWarning("CurrentState is null.");
+            }
         }
 
         public override void AnimationEndTrigger()
         {
-            StateMachine.CurrentState.AnimationFinishTrigger();
+            StateMachine.CurrentState?.AnimationFinishTrigger();
         }
 
         public override void Attack()
         {
-            
+            StateMachine.ChangeState(KnifeEnum.Attack, true);
         }
 
         public override void SetDead()

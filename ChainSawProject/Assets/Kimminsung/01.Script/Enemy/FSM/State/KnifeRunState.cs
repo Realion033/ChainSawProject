@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
 namespace MIN
 {
     public class KnifeRunState : EnemyState<KnifeEnum>
@@ -59,4 +60,5 @@ namespace MIN
             _navMeshAgent.isStopped = true;  // Stop the NavMeshAgent when exiting the state
         }
     }
+
 }
