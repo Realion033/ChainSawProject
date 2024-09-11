@@ -3,24 +3,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Skills
+{
+    None,
+    FinalAttack,
+    RocketLuncer
+}
+
 public class Skill : MonoBehaviour
 {
     //this script well base any skill scripts
-    private PlayerInput _playerInput;
-    private PlayerCooldownSO _playerCooldownSO;
+    public Skills _skillEnum;
+    protected PlayerInput _playerInput;
+    protected PlayerCooldownSO _playerCooldownSO;
     public virtual void Init()
     {
         _playerInput = GetComponentInParent<PlayerInput>();
         _playerCooldownSO = new PlayerCooldownSO();
+
+        _skillEnum = Skills.None;
     }
 
     private void Awake()
     {
         Init();
-    }
-    void Start()
-    {
-        _playerInput.isSkillUse += HandleSkillUse;
     }
 
     public virtual void HandleSkillUse()

@@ -132,6 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 31402762}
   - component: {fileID: 31402763}
+  - component: {fileID: 31402764}
   m_Layer: 0
   m_Name: Skill
   m_TagString: Untagged
@@ -166,11 +167,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ebfe90ccb092b34e84ca91efa8662f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _skillEnum: 0
   WhatisEnemy:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   FinalAttackRaudius: 4
   FinalAttackDamage: 100
+--- !u!114 &31402764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 31402761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a803ae43f94fbf4fabfc1e10bd666cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _skillEnum: 0
+  WhatisEnemy:
+    serializedVersion: 2
+    m_Bits: 0
+  Rocket: {fileID: 0}
+  Damage: 150
+  Distace: 3
 --- !u!1 &173349070
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,7 +466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf5e65118bbfd1a4fb0357e48847098c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  sprite: {fileID: 21300000, guid: 942743de0d3c2d44caed471e7c54cc7c, type: 3}
 --- !u!1 &697680463
 GameObject:
   m_ObjectHideFlags: 0
@@ -1433,6 +1454,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7686507994f7b8e47874d0370f31fadc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _skill:
+  - {fileID: 31402763}
+  - {fileID: 31402764}
 --- !u!4 &2596721189400024444
 Transform:
   m_ObjectHideFlags: 0
@@ -1788,6 +1812,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eee0fc22e27c4440896abe5cf785d75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _skill: []
 --- !u!114 &8729373557651358188
 MonoBehaviour:
   m_ObjectHideFlags: 0

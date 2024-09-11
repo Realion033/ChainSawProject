@@ -12,13 +12,17 @@ public class FinalAttack : Skill
     public override void Init()
     {
         base.Init();
+        _playerInput.isSkillUse += HandleSkillUse;
     }
     public override void HandleSkillUse()
     {
-        base.HandleSkillUse();
-        if (PlayerCooldownManager.Instance.UseUlt())
+        if (_skillEnum == Skills.FinalAttack)
         {
-            UltAttack();
+            if (PlayerCooldownManager.Instance.UseUlt())
+            {
+                UltAttack();
+                Debug.Log("ULT on!");
+            }
         }
     }
 

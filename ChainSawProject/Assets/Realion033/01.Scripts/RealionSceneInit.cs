@@ -17,6 +17,7 @@ public class RealionSceneInit : MonoBehaviour
         // Image 컴포넌트를 추가하고 스프라이트를 설정합니다.
         image = uiObject.AddComponent<Image>();
         image.sprite = sprite;
+        image.color = Color.red;
 
         // 마우스 커서를 숨깁니다.
         Cursor.visible = false;

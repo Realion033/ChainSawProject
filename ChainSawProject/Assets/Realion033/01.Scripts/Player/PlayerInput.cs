@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
+    public Skill[] _skill;
     private PlayerPhysics _playerPhysics;
     private Vector2 moveVelocity;
 
@@ -52,6 +53,13 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             isSkillUse?.Invoke();
+        }
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            foreach (var item in _skill)
+            {
+                item._skillEnum = Skills.RocketLuncer;
+            }
         }
     }
 
