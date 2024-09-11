@@ -87,6 +87,11 @@ namespace MIN
             StateMachine.ChangeState(KnifeEnum.Attack, true);
         }
 
+        public override void Run()
+        {
+            StateMachine.ChangeState(KnifeEnum.Run, true);
+        }
+
         public override void SetDead()
         {
             StateMachine.ChangeState(KnifeEnum.Dead, true);

@@ -35,6 +35,8 @@ public abstract class Enemy : Agent
         _enemyCheckColliders = new Collider2D[_maxCheckEnemy];
     }
 
+    public abstract void Run();
+
     public virtual Collider2D IsPlayerDetected()
     {
         int cnt = Physics2D.OverlapCircleNonAlloc(transform.position, runAwayDistance, _enemyCheckColliders, _whatIsPlayer);

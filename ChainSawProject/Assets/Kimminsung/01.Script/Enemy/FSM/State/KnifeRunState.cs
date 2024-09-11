@@ -8,19 +8,17 @@ namespace MIN
 {
     public class KnifeRunState : EnemyState<KnifeEnum>
     {
-        private NavMeshAgent _navMeshAgent;
+        public float moveSpeed = 5f; // 적의 이동 속도
 
         public KnifeRunState(Enemy enemyBase, EnemyStateMachine<KnifeEnum> stateMachine, string animBoolName)
             : base(enemyBase, stateMachine, animBoolName)
         {
-            _navMeshAgent = _enemyBase.GetComponent<NavMeshAgent>();
         }
 
         public override void Enter()
         {
             base.Enter();
-            _navMeshAgent.speed = _enemyBase.runAwayDistance;  // Set the speed for running
-            _navMeshAgent.isStopped = false;  // Ensure the NavMeshAgent is active
+            
         }
 
         public override void UpdateState()
@@ -30,35 +28,31 @@ namespace MIN
             Collider2D target = _enemyBase.IsPlayerDetected();
             if (target == null)
             {
-                _navMeshAgent.isStopped = true;  // Stop moving if no player is detected
-                return;
+                return; 
             }
 
             Vector2 direction = target.transform.position - _enemyBase.transform.position;
-            direction.y = 0;  // Ensure the enemy only moves on the XZ plane
+            direction.y = 0;  
 
             if (!_enemyBase.IsObstacleInLine(direction.magnitude, direction.normalized))
             {
                 _enemyBase.targetTrm = target.transform;
-                _navMeshAgent.SetDestination(target.transform.position);  // Chase the player
+                
+                Vector2 moveDirection = direction.normalized * moveSpeed * Time.deltaTime;
+                _enemyBase.transform.Translate(moveDirection, Space.World);
 
-                // Optionally check if close enough to attack
+                
                 if (Vector3.Distance(_enemyBase.transform.position, target.transform.position) <= _enemyBase.attackDistance)
                 {
-                    _stateMachine.ChangeState(KnifeEnum.Attack);  // Switch to attack state when close enough
+                    _stateMachine.ChangeState(KnifeEnum.Attack);  
                 }
-            }
-            else
-            {
-                _navMeshAgent.isStopped = true;  // Stop moving if there is an obstacle
             }
         }
 
         public override void Exit()
         {
             base.Exit();
-            _navMeshAgent.isStopped = true;  // Stop the NavMeshAgent when exiting the state
+            // 상태 종료 시 필요한 처리를 여기에 작성
         }
     }
-
 }
