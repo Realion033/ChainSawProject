@@ -15,4 +15,4 @@ MonoBehaviour:
   DashCoolDown: 3
   AttackMaxEnergyCoolDown: 8
   AttackTick: 0.8
-  UltmateSkill: 30
+  UltmateSkill: 1
