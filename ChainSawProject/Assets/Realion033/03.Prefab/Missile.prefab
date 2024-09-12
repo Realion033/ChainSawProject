@@ -161,6 +161,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c178b74a345842f41954771d222b2539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _skillEnum: 0
+  WhatisEnemy:
+    serializedVersion: 2
+    m_Bits: 128
+  Rocket: {fileID: 0}
+  rocketSpeed: 20
+  LuncherDamage: 150
+  Distace: 3
 --- !u!50 &458679696593931830
 Rigidbody2D:
   serializedVersion: 4
@@ -234,6 +242,7 @@ GameObject:
   - component: {fileID: 7164830196403154623}
   - component: {fileID: 2128931270171780958}
   - component: {fileID: 1805444377150794379}
+  - component: {fileID: 7420156457884469131}
   m_Layer: 0
   m_Name: visual
   m_TagString: Untagged
@@ -329,3 +338,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7420156457884469131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6080057430680482657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9294ef748f00ad24b89e8e6dc8c1c4a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 5762616245140617120}

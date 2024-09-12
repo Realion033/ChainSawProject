@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class RocketLuncher : Skill
 {
-    [SerializeField] private LayerMask WhatisEnemy;
+    [SerializeField] public LayerMask WhatisEnemy;
     [SerializeField] private GameObject Rocket;
     public float rocketSpeed = 20f;
-    public float Damage = 150f;
+    public float LuncherDamage = 150f;
     public float Distace = 3f;
 
     //private float speed = 8f;
@@ -26,7 +26,6 @@ public class RocketLuncher : Skill
             if (PlayerCooldownManager.Instance.UseUlt())
             {
                 RocketAttack();
-                Debug.Log("ULT on!");
             }
         }
     }

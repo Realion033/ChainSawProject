@@ -88,7 +88,7 @@ AnimationClip:
   - time: 0.35
     functionName: endEx
     data: 
-    objectReferenceParameter: {fileID: 5762616245140617120, guid: 9effc5c038dbd4f46911da45cf68ef14, type: 3}
+    objectReferenceParameter: {fileID: 11500000, guid: 9294ef748f00ad24b89e8e6dc8c1c4a4, type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0

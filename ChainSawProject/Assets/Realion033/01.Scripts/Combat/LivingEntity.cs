@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +19,17 @@ public abstract class LivingEntity : MonoBehaviour, IDamageable_real
     protected void Die()
     {
         isDead = true;
+        DieEffect();
+        StartCoroutine(waitDieEffect());
+    }
+
+    public virtual void DieEffect()
+    {
+    }
+
+    public virtual IEnumerator waitDieEffect()
+    {
+        yield return new WaitForSeconds(1.5f);
         Destroy(gameObject);
     }
 }

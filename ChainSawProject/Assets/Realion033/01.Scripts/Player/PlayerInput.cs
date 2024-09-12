@@ -50,7 +50,7 @@ public class PlayerInput : MonoBehaviour
             isSlash = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             isSkillUse?.Invoke();
         }
