@@ -1,16 +1,19 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class TestEnemy : LivingEntity
 {
     [SerializeField] GameObject f;
+    [SerializeField] ParticleSystem _blood;
     private SpriteRenderer _spriteRenderer;
     private CapsuleCollider2D _collider2;
     private Slider _slider;
     private float maxHealth;
+    private int cnt = 0;
 
     private void Awake()
     {
@@ -39,14 +42,20 @@ public class TestEnemy : LivingEntity
         base.TakeHit(damage, hitPos);
         if (!isDead)
         {
+            Instantiate(_blood, hitPos, Quaternion.identity);
             StartCoroutine(FlashRed());
+        }
+        if (isDead && cnt == 0)
+        {
+            Instantiate(_blood, hitPos, Quaternion.identity);
+            cnt++;
         }
     }
     private IEnumerator FlashRed()
     {
         _spriteRenderer.color = Color.red;
 
-        float duration = 0.5f;
+        float duration = 0.1f;
         float elapsed = 0f;
 
         while (elapsed < duration)
@@ -70,7 +79,7 @@ public class TestEnemy : LivingEntity
         // 처음에 빨간색으로 변환
         _spriteRenderer.color = new Color(1f, 0f, 0f, 1f); // 빨간색, 알파값 1 (불투명)
 
-        float fadeDuration = 0.5f; // 페이드 아웃이 걸리는 시간 (초)
+        float fadeDuration = 0.2f; // 페이드 아웃이 걸리는 시간 (초)
         float fadeSpeed = 1f / fadeDuration; // 페이드 아웃 속도
 
         for (float t = 0; t < 1; t += Time.deltaTime * fadeSpeed)
@@ -92,5 +101,6 @@ public class TestEnemy : LivingEntity
         _spriteRenderer.color = new Color(1f, 0f, 0f, 1f);
         _spriteRenderer.color = Color.white;
         isDead = false;
+        cnt = 0;
     }
 }

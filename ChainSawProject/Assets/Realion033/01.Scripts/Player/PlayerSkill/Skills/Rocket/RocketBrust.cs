@@ -50,7 +50,7 @@ public class RocketBrust : RocketLuncher
 
         foreach (var enemy in enemys)
         {
-            enemy.GetComponent<LivingEntity>().TakeHit(LuncherDamage, Vector2.zero);
+            enemy.GetComponent<LivingEntity>().TakeHit(LuncherDamage, enemy.transform.position);
         }
 
         Debug.Log(enemys);

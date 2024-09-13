@@ -24,13 +24,15 @@ public class PlayerAttack : MonoBehaviour
     {
         Collider2D[] enemys = Physics2D.OverlapCircleAll(transform.position, 0.6f, WhatisEnemy);
 
-        if (_playerInput.isSlash && enemys != null)
+        if (PlayerCooldownManager.Instance.AttackTick())
         {
-            foreach (var enemy in enemys)
+            if (_playerInput.isSlash && enemys != null)
             {
-                if (PlayerCooldownManager.Instance.AttackTick())
+                foreach (var enemy in enemys)
                 {
-                    enemy.GetComponent<LivingEntity>().TakeHit(_playerStat.playerDamage, Vector2.zero);
+                    // float rand = UnityEngine.Random.Range(-0.2f, 0.2f);
+                    // Transform enemytr = new Vector2(enemy.transform.position.x, enemy.transform.position.rand, 0);
+                    enemy.GetComponent<LivingEntity>().TakeHit(_playerStat.playerDamage, enemy.transform.position);
                 }
             }
         }
