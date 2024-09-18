@@ -7,7 +7,8 @@ public enum Skills
 {
     None,
     FinalAttack,
-    RocketLuncer
+    RocketLuncer,
+    GiantChange
 }
 
 public class Skill : MonoBehaviour

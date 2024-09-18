@@ -1,18 +1,25 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GiantChange : MonoBehaviour
+public class GiantChange : Skill
 {
-    // Start is called before the first frame update
-    void Start()
+    public Transform player;
+
+    private void Update()
     {
-        
+        if (_skillEnum == Skills.GiantChange)
+        {
+            if (PlayerCooldownManager.Instance.UseUlt())
+            {
+                UltAttack();
+            }
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void UltAttack()
     {
-        
+    
     }
 }
