@@ -3687,8 +3687,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5264467841577839329}
+  - component: {fileID: 5264467841577839331}
   - component: {fileID: 4696757503980744703}
   - component: {fileID: 3822196873294480288}
+  - component: {fileID: 5264467841577839330}
   m_Layer: 0
   m_Name: Skill
   m_TagString: Untagged
@@ -3813,6 +3815,7 @@ MonoBehaviour:
   _skill:
   - {fileID: 4696757503980744703}
   - {fileID: 3822196873294480288}
+  - {fileID: 5264467841577839330}
 --- !u!114 &2918390012216951645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3995,12 +3998,50 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 8, y: 8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3461212948196270904}
   m_Father: {fileID: 2484345571666068129}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5264467841577839330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2291622651124274109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da2ad82a68512884b8c087be5cccd5ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _skillEnum: 0
+  increadeValue: 3.5
+  changeTime: 7
+  player: {fileID: 2484345571666068129}
+  _playerAttack: {fileID: 8927494874284030735}
+--- !u!95 &5264467841577839331
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2291622651124274109}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e339745e7211c69408d841c423db8d1b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5471102725690105440
 GameObject:
   m_ObjectHideFlags: 0
@@ -4256,11 +4297,11 @@ GameObject:
   - component: {fileID: 2031451674720625641}
   - component: {fileID: 1679723298756045198}
   - component: {fileID: 7190500866669233927}
+  - component: {fileID: 8927494874284030735}
   - component: {fileID: 2899872650293381843}
   - component: {fileID: 4204315651625955888}
   - component: {fileID: 2918390012216951645}
   - component: {fileID: 4375499798621141947}
-  - component: {fileID: 8927494874284030735}
   - component: {fileID: 669195313654754346}
   m_Layer: 3
   m_Name: Player
@@ -4285,6 +4326,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _playerStat: {fileID: 11400000, guid: b499f422d7f95af4bbda3ba1f1c27da7, type: 2}
+  damageCasterRadius: 0.6
 --- !u!20 &9124476202312112037
 Camera:
   m_ObjectHideFlags: 0
