@@ -4,5 +4,6 @@ using UnityEngine;
 
 public interface IDamageable_real
 {
-    void TakeHit(float damage, Vector2 HitPos);
+    void TakeHit(float damage, Vector2 HitPos);     
+    //ming
 }

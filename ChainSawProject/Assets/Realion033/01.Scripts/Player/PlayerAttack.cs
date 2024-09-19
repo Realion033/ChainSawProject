@@ -7,6 +7,7 @@ public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] private LayerMask WhatisEnemy;
     [SerializeField] private PlayerStatSO _playerStat;
+    [HideInInspector] public float damageCasterRadius = 0.6f;
     //public bool isHit = false;
     private PlayerInput _playerInput;
 
@@ -22,7 +23,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Attack()
     {
-        Collider2D[] enemys = Physics2D.OverlapCircleAll(transform.position, 0.6f, WhatisEnemy);
+        Collider2D[] enemys = Physics2D.OverlapCircleAll(transform.position, damageCasterRadius, WhatisEnemy);
 
         if (PlayerCooldownManager.Instance.AttackTick())
         {
@@ -41,6 +42,6 @@ public class PlayerAttack : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, 0.6f);
+        Gizmos.DrawWireSphere(transform.position, damageCasterRadius);
     }
 }

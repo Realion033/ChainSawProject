@@ -58,7 +58,7 @@ public class PlayerInput : MonoBehaviour
         {
             foreach (var item in _skill)
             {
-                item._skillEnum = Skills.RocketLuncer;
+                item._skillEnum = Skills.GiantChange;
             }
         }
     }

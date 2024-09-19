@@ -16,7 +16,7 @@ public abstract class LivingEntity : MonoBehaviour, IDamageable_real
             Die();
         }
     }
-    protected void Die()
+    public virtual void Die()
     {
         isDead = true;
         DieEffect();
