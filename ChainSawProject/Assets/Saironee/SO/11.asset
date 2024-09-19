@@ -29,4 +29,4 @@ MonoBehaviour:
   - {fileID: 31804741, guid: 66c80cbe048278041a12c01786f1e216, type: 3}
   bg: {fileID: 11400000, guid: 13ab473e4ab21b348ac84d8ae96a92b8, type: 2}
   text1: "\uAC70\uB300\uD654\uB85C \uC5BB\uC744 \uC218 \uC788\uB294 \uC274\uB4DC\uB7C9\uC774 "
-  text2: " \uC99D\uAC00\uD55C\uB2E4."
+  text2: "% \uC99D\uAC00\uD55C\uB2E4."
