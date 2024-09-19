@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
+    public Skill[] _skill;
     private PlayerPhysics _playerPhysics;
     private Vector2 moveVelocity;
 
@@ -10,6 +11,8 @@ public class PlayerInput : MonoBehaviour
     public bool isDash { get; private set; } = false;
     public bool isSlash { get; private set; } = false;
     public bool isLeft { get; private set; } = false;
+
+    public event Action isSkillUse;
 
     private void Awake()
     {
@@ -45,6 +48,18 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             isSlash = false;
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            isSkillUse?.Invoke();
+        }
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            foreach (var item in _skill)
+            {
+                item._skillEnum = Skills.RocketLuncer;
+            }
         }
     }
 
