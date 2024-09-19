@@ -7,6 +7,7 @@ public class PlayerStatSO : ScriptableObject
 {
     public float playerDamage;
     public float playerHealth;
+    public float playershield;
     public float speed = 5f;
 
     public float dashDistance = 5f;

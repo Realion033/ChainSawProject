@@ -22,7 +22,7 @@ public class Skill : MonoBehaviour
         _playerInput = GetComponentInParent<PlayerInput>();
         _playerCooldownSO = new PlayerCooldownSO();
 
-        _skillEnum = Skills.None;
+        _skillEnum = Skills.GiantChange;
     }
 
     private void Awake()
