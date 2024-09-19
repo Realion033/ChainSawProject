@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7aaf391703bf79b4aa6c9067b7959af8
+guid: ade20a372ab1cc54282ad92288e902f5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 300
+  spritePixelsToUnits: 23
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,55 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: KnifeEnemyRun_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 304
-        width: 304
-        height: 304
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5dc1d7bca63eb3349b02814ee45c7bf0
-      internalID: 631900736
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: KnifeEnemyRun_1
-      rect:
-        serializedVersion: 2
-        x: 304
-        y: 304
-        width: 304
-        height: 304
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e8d279bfef74dd04cad9639e4aea1ffb
-      internalID: 301873936
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: KnifeEnemyRun_2
+      name: sword_swing-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 304
-        height: 304
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 49c04a219354bec45921ba8eab8e7d7c
-      internalID: -1251475290
+      spriteID: 3f1037c601957ad44a33e92fa6bbf1f7
+      internalID: 1851401177
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnifeEnemyRun_3
+      name: sword_swing-Sheet_1
       rect:
         serializedVersion: 2
-        x: 304
+        x: 32
         y: 0
-        width: 304
-        height: 304
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,8 +158,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ca6f28f837dc3ce4988af24403bd2f34
-      internalID: 181232434
+      spriteID: 372ceec22d1e6ec4eb7e72858aff8bfe
+      internalID: 690750683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword_swing-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b459abaf099018546bf5ca49c57cf1d1
+      internalID: 1975024125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword_swing-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44cf11c9df6d3c348b3917a24e8a9238
+      internalID: -465875699
       vertices: []
       indices: 
       edges: []
@@ -217,10 +217,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      KnifeEnemyRun_0: 631900736
-      KnifeEnemyRun_1: 301873936
-      KnifeEnemyRun_2: -1251475290
-      KnifeEnemyRun_3: 181232434
+      sword_swing-Sheet_0: 1851401177
+      sword_swing-Sheet_1: 690750683
+      sword_swing-Sheet_2: 1975024125
+      sword_swing-Sheet_3: -465875699
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
