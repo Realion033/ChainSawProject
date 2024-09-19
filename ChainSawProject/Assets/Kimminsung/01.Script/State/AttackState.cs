@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class AttackState : IEnemyState
 {
-    private float attackCooldown = 3f;
+    private float attackCooldown = 2f;
     private float lastAttackTime = 0f;
 
     public void EnterState(EnemyFSM enemy)
@@ -21,7 +21,10 @@ public class AttackState : IEnemyState
         {
             enemy.animator.SetTrigger("Attack");  // 공격 애니메이션 트리거
             Attack(enemy);  // 플레이어 공격
+            enemy.animator.SetTrigger("Idle");
         }
+
+       
 
         // 플레이어가 공격 범위를 벗어나면 RunState로 전환
         if (distanceToPlayer > enemy.attackRange)
