@@ -19,7 +19,7 @@ public class RealionSceneInit : MonoBehaviour
         image.sprite = sprite;
         image.color = Color.red;
 
-        // 마우스 커서를 숨깁니다.
+        // 마우스 커서를 숨깁니다. dd
         Cursor.visible = false;
     }
 
