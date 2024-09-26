@@ -20,6 +20,10 @@ public class KPLayer : MonoBehaviour
 
         movement = new Vector2(moveX, moveY).normalized;
     }
+    public void TakeDamage(int damage)
+    {
+        Debug.Log("엄마 아파~");
+    }
 
     private void FixedUpdate()
     {
