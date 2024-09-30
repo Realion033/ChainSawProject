@@ -3691,6 +3691,7 @@ GameObject:
   - component: {fileID: 4696757503980744703}
   - component: {fileID: 3822196873294480288}
   - component: {fileID: 5264467841577839330}
+  - component: {fileID: 5264467841577839333}
   - component: {fileID: 5264467841577839332}
   m_Layer: 0
   m_Name: Skill
@@ -4098,6 +4099,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5264467841577839333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2291622651124274109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9044038c121e61d4fb9a32453344314b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _skillEnum: 0
+  DamageMultiple: 2
+  EffectTime: 3
+  _playerStat: {fileID: 11400000, guid: b499f422d7f95af4bbda3ba1f1c27da7, type: 2}
 --- !u!1 &5471102725690105440
 GameObject:
   m_ObjectHideFlags: 0
