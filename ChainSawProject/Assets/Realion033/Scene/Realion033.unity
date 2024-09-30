@@ -737,6 +737,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDead: 0
+  isPanic: 0
   f: {fileID: 712350885}
   _blood: {fileID: 4537264005920015897, guid: 2861bf13598eac14ebc11a587e1b3712, type: 3}
 --- !u!70 &368839225
@@ -1234,6 +1235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDead: 0
+  isPanic: 0
   f: {fileID: 2003668429}
   _blood: {fileID: 4537264005920015897, guid: 2861bf13598eac14ebc11a587e1b3712, type: 3}
 --- !u!70 &838362753
@@ -1913,6 +1915,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDead: 0
+  isPanic: 0
   f: {fileID: 2078443042}
   _blood: {fileID: 4537264005920015897, guid: 2861bf13598eac14ebc11a587e1b3712, type: 3}
 --- !u!70 &1319094305
@@ -2535,6 +2538,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDead: 0
+  isPanic: 0
   f: {fileID: 1988014388}
   _blood: {fileID: 4537264005920015897, guid: 2861bf13598eac14ebc11a587e1b3712, type: 3}
 --- !u!1 &1741661762
@@ -3013,6 +3017,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDead: 0
+  isPanic: 0
   f: {fileID: 1866919005}
   _blood: {fileID: 4537264005920015897, guid: 2861bf13598eac14ebc11a587e1b3712, type: 3}
 --- !u!70 &2047248709
@@ -3693,6 +3698,7 @@ GameObject:
   - component: {fileID: 5264467841577839330}
   - component: {fileID: 5264467841577839333}
   - component: {fileID: 5264467841577839332}
+  - component: {fileID: 5264467841577839334}
   m_Layer: 0
   m_Name: Skill
   m_TagString: Untagged
@@ -4115,6 +4121,25 @@ MonoBehaviour:
   DamageMultiple: 2
   EffectTime: 3
   _playerStat: {fileID: 11400000, guid: b499f422d7f95af4bbda3ba1f1c27da7, type: 2}
+--- !u!114 &5264467841577839334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2291622651124274109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d153564814163454dadea811e1a63812, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _skillEnum: 0
+  WhatisEnemy:
+    serializedVersion: 2
+    m_Bits: 128
+  EmpRaudius: 4
+  EmpTime: 4
+  EmpDamageInc: 1.2
 --- !u!1 &5471102725690105440
 GameObject:
   m_ObjectHideFlags: 0
@@ -4225,6 +4250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDead: 0
+  isPanic: 0
   _playerStat: {fileID: 11400000, guid: b499f422d7f95af4bbda3ba1f1c27da7, type: 2}
 --- !u!114 &7240678985369899361
 MonoBehaviour:

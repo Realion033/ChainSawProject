@@ -89,6 +89,6 @@ public class Player : LivingEntity
 
     public override void Die()
     {
-        Debug.Log("플레이어가 처 뒤짐.");
+        Debug.Log("Die");
     }
 }

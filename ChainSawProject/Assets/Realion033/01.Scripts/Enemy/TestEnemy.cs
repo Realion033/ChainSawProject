@@ -51,6 +51,12 @@ public class TestEnemy : LivingEntity
             cnt++;
         }
     }
+
+    public override void Panic(float panicTime)
+    {
+        
+        base.Panic(panicTime);
+    }
     private IEnumerator FlashRed()
     {
         _spriteRenderer.color = Color.red;

@@ -9,7 +9,8 @@ public enum Skills
     FinalAttack,
     RocketLuncer,
     GiantChange,
-    Giman
+    Giman,
+    Emp
 }
 
 public class Skill : MonoBehaviour
@@ -23,7 +24,7 @@ public class Skill : MonoBehaviour
         _playerInput = GetComponentInParent<PlayerInput>();
         _playerCooldownSO = new PlayerCooldownSO();
 
-        _skillEnum = Skills.Giman;
+        _skillEnum = Skills.Emp;
     }
 
     private void Awake()

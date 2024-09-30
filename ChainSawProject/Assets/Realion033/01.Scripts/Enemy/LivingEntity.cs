@@ -6,7 +6,8 @@ using UnityEngine;
 public abstract class LivingEntity : MonoBehaviour, IDamageable_real
 {
     protected float health;
-    public bool isDead;
+    public bool isDead = false;
+    public bool isPanic = false;
     public virtual void TakeHit(float damage, Vector2 hitPos)
     {
         health -= damage;
@@ -31,5 +32,10 @@ public abstract class LivingEntity : MonoBehaviour, IDamageable_real
     {
         yield return new WaitForSeconds(1.5f);
         Destroy(gameObject);
+    }
+
+    public virtual void Panic(float panicTime)
+    {
+        
     }
 }
