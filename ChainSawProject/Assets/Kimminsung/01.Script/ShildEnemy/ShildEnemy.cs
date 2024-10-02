@@ -18,11 +18,14 @@ public class shildEnemy : MonoBehaviour
 
     private Transform player; // 플레이어의 위치를 추적하기 위한 변수
     private Rigidbody2D rb; // Rigidbody2D 참조
+    private Animator animator; // 애니메이터 참조
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); // Rigidbody2D 컴포넌트 가져오기
-        player = GameObject.FindGameObjectWithTag("Player").transform; // 플레이어 오브젝트 찾기
+        player = GameObject.FindGameObjectWithTag("KPlayer").transform; // 플레이어 오브젝트 찾기
+        animator = GetComponent<Animator>(); // Animator 컴포넌트 가져오기
+ 
     }
 
     void Update()
@@ -35,10 +38,19 @@ public class shildEnemy : MonoBehaviour
             if (distanceToPlayer < chaseRange && distanceToPlayer > dashRange)
             {
                 ChasePlayer();
+                animator.SetBool("SheildWalk", true); // 걷는 애니메이션 재생
+                animator.SetBool("SheildIdle", false); // 대기 상태는 끔
+            }
+            // 추적 범위를 벗어났을 때
+            else
+            {
+                rb.velocity = Vector2.zero; // 멈춤
+                animator.SetBool("SheildWalk", false); // 걷기 애니메이션 끔
+                animator.SetBool("SheildIdle", true); // 대기 애니메이션 재생
             }
 
             // 플레이어가 돌진 공격 범위 내에 있을 때
-            else if (distanceToPlayer <= dashRange)
+            if (distanceToPlayer <= dashRange && !isDashing)
             {
                 StartCoroutine(DashAttack());
             }
@@ -47,6 +59,12 @@ public class shildEnemy : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.LeftShift)) // 방패 방어 트리거
             {
                 StartCoroutine(ActivateInvulnerability());
+            }
+
+            // 적이 죽었을 때
+            if (health <= 0)
+            {
+                Die();
             }
         }
         else
@@ -95,6 +113,14 @@ public class shildEnemy : MonoBehaviour
         }
     }
 
+    // 적이 죽는 함수
+    void Die()
+    {
+        animator.SetBool("SheildDie", true); // 죽는 애니메이션 재생
+        rb.velocity = Vector2.zero; // 멈추게 함
+        Destroy(gameObject, 2f); // 2초 후 오브젝트 제거
+    }
+
     // 피해 받는 함수
     public void TakeDamage(float amount)
     {
@@ -107,6 +133,12 @@ public class shildEnemy : MonoBehaviour
             else
             {
                 health -= amount; // 방패 체력이 0이면 실제 체력 소모
+            }
+
+            // 적이 죽었을 경우
+            if (health <= 0)
+            {
+                Die();
             }
         }
     }
