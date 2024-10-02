@@ -71,15 +71,16 @@ public class shildEnemy : MonoBehaviour
             Debug.Log("응가 마려워"); // 돌진 전 디버그 메시지
 
             Vector2 dashDirection = (player.position - transform.position).normalized; // 플레이어 쪽으로 돌진
-            float startDashTime = Time.time;
-            while (Time.time < startDashTime + dashDistance / dashSpeed)
-            {
-                rb.velocity = dashDirection * dashSpeed;
-                yield return null; // 매 프레임 대기
-            }
+            Vector2 targetPosition = (Vector2)transform.position + dashDirection * dashDistance; // 돌진 목표 위치 계산
 
-            rb.velocity = Vector2.zero; // 돌진 후 멈춤
-            isDashing = false;
+            // 돌진하는 동안 바로 목표 위치로 이동
+            rb.MovePosition(targetPosition);
+
+            // 돌진 후 잠깐의 대기시간 (2초 동안 멈춤)
+            rb.velocity = Vector2.zero; // 속도 0으로 설정하여 멈추게 함
+            yield return new WaitForSeconds(2f); // 2초 동안 멈춤
+
+            isDashing = false; // 돌진 완료 후 다시 돌진 가능하게 설정
         }
     }
 
