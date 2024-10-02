@@ -55,6 +55,8 @@ public class GiantChange : Skill
                 _time = 0;
             }
         }
+
+        Debug.Log(_playerStat.playerDamage);
     }
 
     private void Giant()
