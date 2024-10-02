@@ -102,7 +102,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   Rocket: {fileID: 0}
-  Damage: 150
+  rocketSpeed: 20
+  LuncherDamage: 150
   Distace: 3
 --- !u!1 &4671138533056813679
 GameObject:
@@ -385,6 +386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDead: 0
+  isPanic: 0
   _playerStat: {fileID: 11400000, guid: b499f422d7f95af4bbda3ba1f1c27da7, type: 2}
 --- !u!114 &585726140895432938
 MonoBehaviour:
@@ -456,6 +458,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _playerStat: {fileID: 11400000, guid: b499f422d7f95af4bbda3ba1f1c27da7, type: 2}
+  damageCasterRadius: 0.6
 --- !u!114 &2979119653036455443
 MonoBehaviour:
   m_ObjectHideFlags: 0
