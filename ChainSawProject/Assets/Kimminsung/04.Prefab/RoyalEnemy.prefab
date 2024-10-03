@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 8136035255908864750}
   - component: {fileID: 5363739328013936833}
   - component: {fileID: 6374155584112330355}
+  - component: {fileID: 2787599521480177036}
   m_Layer: 0
-  m_Name: KnifeEnemy
+  m_Name: RoyalEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,7 +47,7 @@ Animator:
   m_GameObject: {fileID: 1356547671467324475}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: fc1f84af76c91e347a6297edd5228ff1, type: 2}
+  m_Controller: {fileID: 9100000, guid: 03392c3bc860553438f75aad3c946558, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -98,15 +99,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 737249401, guid: 6fbdeab46e595f845bc546134e0cf5c2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.6857142, y: 0.9142857}
+  m_Size: {x: 1.0133333, y: 1.0133333}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!70 &8136035255908864750
@@ -184,3 +185,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+--- !u!114 &2787599521480177036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356547671467324475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0294876054f954478a756ad9a31d8b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  damage: 14
+  jumpHeight: 5
+  fallSpeed: 10
+  attackCooldown: 7
+  attackRange: 5
+  player: {fileID: 0}
+  animator: {fileID: 2097320952890032511}
