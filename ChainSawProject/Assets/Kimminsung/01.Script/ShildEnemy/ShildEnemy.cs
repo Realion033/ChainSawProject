@@ -23,8 +23,6 @@ public class shildEnemy : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); // Rigidbody2D 컴포넌트 가져오기
-        player = GameObject.FindGameObjectWithTag("KPlayer").transform; // 플레이어 오브젝트 찾기
-        animator = GetComponent<Animator>(); // Animator 컴포넌트 가져오기
  
         player = GameObject.FindGameObjectWithTag("Player").transform; // 플레이어 오브젝트 찾기
         animator = GetComponent<Animator>(); // Animator 컴포넌트 가져오기
@@ -40,14 +38,14 @@ public class shildEnemy : MonoBehaviour
             if (distanceToPlayer < chaseRange && distanceToPlayer > dashRange)
             {
                 ChasePlayer();
-                animator.SetBool("SheildWalk", true); // 걷는 애니메이션 재생
+                animator.SetBool("SheildRun", true); // 걷는 애니메이션 재생
                 animator.SetBool("SheildIdle", false); // 대기 상태는 끔
             }
             // 추적 범위를 벗어났을 때
             else
             {
                 rb.velocity = Vector2.zero; // 멈춤
-                animator.SetBool("SheildWalk", false); // 걷기 애니메이션 끔
+                animator.SetBool("SheildRun", false); // 걷기 애니메이션 끔
                 animator.SetBool("SheildIdle", true); // 대기 애니메이션 재생
             }
 
