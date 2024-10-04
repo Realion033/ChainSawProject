@@ -19,7 +19,7 @@ public class RangedEnemy : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); // Rigidbody2D 컴포넌트 가져오기
-        player = GameObject.FindGameObjectWithTag("Player").transform; // 플레이어 오브젝트 찾기
+        player = GameObject.FindGameObjectWithTag("KPlayer").transform; // 플레이어 오브젝트 찾기
         animator = GetComponent<Animator>(); // Animator 컴포넌트 가져오기
     }
 
