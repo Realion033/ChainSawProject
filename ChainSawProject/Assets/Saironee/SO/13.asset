@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9a4bf3b31f10c445b28a5e019ac60b3, type: 3}
+  m_Name: 13
+  m_EditorClassIdentifier: 
+  name: Critical time down
+  level: 0
+  rank: 0
+  points:
+  - 10
+  - 20
+  - 30
+  - 40
+  - 50
+  icon:
+  - {fileID: 943865, guid: 59ee7188cbcf4f041bb2e2c75732cd1c, type: 3}
+  - {fileID: -32282279, guid: 59ee7188cbcf4f041bb2e2c75732cd1c, type: 3}
+  - {fileID: 1900373034, guid: 59ee7188cbcf4f041bb2e2c75732cd1c, type: 3}
+  - {fileID: -1407307253, guid: 59ee7188cbcf4f041bb2e2c75732cd1c, type: 3}
+  - {fileID: 2098704836, guid: 59ee7188cbcf4f041bb2e2c75732cd1c, type: 3}
+  bg: {fileID: 11400000, guid: f2b151327e6aebe40a9aa63243c82609, type: 2}
+  text1: "\uACB0\uC815\uD0C0\uC758 \uC7AC\uC0AC\uC6A9 \uB300\uAE30\uC2DC\uAC04\uC774 "
+  text2: "% \uAC10\uC18C\uD55C\uB2E4."

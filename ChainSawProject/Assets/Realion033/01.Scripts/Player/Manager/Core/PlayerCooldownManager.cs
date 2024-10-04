@@ -45,6 +45,16 @@ public class PlayerCooldownManager : MonoSingleton<PlayerCooldownManager>
         {
             _attackTick = playerCooldownSO.AttackTick;
         }
+
+        //ultcool
+        if (_ultmateCool < playerCooldownSO.UltmateSkill)
+        {
+            _ultmateCool += Time.deltaTime;
+        }
+        else if (_ultmateCool >= playerCooldownSO.UltmateSkill)
+        {
+            _ultmateCool = playerCooldownSO.UltmateSkill;
+        }
     }
 
     public bool UseDash()
@@ -68,6 +78,16 @@ public class PlayerCooldownManager : MonoSingleton<PlayerCooldownManager>
     private bool AttackEnerge()
     {
         throw new NotImplementedException();
+    }
+
+    public bool UseUlt()
+    {
+        if (_ultmateCool == playerCooldownSO.UltmateSkill)
+        {
+            _ultmateCool = 0;
+            return true;
+        }
+        return false;
     }
 
 }

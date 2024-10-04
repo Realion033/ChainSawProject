@@ -35,16 +35,26 @@ public class Player : LivingEntity
     {
         Move();
         Dash();
-        if(Input.GetKeyDown(KeyCode.O)){
-            TakeHit(1, Vector2.zero);
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            TakeHit(10, Vector2.zero);
         }
     }
 
     public override void TakeHit(float damage, Vector2 hitPos)
     {
-        base.TakeHit(damage, hitPos);
-        StartCoroutine(FlashRed());
-        _source.GenerateImpulse();
+        if (_playerStat.playershield > 0)
+        {
+            _playerStat.playershield = _playerStat.playershield - damage;
+            Debug.Log("데미지가 감소됨!");
+        }
+        else
+        {
+            base.TakeHit(damage, hitPos);
+            StartCoroutine(FlashRed());
+            _source.GenerateImpulse();
+            Debug.Log(health);
+        }
     }
 
     private IEnumerator FlashRed()
@@ -65,7 +75,7 @@ public class Player : LivingEntity
     }
     private void Dash()
     {
-        if(playerInput.isDash == true)
+        if (playerInput.isDash == true)
         {
             playerDash.StartDash(playerInput.mousePos);
         }
@@ -75,5 +85,10 @@ public class Player : LivingEntity
     {
         Vector2 moveVelocity = playerInput.GetMoveVelocity();
         playerMovement.Move(moveVelocity * _playerStat.speed);
+    }
+
+    public override void Die()
+    {
+        Debug.Log("Die");
     }
 }

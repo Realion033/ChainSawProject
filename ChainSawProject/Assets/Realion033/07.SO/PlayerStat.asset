@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dc7ff47a48f10b438c7bd2c5733281f, type: 3}
   m_Name: PlayerStat
   m_EditorClassIdentifier: 
-  playerDamage: 5
+  playerDamage: 90
   playerHealth: 20
+  playershield: 50
   speed: 10
   dashDistance: 5
   dashSpeed: 20

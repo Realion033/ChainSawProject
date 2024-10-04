@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 1
   m_EditorClassIdentifier: 
   name: AttackPower
+  level: 0
   rank: 0
   points:
   - 20

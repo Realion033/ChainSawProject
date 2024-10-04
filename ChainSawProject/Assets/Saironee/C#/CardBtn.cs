@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,7 +26,7 @@ public class CardBtn : MonoBehaviour
 
             Debug.Log("Card is Null!");
         }
-        _rank = _card.rank;
+        _rank = _card.level;
         _icon.sprite = _card.icon[_rank];
         _background.sprite = _card.bg.bg[_rank];
         _text.text = _card.discription;

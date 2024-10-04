@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9a4bf3b31f10c445b28a5e019ac60b3, type: 3}
+  m_Name: 7
+  m_EditorClassIdentifier: 
+  name: EMPTimeUp
+  level: 0
+  rank: 1
+  points:
+  - 25
+  - 23
+  - 21
+  - 19
+  - 17
+  icon:
+  - {fileID: -552123833, guid: 37cf768e921d8fd4488d08e889c3484b, type: 3}
+  - {fileID: -455451809, guid: 37cf768e921d8fd4488d08e889c3484b, type: 3}
+  - {fileID: -1440500220, guid: 37cf768e921d8fd4488d08e889c3484b, type: 3}
+  - {fileID: -891013908, guid: 37cf768e921d8fd4488d08e889c3484b, type: 3}
+  - {fileID: -603768976, guid: 37cf768e921d8fd4488d08e889c3484b, type: 3}
+  bg: {fileID: 11400000, guid: 13ab473e4ab21b348ac84d8ae96a92b8, type: 2}
+  text1: "EMP\uC758 \uC7AC\uC0AC\uC6A9 \uB300\uAE30 \uC2DC\uAC04 "
+  text2: "% \uB85C \uAC10\uC18C\uD55C\uB2E4."
