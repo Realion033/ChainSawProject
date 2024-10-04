@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - KPlayer
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -15,11 +16,7 @@ TagManager:
   - UI
   - 
   - Enemy
-<<<<<<< HEAD
-  - Tiles
-=======
   - 
->>>>>>> Kiminsung
   - 
   - 
   - 

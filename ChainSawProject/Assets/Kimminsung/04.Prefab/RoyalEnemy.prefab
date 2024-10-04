@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5363739328013936833}
   - component: {fileID: 6374155584112330355}
   - component: {fileID: 2787599521480177036}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RoyalEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,7 +184,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 449e82b4b981cac4b897a58ebbe4722c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
 --- !u!114 &2787599521480177036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,5 +202,4 @@ MonoBehaviour:
   fallSpeed: 10
   attackCooldown: 7
   attackRange: 5
-  player: {fileID: 0}
   animator: {fileID: 2097320952890032511}
