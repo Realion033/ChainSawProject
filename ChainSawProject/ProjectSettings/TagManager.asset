@@ -3,23 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Ground
-  - KPlayer
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - 
   - Water
   - UI
   - 
-  - Enemy
-<<<<<<< HEAD
-  - Tiles
-=======
   - 
->>>>>>> Kiminsung
+  - 
   - 
   - 
   - 
