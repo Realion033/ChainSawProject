@@ -6,6 +6,10 @@ public class GunAim : MonoBehaviour
     public SpriteRenderer spriteRenderer; // 총구의 SpriteRenderer
     public float rotationSpeed = 5f; // 총구 회전 속도 (선택 사항)
 
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("KPlayer").transform;
+    }
     private void Update()
     {
         if (player != null)

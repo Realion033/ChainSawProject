@@ -29,6 +29,7 @@ public class EnemyFSM : MonoBehaviour
         animator = GetComponent<Animator>();  // Animator 컴포넌트 가져오기
         currentState = idleState; // 초기 상태는 Idle
         currentState.EnterState(this);
+        player = GameObject.FindGameObjectWithTag("KPlayer").transform;
     }
 
     private void Update()
