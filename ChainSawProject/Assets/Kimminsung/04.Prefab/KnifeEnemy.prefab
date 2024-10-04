@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8136035255908864750}
   - component: {fileID: 5363739328013936833}
   - component: {fileID: 6374155584112330355}
+  - component: {fileID: 1959764793297030116}
   m_Layer: 0
   m_Name: KnifeEnemy
   m_TagString: Untagged
@@ -98,15 +99,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -38440113, guid: 76b04cc96ece94a46858c721061e76d4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.6857142, y: 0.9142857}
+  m_Size: {x: 1.0133333, y: 1.0133333}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!70 &8136035255908864750
@@ -183,4 +184,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 449e82b4b981cac4b897a58ebbe4722c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1959764793297030116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356547671467324475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d000f06800d8be47bc0cc7604009abc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 2097320952890032511}
   player: {fileID: 0}
+  detectionRange: 5
+  attackRange: 1
+  health: 100

@@ -9,7 +9,7 @@ public class RoyalEnemy : MonoBehaviour
     public float fallSpeed = 10f; // 낙하 속도
     public float attackCooldown = 7f; // 공격 쿨타임
     public float attackRange = 5f; // 공격 범위
-    public Transform player; // 플레이어의 위치를 추적하기 위한 변수
+    private Transform player; // 플레이어의 위치를 추적하기 위한 변수
     public Animator animator; // 애니메이터 컴포넌트 참조
 
     private bool isAttacking = false;
@@ -21,7 +21,7 @@ public class RoyalEnemy : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("KPlayer").transform;
         animator = GetComponent<Animator>();
     }
 

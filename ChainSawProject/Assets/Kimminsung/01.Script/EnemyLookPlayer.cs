@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class EnemyLookAtPlayer : MonoBehaviour
 {
-    public Transform player; // 플레이어의 Transform을 참조합니다.
+    private Transform player; // 플레이어의 Transform을 참조합니다.
     private SpriteRenderer spriteRenderer; // 스프라이트 렌더러를 참조합니다.
 
     private void Start()
     {
         // 스프라이트 렌더러를 초기화합니다.
         spriteRenderer = GetComponent<SpriteRenderer>();
+        player = GameObject.FindGameObjectWithTag("KPlayer").transform;
     }
 
     private void Update()

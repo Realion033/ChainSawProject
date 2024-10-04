@@ -10,6 +10,7 @@ public class KPLayer : MonoBehaviour
     private void Start()
     {
         move = GetComponent<Rigidbody2D>();
+
     }
 
     private void Update()
