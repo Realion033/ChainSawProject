@@ -36,13 +36,13 @@ public class RoyalEnemy : TestEnemy
             return; // 죽었을 때는 더 이상 진행하지 않음
         }
 
-        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-                // 플레이어의 위치에서 X 좌표만 사용하고, Y는 현재 적의 Y 위치를 고정
+        float distanceToPlayer = Mathf.Abs(player.position.x - transform.position.x); // X축 거리 계산
+
+        // 플레이어의 위치에서 X 좌표만 사용하고, Y는 현재 적의 Y 위치를 고정
         Vector2 direction = new Vector2(player.position.x - transform.position.x, 0).normalized;
 
-        // 추적 속도만큼 이동 (Y축은 0으로 고정됨)
+        // 추적 속도만큼 X축으로만 이동 (Y축은 0으로 고정됨)
         rb.velocity = new Vector2(direction.x * chaseSpeed, rb.velocity.y);
-
 
         // 플레이어를 추적하는 중일 때
         if (distanceToPlayer > attackRange)
@@ -58,8 +58,10 @@ public class RoyalEnemy : TestEnemy
     // 플레이어를 추적하는 함수
     private void ChasePlayer()
     {
-        Vector2 direction = (player.position - transform.position).normalized;
-        rb.velocity = direction * chaseSpeed; // 추적 속도로 이동
+        // 플레이어의 X좌표만 추적
+        Vector2 direction = new Vector2(player.position.x - transform.position.x, 0).normalized;
+        rb.velocity = new Vector2(direction.x * chaseSpeed, rb.velocity.y); // 추적 속도로 이동
+
         animator.SetBool("RoyalRun", true); // RoyalRun 애니메이션 실행
         animator.SetBool("RoyalIdle", false); // RoyalIdle 비활성화
     }
@@ -71,16 +73,13 @@ public class RoyalEnemy : TestEnemy
         animator.SetBool("RoyalIdle", true); // RoyalIdle 대기 애니메이션 실행
 
         // 공격 동작을 X축으로만 하도록 수정
-        Vector2 attackDirection = (player.position - transform.position).normalized;
-        rb.velocity = new Vector2(attackDirection.x, 0) * fallSpeed; // X축으로 공격
+        Vector2 attackDirection = new Vector2(player.position.x - transform.position.x, 0).normalized;
+        rb.velocity = new Vector2(attackDirection.x, 0) * fallSpeed; // X축으로만 공격
 
         yield return new WaitForSeconds(0.3f); // 공격 후 대기
 
         rb.velocity = Vector2.zero; // 속도 0으로 설정하여 공격 후 멈춤
         nextAttackTime = Time.time + attackCooldown; // 공격 쿨타임 설정
-
-
-        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -93,9 +92,9 @@ public class RoyalEnemy : TestEnemy
             {
                 player.TakeHit(damage, transform.position); // 플레이어에게 피해 전달
             }
-
         }
     }
+
     // 적이 죽었을 때 호출되는 함수
     public override void DieEffect()
     {
@@ -108,9 +107,6 @@ public class RoyalEnemy : TestEnemy
         }
         Destroy(gameObject);
     }
-
-    // 플레이어와 충돌 시 처리하는 함수
-    
 
     // 적이 피해를 받는 함수
     public override void TakeHit(float damage, Vector2 hitPos)
