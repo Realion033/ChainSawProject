@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8605955433188349410}
   - component: {fileID: 3030186976879815740}
   - component: {fileID: 6177806286477049297}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f51e43e8da7a65c459d3abbd17832811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 10
 --- !u!61 &3030186976879815740
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -135,7 +136,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.04, y: 2.85}
+    oldSize: {x: 1.0133333, y: 0.95}
     newSize: {x: 3.04, y: 2.85}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

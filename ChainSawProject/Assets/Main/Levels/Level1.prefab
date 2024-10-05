@@ -137561,7 +137561,7 @@ GameObject:
   - component: {fileID: 4606497237844395322}
   m_Layer: 0
   m_Name: Object
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137866,7 +137866,7 @@ GameObject:
   - component: {fileID: 1256414884285743634}
   m_Layer: 0
   m_Name: Level1
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137915,7 +137915,7 @@ GameObject:
   - component: {fileID: 463909175344346139}
   m_Layer: 0
   m_Name: BG_Iside
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -143390,7 +143390,7 @@ GameObject:
   - component: {fileID: 8802618835134585974}
   m_Layer: 8
   m_Name: Side
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

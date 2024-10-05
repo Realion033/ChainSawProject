@@ -37,6 +37,12 @@ public class RoyalEnemy : TestEnemy
         }
 
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+                // 플레이어의 위치에서 X 좌표만 사용하고, Y는 현재 적의 Y 위치를 고정
+        Vector2 direction = new Vector2(player.position.x - transform.position.x, 0).normalized;
+
+        // 추적 속도만큼 이동 (Y축은 0으로 고정됨)
+        rb.velocity = new Vector2(direction.x * chaseSpeed, rb.velocity.y);
+
 
         // 플레이어를 추적하는 중일 때
         if (distanceToPlayer > attackRange)
@@ -100,6 +106,7 @@ public class RoyalEnemy : TestEnemy
         {
             Instantiate(deathParticles, transform.position, Quaternion.identity);
         }
+        Destroy(gameObject);
     }
 
     // 플레이어와 충돌 시 처리하는 함수

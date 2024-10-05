@@ -506,22 +506,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoyalEnemy
       objectReference: {fileID: 0}
-    - target: {fileID: 1356547671467324475, guid: 6b691a8844918f04d912774e9cbe4bb6, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2787599521480177036, guid: 6b691a8844918f04d912774e9cbe4bb6, type: 3}
-      propertyPath: attackRange
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2787599521480177036, guid: 6b691a8844918f04d912774e9cbe4bb6, type: 3}
-      propertyPath: attackCooldown
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8136035255908864750, guid: 6b691a8844918f04d912774e9cbe4bb6, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
