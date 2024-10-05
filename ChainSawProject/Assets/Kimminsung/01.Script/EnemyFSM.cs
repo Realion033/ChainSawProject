@@ -1,13 +1,11 @@
 using UnityEngine;
 
-
 public interface IEnemyState
 {
     void EnterState(EnemyFSM enemy);
     void UpdateState(EnemyFSM enemy);
     void ExitState(EnemyFSM enemy);
 }
-
 
 public class EnemyFSM : MonoBehaviour
 {
