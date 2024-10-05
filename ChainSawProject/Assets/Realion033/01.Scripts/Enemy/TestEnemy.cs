@@ -37,7 +37,7 @@ public class TestEnemy : LivingEntity
         }
     }
 
-    public override void TakeHit(float damage, Vector2 hitPos)
+    public virtual void TakeHit(float damage, Vector2 hitPos)
     {
         base.TakeHit(damage, hitPos);
         if (!isDead)

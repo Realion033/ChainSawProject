@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class shildEnemy : MonoBehaviour
+public class ShieldEnemy : MonoBehaviour
 {
     public float health = 25f; // 에너미 체력
     public float shieldHealth = 200f; // 방패 체력
@@ -12,6 +12,7 @@ public class shildEnemy : MonoBehaviour
     public float chaseSpeed = 2f; // 플레이어 추적 속도
     public float chaseRange = 10f; // 플레이어를 추적할 범위
     public float dashRange = 3f; // 돌진 공격을 실행할 범위
+    public GameObject deathEffect; // 사망 이펙트 파티클 시스템
 
     private bool isDashing = false;
     private bool isInvulnerable = false;
@@ -23,7 +24,6 @@ public class shildEnemy : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); // Rigidbody2D 컴포넌트 가져오기
- 
         player = GameObject.FindGameObjectWithTag("KPlayer").transform; // 플레이어 오브젝트 찾기
         animator = GetComponent<Animator>(); // Animator 컴포넌트 가져오기
     }
@@ -38,15 +38,15 @@ public class shildEnemy : MonoBehaviour
             if (distanceToPlayer < chaseRange && distanceToPlayer > dashRange)
             {
                 ChasePlayer();
-                animator.SetBool("SheildRun", true); // 걷는 애니메이션 재생
-                animator.SetBool("SheildIdle", false); // 대기 상태는 끔
+                animator.SetBool("ShieldRun", true); // 걷는 애니메이션 재생
+                animator.SetBool("ShieldIdle", false); // 대기 상태는 끔
             }
             // 추적 범위를 벗어났을 때
             else
             {
                 rb.velocity = Vector2.zero; // 멈춤
-                animator.SetBool("SheildRun", false); // 걷기 애니메이션 끔
-                animator.SetBool("SheildIdle", true); // 대기 애니메이션 재생
+                animator.SetBool("ShieldRun", false); // 걷기 애니메이션 끔
+                animator.SetBool("ShieldIdle", true); // 대기 애니메이션 재생
             }
 
             // 플레이어가 돌진 공격 범위 내에 있을 때
@@ -116,8 +116,15 @@ public class shildEnemy : MonoBehaviour
     // 적이 죽는 함수
     void Die()
     {
-        animator.SetBool("SheildDie", true); // 죽는 애니메이션 재생
+        animator.SetBool("ShieldDie", true); // 죽는 애니메이션 재생
         rb.velocity = Vector2.zero; // 멈추게 함
+
+        // 사망 이펙트 파티클 시스템 생성
+        if (deathEffect != null)
+        {
+            Instantiate(deathEffect, transform.position, Quaternion.identity);
+        }
+
         Destroy(gameObject, 2f); // 2초 후 오브젝트 제거
     }
 

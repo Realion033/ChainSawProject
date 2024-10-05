@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5363739328013936833}
   - component: {fileID: 6374155584112330355}
   - component: {fileID: 1959764793297030116}
-  - component: {fileID: 9149464341654070106}
+  - component: {fileID: -4653940285228206692}
   m_Layer: 7
   m_Name: KnifeEnemy
   m_TagString: Enemy
@@ -202,7 +202,7 @@ MonoBehaviour:
   detectionRange: 5
   attackRange: 1
   health: 100
---- !u!114 &9149464341654070106
+--- !u!114 &-4653940285228206692
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -211,18 +211,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1356547671467324475}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9143f49bf87cb64fa3f0eb433d5b85d, type: 3}
+  m_Script: {fileID: 11500000, guid: c0294876054f954478a756ad9a31d8b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDead: 0
-  isPanic: 0
-  f: {fileID: 0}
-  _blood: {fileID: 0}
-  maxHealth: 0
-  dashSpeed: 5
-  dashDistance: 3
-  invulnerableTime: 3
-  chaseSpeed: 2
-  chaseRange: 10
-  dashRange: 3
-  deathParticles: {fileID: 0}
+  health: 100
+  damage: 14
+  jumpHeight: 5
+  fallSpeed: 10
+  attackCooldown: 7
+  attackRange: 5
+  animator: {fileID: 2097320952890032511}
+  deathParticles: {fileID: 4537264005920015897, guid: 2861bf13598eac14ebc11a587e1b3712, type: 3}
