@@ -91,7 +91,7 @@ public class RoyalEnemy : TestEnemy
     // 플레이어와 충돌 시 처리하는 함수
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("KPlayer"))
         {
             Player playerScript = collision.gameObject.GetComponent<Player>();
 

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ShieldEnemy : MonoBehaviour
 {
-    public float health = 25f; // 에너미 체력
+    public float health = 25f; // 적 체력
     public float shieldHealth = 200f; // 방패 체력
     public float damage = 10f; // 공격 데미지
     public float dashSpeed = 5f; // 돌진 속도
@@ -86,13 +86,20 @@ public class ShieldEnemy : MonoBehaviour
         if (!isDashing)
         {
             isDashing = true;
-            Debug.Log("응가 마려워"); // 돌진 전 디버그 메시지
+            Debug.Log("돌진 공격 시작"); // 돌진 전 디버그 메시지
 
             Vector2 dashDirection = (player.position - transform.position).normalized; // 플레이어 쪽으로 돌진
             Vector2 targetPosition = (Vector2)transform.position + dashDirection * dashDistance; // 돌진 목표 위치 계산
 
             // 돌진하는 동안 바로 목표 위치로 이동
             rb.MovePosition(targetPosition);
+
+            // 플레이어에게 피해를 주기
+            Player playerScript = player.GetComponent<Player>(); // 플레이어 스크립트 참조
+            if (playerScript != null)
+            {
+                playerScript.TakeHit(damage, transform.position); // 플레이어에게 데미지 전달
+            }
 
             // 돌진 후 잠깐의 대기시간 (2초 동안 멈춤)
             rb.velocity = Vector2.zero; // 속도 0으로 설정하여 멈추게 함

@@ -6,10 +6,14 @@ public class RangedEnemy : TestEnemy
     public float chaseSpeed = 2f; // 플레이어 추적 속도
     public float chaseRange = 10f; // 플레이어를 추적할 범위
     public float stopDistance = 2f; // 일정 거리까지 플레이어 추적 후 멈춤
+    public float attackRange = 1.5f; // 공격 거리
+    public float attackDamage = 10f; // 공격 데미지
+    public float attackCooldown = 1f; // 공격 쿨다운 시간
 
     private Transform player; // 플레이어의 위치를 추적하기 위한 변수
     private Rigidbody2D rb; // Rigidbody2D 참조
     private Animator animator; // 애니메이터 참조
+    private float lastAttackTime; // 마지막 공격 시간
 
     private void Start()
     {
@@ -25,7 +29,6 @@ public class RangedEnemy : TestEnemy
         // 적이 죽었으면 더 이상 로직을 실행하지 않음
         if (isDead) return;
 
-
         if (player != null && health > 0)
         {
             float distanceToPlayer = Vector2.Distance(transform.position, player.position);
@@ -36,6 +39,12 @@ public class RangedEnemy : TestEnemy
                 ChasePlayer();
                 animator.SetBool("BulletRun", true); // 이동 중인 애니메이션 재생
                 animator.SetBool("BulletIdle", false); // 대기 상태는 끔
+
+                // 공격 거리 내에 있을 경우 공격 시도
+                if (distanceToPlayer <= attackRange && Time.time >= lastAttackTime + attackCooldown)
+                {
+                    AttackPlayer();
+                }
             }
             else
             {
@@ -57,6 +66,19 @@ public class RangedEnemy : TestEnemy
     {
         Vector2 direction = (player.position - transform.position).normalized; // 플레이어 쪽으로 방향 계산
         rb.velocity = direction * chaseSpeed; // 추적 속도만큼 이동
+    }
+
+    // 플레이어를 공격하는 함수
+    private void AttackPlayer()
+    {
+        lastAttackTime = Time.time; // 마지막 공격 시간 업데이트
+        Player playerScript = player.GetComponent<Player>(); // Player 스크립트 참조
+
+        if (playerScript != null)
+        {
+            playerScript.TakeHit(attackDamage, transform.position); // 플레이어에 공격 피해 전달
+            animator.SetTrigger("Attack"); // 공격 애니메이션 트리거
+        }
     }
 
     // 피해 받는 함수 (TestEnemy의 TakeHit() 활용)
