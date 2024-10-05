@@ -105,7 +105,18 @@ public class RoyalEnemy : TestEnemy
         {
             Instantiate(deathParticles, transform.position, Quaternion.identity);
         }
-        Destroy(gameObject);
+
+        // 코루틴 실행: Time.timeScale 0 -> 대기 -> Time.timeScale 1 복원
+        StartCoroutine(DieAndPause());
+    }
+
+    // 코루틴: 죽을 때 타임스케일 변경 후 일정 시간 대기
+    private IEnumerator DieAndPause()
+    {
+        Time.timeScale = 0; // 게임 일시정지
+        yield return new WaitForSecondsRealtime(0.1f); // 실제 시간으로 0.1초 대기
+        Time.timeScale = 1; // 다시 게임 재개
+        Destroy(gameObject); // 적 오브젝트 삭제
     }
 
     // 적이 피해를 받는 함수
