@@ -1,31 +1,32 @@
 using System.Collections;
 using UnityEngine;
 
-public class RangedEnemy : MonoBehaviour
+public class RangedEnemy : TestEnemy
 {
-    public float health = 25f; // 에너미 체력
-    public float shieldHealth = 200f; // 방패 체력
-    public float damage = 10f; // 공격 데미지
     public float chaseSpeed = 2f; // 플레이어 추적 속도
     public float chaseRange = 10f; // 플레이어를 추적할 범위
     public float stopDistance = 2f; // 일정 거리까지 플레이어 추적 후 멈춤
-
-    private bool isInvulnerable = false;
 
     private Transform player; // 플레이어의 위치를 추적하기 위한 변수
     private Rigidbody2D rb; // Rigidbody2D 참조
     private Animator animator; // 애니메이터 참조
 
-    void Start()
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>(); // Rigidbody2D 컴포넌트 가져오기
         player = GameObject.FindGameObjectWithTag("KPlayer").transform; // 플레이어 오브젝트 찾기
         animator = GetComponent<Animator>(); // Animator 컴포넌트 가져오기
+        health = 25f; // RangedEnemy의 초기 체력
+        maxHealth = health; // 체력 슬라이더를 위한 최대 체력 설정
     }
 
-    void Update()
+    private void Update()
     {
-        if (health > 0 && player != null)
+        // 적이 죽었으면 더 이상 로직을 실행하지 않음
+        if (isDead) return;
+
+
+        if (player != null && health > 0)
         {
             float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
@@ -38,62 +39,52 @@ public class RangedEnemy : MonoBehaviour
             }
             else
             {
-                rb.velocity = Vector2.zero; // 일정 거리 이상 접근 시 멈춤
+                rb.velocity = Vector2.zero; // 멈춤
                 animator.SetBool("BulletRun", false); // 이동 중인 애니메이션 끔
                 animator.SetBool("BulletIdle", true); // 대기 상태로 전환
             }
-
-            // 플레이어 사망 처리
-            if (health <= 0)
-            {
-                animator.SetBool("BulletDie", true); // 사망 애니메이션 재생
-                Destroy(gameObject, 2f); // 2초 후 오브젝트 제거
-            }
         }
-        else
+
+        // 적이 죽으면 사망 처리
+        if (health <= 0 && !isDead)
         {
-            Destroy(gameObject); // 적이 죽으면 오브젝트 제거
+            DieEffect(); // TestEnemy의 사망 이펙트 함수 호출
         }
     }
 
     // 플레이어를 추적하는 함수
-    void ChasePlayer()
+    private void ChasePlayer()
     {
         Vector2 direction = (player.position - transform.position).normalized; // 플레이어 쪽으로 방향 계산
         rb.velocity = direction * chaseSpeed; // 추적 속도만큼 이동
     }
 
-    // 방패 무적 상태 활성화
-    IEnumerator ActivateInvulnerability()
+    // 피해 받는 함수 (TestEnemy의 TakeHit() 활용)
+    public override void TakeHit(float damage, Vector2 hitPos)
     {
-        if (!isInvulnerable)
+        if (isDead) return; // 이미 죽은 적은 데미지 처리 안 함
+
+        // 체력 감소 처리
+        base.TakeHit(damage, hitPos);
+
+        // 적이 죽었을 때 처리
+        if (health <= 0 && !isDead)
         {
-            isInvulnerable = true;
-            yield return new WaitForSeconds(3f); // 무적 시간
-            isInvulnerable = false;
+            DieEffect(); // 사망 이펙트 호출
         }
     }
 
-    // 피해 받는 함수
-    public void TakeDamage(float amount)
+    // DieEffect 오버라이드 (TestEnemy의 DieEffect() 호출)
+    public override void DieEffect()
     {
-        if (!isInvulnerable)
-        {
-            if (shieldHealth > 0)
-            {
-                shieldHealth -= amount; // 방패 체력 소모
-            }
-            else
-            {
-                health -= amount; // 방패 체력이 0이면 실제 체력 소모
-            }
+        base.DieEffect(); // TestEnemy의 DieEffect() 실행
+        StartCoroutine(RemoveAfterDeath()); // 2초 후 오브젝트 제거
+    }
 
-            // 적이 죽었을 경우 사망 애니메이션 재생
-            if (health <= 0)
-            {
-                animator.SetBool("BulletDie", true); // 사망 애니메이션 재생
-                Destroy(gameObject, 2f); // 2초 후 오브젝트 제거
-            }
-        }
+    // 2초 후 오브젝트 제거 코루틴
+    private IEnumerator RemoveAfterDeath()
+    {
+        yield return new WaitForSeconds(2f);
+        Destroy(gameObject); // 2초 후 적 제거
     }
 }

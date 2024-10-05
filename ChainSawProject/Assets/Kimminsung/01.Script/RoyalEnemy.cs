@@ -11,6 +11,7 @@ public class RoyalEnemy : MonoBehaviour
     public float attackRange = 5f; // 공격 범위
     private Transform player; // 플레이어의 위치를 추적하기 위한 변수
     public Animator animator; // 애니메이터 컴포넌트 참조
+    public ParticleSystem deathParticles; // 죽을 때 사용할 파티클 시스템
 
     private bool isAttacking = false;
     private bool isAlive = true;
@@ -27,7 +28,7 @@ public class RoyalEnemy : MonoBehaviour
 
     void Update()
     {
-        if (!isAlive) return; // 적이 죽으면 아무것도 안함
+        if (!isAlive) return; // 적이 죽으면 아무것도 안 함
 
         if (health <= 0)
         {
@@ -88,6 +89,13 @@ public class RoyalEnemy : MonoBehaviour
         animator.SetBool("RoyalDie", true); // 죽는 애니메이션 실행
         animator.SetBool("RoyalRun", false);
         animator.SetBool("RoyalIdle", false);
+
+        // 파티클 시스템 실행
+        if (deathParticles != null)
+        {
+            Instantiate(deathParticles, transform.position, Quaternion.identity);
+        }
+
         Destroy(gameObject, 2f); // 2초 후 오브젝트 삭제
     }
 
@@ -109,5 +117,11 @@ public class RoyalEnemy : MonoBehaviour
     public void TakeDamage(float amount)
     {
         health -= amount;
+
+        // 적이 죽었을 때 처리
+        if (health <= 0)
+        {
+            Die();
+        }
     }
 }

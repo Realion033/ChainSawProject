@@ -12,7 +12,7 @@ public class TestEnemy : LivingEntity
     private SpriteRenderer _spriteRenderer;
     private CapsuleCollider2D _collider2;
     private Slider _slider;
-    private float maxHealth;
+    public float maxHealth;
     private int cnt = 0;
 
     private void Awake()
