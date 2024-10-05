@@ -1,106 +1,127 @@
 using System.Collections;
 using UnityEngine;
 
-public class RoyalEnemy : TestEnemy
+public class RoyalEnemy : MonoBehaviour
 {
-    public float jumpHeight = 5f; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
-    public float fallSpeed = 10f; // ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½
-    public float attackCooldown = 7f; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½
-    public float attackRange = 5f; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
-    public float chaseSpeed = 3f; // ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½
-    public ParticleSystem deathParticles; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ¼Å¬ ï¿½Ã½ï¿½ï¿½ï¿½
+    public float health = 100f; // Àû Ã¼·Â
+    public float damage = 14f; // °ø°Ý µ¥¹ÌÁö
+    public float jumpHeight = 5f; // Á¡ÇÁ ³ôÀÌ
+    public float fallSpeed = 10f; // ³«ÇÏ ¼Óµµ
+    public float attackCooldown = 7f; // °ø°Ý ÄðÅ¸ÀÓ
+    public float attackRange = 5f; // °ø°Ý ¹üÀ§
+    private Transform player; // ÇÃ·¹ÀÌ¾îÀÇ À§Ä¡¸¦ ÃßÀûÇÏ±â À§ÇÑ º¯¼ö
+    public Animator animator; // ¾Ö´Ï¸ÞÀÌÅÍ ÄÄÆ÷³ÍÆ® ÂüÁ¶
+    public ParticleSystem deathParticles; // Á×À» ¶§ »ç¿ëÇÒ ÆÄÆ¼Å¬ ½Ã½ºÅÛ
 
-    private Animator animator;
-    private Transform player; // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
-    private Rigidbody2D rb; // Rigidbody2D ï¿½ï¿½ï¿½ï¿½
-    private float nextAttackTime = 0f; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ý±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½
+    private bool isAttacking = false;
+    private bool isAlive = true;
 
-    private void Start()
+    private Rigidbody2D rb; // Rigidbody2D ÂüÁ¶
+    private float nextAttackTime = 0f; // ´ÙÀ½ °ø°Ý±îÁö ³²Àº ½Ã°£
+
+    void Start()
     {
-        rb = GetComponent<Rigidbody2D>(); // Rigidbody2D ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-        player = GameObject.FindGameObjectWithTag("KPlayer").transform; // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® Ã£ï¿½ï¿½
-        health = 100f; // RoyalEnemyï¿½ï¿½ ï¿½Ê±ï¿½ Ã¼ï¿½ï¿½
-        maxHealth = health; // ï¿½Ö´ï¿½ Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        rb = GetComponent<Rigidbody2D>();
+        player = GameObject.FindGameObjectWithTag("KPlayer").transform;
         animator = GetComponent<Animator>();
     }
 
-    private void Update()
+    void Update()
     {
-        if (isDead) return; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Æ¹ï¿½ï¿½Íµï¿½ ï¿½ï¿½ ï¿½ï¿½
+        if (!isAlive) return; // ÀûÀÌ Á×À¸¸é ¾Æ¹«°Íµµ ¾È ÇÔ
 
         if (health <= 0)
         {
             Die();
-            return; // ï¿½×¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ì»ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         }
 
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
-        // ï¿½Ã·ï¿½ï¿½Ì¾î¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
-        if (distanceToPlayer > attackRange)
+        // ÇÃ·¹ÀÌ¾î¸¦ ÃßÀûÇÏ´Â ÁßÀÏ ¶§
+        if (!isAttacking && Time.time >= nextAttackTime)
         {
-            ChasePlayer();
-        }
-        else if (distanceToPlayer <= attackRange && Time.time >= nextAttackTime)
-        {
-            StartCoroutine(PerformJumpAttack());
+            if (distanceToPlayer > attackRange)
+            {
+                ChasePlayer();
+            }
+            else if (distanceToPlayer <= attackRange)
+            {
+                StartCoroutine(PerformJumpAttack());
+            }
         }
     }
 
-    // ï¿½Ã·ï¿½ï¿½Ì¾î¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ô¼ï¿½
-    private void ChasePlayer()
+    // ÇÃ·¹ÀÌ¾î¸¦ ÃßÀûÇÏ´Â ÇÔ¼ö
+    void ChasePlayer()
     {
-        if(player.position.x > transform.position.x)
-            rb.velocity = new Vector2(chaseSpeed, rb.velocity.y);
-        
-        if(player.position.x < transform.position.x)
-            rb.velocity = new Vector2(-chaseSpeed, rb.velocity.y);
-        
-        animator.SetBool("RoyalRun", true); // RoyalRun ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½
-        animator.SetBool("RoyalIdle", false); // RoyalIdle ï¿½ï¿½È°ï¿½ï¿½È­
+        Vector2 direction = (player.position - transform.position).normalized;
+        rb.velocity = direction * 3f; // ÃßÀû ¼Óµµ´Â 3
+        animator.SetBool("RoyalRun", true); // RoyalRun ¾Ö´Ï¸ÞÀÌ¼Ç ½ÇÇà
+        animator.SetBool("RoyalIdle", false); // RoyalIdle ºñÈ°¼ºÈ­
     }
 
-    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
-    private IEnumerator PerformJumpAttack()
+    // Á¡ÇÁ °ø°Ý ÆÐÅÏ
+    IEnumerator PerformJumpAttack()
     {
-        animator.SetBool("RoyalRun", false); // RoyalRun ï¿½ï¿½ï¿½ï¿½
-        animator.SetBool("RoyalIdle", true); // RoyalIdle ï¿½ï¿½ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½
+        isAttacking = true;
+        animator.SetBool("RoyalRun", false); // RoyalRun ¸ØÃã
+        animator.SetBool("RoyalIdle", true); // RoyalIdle ´ë±â ¾Ö´Ï¸ÞÀÌ¼Ç ½ÇÇà
 
-        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        // À§·Î Á¡ÇÁ
         rb.velocity = new Vector2(0, jumpHeight);
-        yield return new WaitForSeconds(0.5f); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½
+        yield return new WaitForSeconds(0.5f); // Á¡ÇÁ ÈÄ ´ë±â ½Ã°£
 
-        // ï¿½ë°¢ï¿½ï¿½ ï¿½Æ·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½
+        // ´ë°¢¼± ¾Æ·¡·Î ºü¸£°Ô ³«ÇÏÇÏ¸ç °ø°Ý
         Vector2 attackDirection = (player.position - transform.position).normalized;
         rb.velocity = new Vector2(attackDirection.x, -1) * fallSpeed;
 
-        yield return new WaitForSeconds(0.3f); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½
+        yield return new WaitForSeconds(0.3f); // °ø°Ý ÈÄ ´ë±â
 
-        rb.velocity = Vector2.zero; // ï¿½Óµï¿½ 0ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
-        nextAttackTime = Time.time + attackCooldown; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        rb.velocity = Vector2.zero; // ¼Óµµ 0À¸·Î ¼³Á¤ÇÏ¿© °ø°Ý ÈÄ ¸ØÃã
+        nextAttackTime = Time.time + attackCooldown; // °ø°Ý ÄðÅ¸ÀÓ ¼³Á¤
+        isAttacking = false; // °ø°Ý Á¾·á
     }
 
-    // ï¿½ï¿½ï¿½ï¿½ ï¿½×¾ï¿½ï¿½ï¿½ ï¿½ï¿½ È£ï¿½ï¿½Ç´ï¿½ ï¿½Ô¼ï¿½
-    public override void DieEffect()
+    // ÀûÀÌ Á×¾úÀ» ¶§ È£ÃâµÇ´Â ÇÔ¼ö
+    void Die()
     {
-        base.DieEffect(); // TestEnemyï¿½ï¿½ DieEffect() È£ï¿½ï¿½
+        isAlive = false;
+        animator.SetBool("RoyalDie", true); // Á×´Â ¾Ö´Ï¸ÞÀÌ¼Ç ½ÇÇà
+        animator.SetBool("RoyalRun", false);
+        animator.SetBool("RoyalIdle", false);
 
-        // ï¿½ï¿½Æ¼Å¬ ï¿½Ã½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        // ÆÄÆ¼Å¬ ½Ã½ºÅÛ ½ÇÇà
         if (deathParticles != null)
         {
             Instantiate(deathParticles, transform.position, Quaternion.identity);
         }
+
+        Destroy(gameObject, 2f); // 2ÃÊ ÈÄ ¿ÀºêÁ§Æ® »èÁ¦
     }
 
-    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¸ï¿½ ï¿½Þ´ï¿½ ï¿½Ô¼ï¿½
-    public override void TakeHit(float damage, Vector2 hitPos)
+    // ÇÃ·¹ÀÌ¾î¿Í Ãæµ¹ ½Ã Ã³¸®ÇÏ´Â ÇÔ¼ö
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        base.TakeHit(damage, hitPos);
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Player playerScript = collision.gameObject.GetComponent<Player>();
 
-        // ï¿½ï¿½ï¿½ï¿½ ï¿½×¾ï¿½ï¿½ï¿½ ï¿½ï¿½ Ã³ï¿½ï¿½
+            if (playerScript != null)
+            {
+                Debug.Log("Hit");
+            }
+        }
+    }
+
+    // ÀûÀÌ ÇÇÇØ¸¦ ¹Þ´Â ÇÔ¼ö
+    public void TakeDamage(float amount)
+    {
+        health -= amount;
+
+        // ÀûÀÌ Á×¾úÀ» ¶§ Ã³¸®
         if (health <= 0)
         {
-            DieEffect(); // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® È£ï¿½ï¿½
+            Die();
         }
     }
 }
