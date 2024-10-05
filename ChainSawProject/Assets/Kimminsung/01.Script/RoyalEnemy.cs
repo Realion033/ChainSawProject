@@ -29,7 +29,7 @@ public class RoyalEnemy : TestEnemy
     private void Update()
     {
         if (isDead) return; // 적이 죽으면 아무것도 안 함
-
+        
         if (health <= 0)
         {
             Die();
@@ -54,6 +54,7 @@ public class RoyalEnemy : TestEnemy
             StartCoroutine(PerformJumpAttack());
         }
     }
+    
 
     // 플레이어를 추적하는 함수
     private void ChasePlayer()
@@ -62,6 +63,11 @@ public class RoyalEnemy : TestEnemy
         rb.velocity = direction * chaseSpeed; // 추적 속도로 이동
         animator.SetBool("RoyalRun", true); // RoyalRun 애니메이션 실행
         animator.SetBool("RoyalIdle", false); // RoyalIdle 비활성화
+                                              // 플레이어의 위치에서 X 좌표만 사용하고, Y는 현재 적의 Y 위치를 고정
+        Vector2 direction2 = new Vector2(player.position.x - transform.position.x, 0).normalized;
+
+        // 추적 속도만큼 이동 (Y축은 0으로 고정됨)
+        rb.velocity = new Vector2(direction.x * chaseSpeed, rb.velocity.y);
     }
 
     // 점프 공격 패턴
