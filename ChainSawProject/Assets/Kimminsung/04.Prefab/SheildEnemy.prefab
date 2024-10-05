@@ -14,10 +14,10 @@ GameObject:
   - component: {fileID: 8136035255908864750}
   - component: {fileID: 5363739328013936833}
   - component: {fileID: 6374155584112330355}
-  - component: {fileID: 2051357108607178802}
+  - component: {fileID: 7272161046586285745}
   m_Layer: 7
   m_Name: SheildEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 449e82b4b981cac4b897a58ebbe4722c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2051357108607178802
+--- !u!114 &7272161046586285745
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -193,15 +193,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1356547671467324475}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9143f49bf87cb64fa3f0eb433d5b85d, type: 3}
+  m_Script: {fileID: 11500000, guid: c0294876054f954478a756ad9a31d8b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 25
-  shieldHealth: 200
-  damage: 10
-  dashSpeed: 5
-  dashDistance: 3
-  invulnerableTime: 3
-  chaseSpeed: 2
-  chaseRange: 10
-  dashRange: 3
+  health: 100
+  damage: 14
+  jumpHeight: 5
+  fallSpeed: 10
+  attackCooldown: 7
+  attackRange: 5
+  animator: {fileID: 2097320952890032511}
+  deathParticles: {fileID: 0}

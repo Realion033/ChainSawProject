@@ -30,7 +30,7 @@ public abstract class LivingEntity : MonoBehaviour, IDamageable_real
 
     public virtual IEnumerator waitDieEffect()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSecondsRealtime(1.5f);
         Destroy(gameObject);
     }
 
