@@ -9,6 +9,7 @@ public class RoyalEnemy : TestEnemy
     public float attackRange = 5f; // 공격 범위
     public float chaseSpeed = 3f; // 추적 속도
     public ParticleSystem deathParticles; // 죽을 때 사용할 파티클 시스템
+    public float damage = 10f; // 총알 데미지 설정
 
     private Animator animator;
     private Transform player; // 플레이어의 위치를 추적하기 위한 변수
@@ -18,7 +19,6 @@ public class RoyalEnemy : TestEnemy
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>(); // Rigidbody2D 컴포넌트 가져오기
-        rb.constraints = RigidbodyConstraints2D.FreezePositionY; // Y축 움직임 고정
         player = GameObject.FindGameObjectWithTag("KPlayer").transform; // 플레이어 오브젝트 찾기
         health = 100f; // RoyalEnemy의 초기 체력
         maxHealth = health; // 최대 체력 설정
@@ -87,16 +87,19 @@ public class RoyalEnemy : TestEnemy
     }
 
     // 플레이어와 충돌 시 처리하는 함수
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.gameObject.CompareTag("KPlayer"))
+        if (other.CompareTag("KPlayer"))
         {
-            Player playerScript = collision.gameObject.GetComponent<Player>();
+            Player player = other.GetComponent<Player>(); // Player 스크립트 참조
 
-            if (playerScript != null)
+            if (player != null)
             {
-                Debug.Log("Hit");
+                player.TakeHit(damage, transform.position); // 플레이어에게 피해 전달
             }
+
+            // 총알 삭제
+            Destroy(gameObject);
         }
     }
 

@@ -1,10 +1,10 @@
 using UnityEngine;
 
+
 public class IdleState : IEnemyState
 {
     public void EnterState(EnemyFSM enemy)
     {
-        Debug.Log("Enemy is now Idle.");
         enemy.animator.SetTrigger("Idle");  // Idle 애니메이션 트리거
     }
 
