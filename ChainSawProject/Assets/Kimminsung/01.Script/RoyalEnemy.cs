@@ -18,7 +18,6 @@ public class RoyalEnemy : TestEnemy
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>(); // Rigidbody2D 컴포넌트 가져오기
-        rb.constraints = RigidbodyConstraints2D.FreezePositionY; // Y축 움직임 고정
         player = GameObject.FindGameObjectWithTag("KPlayer").transform; // 플레이어 오브젝트 찾기
         health = 100f; // RoyalEnemy의 초기 체력
         maxHealth = health; // 최대 체력 설정
