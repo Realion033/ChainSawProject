@@ -219,6 +219,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 817418fd19dba9640b38ca9d91c7782f, type: 3}
+--- !u!1001 &2060054753
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 436697386499619840, guid: 721b62efe5f8cc844b7e446f1a001bcf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 436697386499619840, guid: 721b62efe5f8cc844b7e446f1a001bcf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 436697386499619840, guid: 721b62efe5f8cc844b7e446f1a001bcf, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 436697386499619840, guid: 721b62efe5f8cc844b7e446f1a001bcf, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 436697386499619840, guid: 721b62efe5f8cc844b7e446f1a001bcf, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 436697386499619840, guid: 721b62efe5f8cc844b7e446f1a001bcf, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 436697386499619840, guid: 721b62efe5f8cc844b7e446f1a001bcf, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 436697386499619840, guid: 721b62efe5f8cc844b7e446f1a001bcf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 436697386499619840, guid: 721b62efe5f8cc844b7e446f1a001bcf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 436697386499619840, guid: 721b62efe5f8cc844b7e446f1a001bcf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1356547671467324475, guid: 721b62efe5f8cc844b7e446f1a001bcf, type: 3}
+      propertyPath: m_Name
+      value: KnifeEnemy
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 721b62efe5f8cc844b7e446f1a001bcf, type: 3}
 --- !u!1001 &2776547970686885462
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -282,3 +339,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 2776547970686885462}
   - {fileID: 1139977525}
+  - {fileID: 2060054753}
