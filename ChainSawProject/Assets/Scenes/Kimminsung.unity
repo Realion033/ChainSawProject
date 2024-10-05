@@ -506,6 +506,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SheildEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 5363739328013936833, guid: 1ea2f117afb73fa46831308b87fa82f1, type: 3}
+      propertyPath: m_Mass
+      value: 0.596781
+      objectReference: {fileID: 0}
     - target: {fileID: 7272161046586285745, guid: 1ea2f117afb73fa46831308b87fa82f1, type: 3}
       propertyPath: f
       value: 
@@ -518,6 +522,22 @@ PrefabInstance:
       propertyPath: deathParticles
       value: 
       objectReference: {fileID: 4537264005920015897, guid: 2861bf13598eac14ebc11a587e1b3712, type: 3}
+    - target: {fileID: 8136035255908864750, guid: 1ea2f117afb73fa46831308b87fa82f1, type: 3}
+      propertyPath: m_Size.x
+      value: 0.7379236
+      objectReference: {fileID: 0}
+    - target: {fileID: 8136035255908864750, guid: 1ea2f117afb73fa46831308b87fa82f1, type: 3}
+      propertyPath: m_Size.y
+      value: 0.9670899
+      objectReference: {fileID: 0}
+    - target: {fileID: 8136035255908864750, guid: 1ea2f117afb73fa46831308b87fa82f1, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.015871525
+      objectReference: {fileID: 0}
+    - target: {fileID: 8136035255908864750, guid: 1ea2f117afb73fa46831308b87fa82f1, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.06576574
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
