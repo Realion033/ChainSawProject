@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerStat
   m_EditorClassIdentifier: 
   playerDamage: 90
-  playerHealth: 20
+  playerHealth: 10
   playershield: 50
   speed: 10
   dashDistance: 5
