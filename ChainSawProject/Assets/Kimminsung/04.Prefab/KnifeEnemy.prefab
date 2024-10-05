@@ -12,10 +12,9 @@ GameObject:
   - component: {fileID: 2097320952890032511}
   - component: {fileID: 1523326393554045264}
   - component: {fileID: 8136035255908864750}
-  - component: {fileID: 5363739328013936833}
   - component: {fileID: 6374155584112330355}
   - component: {fileID: 1959764793297030116}
-  - component: {fileID: 9149464341654070106}
+  - component: {fileID: 3604558969697000622}
   m_Layer: 7
   m_Name: KnifeEnemy
   m_TagString: Enemy
@@ -143,36 +142,9 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.111410946, y: 0.25995898}
-  m_Size: {x: 0.7228219, y: 1.0000005}
+  m_Offset: {x: 0.005657196, y: 0.00038218498}
+  m_Size: {x: 0.7292309, y: 0.980772}
   m_Direction: 0
---- !u!50 &5363739328013936833
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1356547671467324475}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 1
-  m_Mass: 0.61069894
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 6
 --- !u!114 &6374155584112330355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,27 +174,30 @@ MonoBehaviour:
   detectionRange: 5
   attackRange: 1
   health: 100
---- !u!114 &9149464341654070106
-MonoBehaviour:
+--- !u!50 &3604558969697000622
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1356547671467324475}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9143f49bf87cb64fa3f0eb433d5b85d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isDead: 0
-  isPanic: 0
-  f: {fileID: 0}
-  _blood: {fileID: 0}
-  maxHealth: 0
-  dashSpeed: 5
-  dashDistance: 3
-  invulnerableTime: 3
-  chaseSpeed: 2
-  chaseRange: 10
-  dashRange: 3
-  deathParticles: {fileID: 0}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 5
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4

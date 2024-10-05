@@ -23,9 +23,11 @@ public class RunState : IEnemyState
             // 플레이어를 계속 따라가도록 이동
             Vector2 direction = (enemy.player.position - enemy.transform.position).normalized;
 
-            // Y축 위치를 고정하고 X축만 이동
-            Vector2 newPosition = Vector2.MoveTowards(enemy.transform.position, enemy.player.position, Time.deltaTime * 2);
-            enemy.transform.position = new Vector2(newPosition.x, enemy.transform.position.y); // Y축 고정
+            // X축과 Y축 모두 이동 가능
+            enemy.transform.position = new Vector2(
+                enemy.transform.position.x + direction.x * Time.deltaTime * 2, // X축 이동
+                enemy.transform.position.y + direction.y * Time.deltaTime * 2  // Y축 이동
+            );
         }
     }
 

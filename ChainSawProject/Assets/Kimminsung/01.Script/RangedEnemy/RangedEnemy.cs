@@ -85,7 +85,9 @@ public class RangedEnemy : TestEnemy
     // 2초 후 오브젝트 제거 코루틴
     private IEnumerator RemoveAfterDeath()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.1f);
+        // 부모 오브젝트를 삭제하여 자식 오브젝트도 함께 제거
         Destroy(gameObject); // 2초 후 적 제거
     }
+
 }
