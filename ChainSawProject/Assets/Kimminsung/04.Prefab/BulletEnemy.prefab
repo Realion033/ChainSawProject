@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 4888758538397348231}
   - component: {fileID: 2873988308708624148}
   - component: {fileID: 4950208042649268772}
-  - component: {fileID: 5203978109246169267}
+  - component: {fileID: 6418457665202004248}
   m_Layer: 7
   m_Name: BulletEnemy
   m_TagString: Enemy
@@ -224,7 +224,7 @@ Rigidbody2D:
   m_Mass: 5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 20
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -257,8 +257,8 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!70 &5203978109246169267
-CapsuleCollider2D:
+--- !u!61 &6418457665202004248
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -286,12 +286,22 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.033777773, y: 0}
-  m_Size: {x: 0.7720634, y: 1.0133333}
-  m_Direction: 0
+  m_Offset: {x: 0.0076155663, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.0133333, y: 1.0133333}
+    newSize: {x: 3.04, y: 3.04}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.7924819, y: 1.0133333}
+  m_EdgeRadius: 0
 --- !u!1 &9122899927497877830
 GameObject:
   m_ObjectHideFlags: 0
