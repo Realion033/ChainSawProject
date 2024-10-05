@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 8136035255908864750}
   - component: {fileID: 5363739328013936833}
   - component: {fileID: 6374155584112330355}
-  - component: {fileID: 7272161046586285745}
   m_Layer: 7
   m_Name: SheildEnemy
   m_TagString: Enemy
@@ -34,7 +33,8 @@ Transform:
   m_LocalPosition: {x: 4.45, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5008042998404067844}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2097320952890032511
@@ -184,26 +184,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 449e82b4b981cac4b897a58ebbe4722c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7272161046586285745
+--- !u!1 &6873289890842453368
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5008042998404067844}
+  - component: {fileID: 778931411163737273}
+  m_Layer: 7
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5008042998404067844
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6873289890842453368}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.1099997, y: 0.21000004, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 436697386499619840}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &778931411163737273
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1356547671467324475}
+  m_GameObject: {fileID: 6873289890842453368}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0294876054f954478a756ad9a31d8b3, type: 3}
+  m_Script: {fileID: 11500000, guid: 9fdaa154e7d2caa4d8643341b3d6e1fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDead: 0
-  isPanic: 0
-  f: {fileID: 0}
-  _blood: {fileID: 0}
-  maxHealth: 0
-  jumpHeight: 5
-  fallSpeed: 10
-  attackCooldown: 7
-  attackRange: 5
-  chaseSpeed: 3
-  deathParticles: {fileID: 0}
+  GroundLayer:
+    serializedVersion: 2
+    m_Bits: 256

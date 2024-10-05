@@ -46,7 +46,7 @@ public class EnemyFSM : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("KPlayer"))
+        if (other.CompareTag("KPlayer") && attackState.isAttackState == true)
         {
             Player player = other.GetComponent<Player>(); // Player 스크립트 참조
 
@@ -54,9 +54,6 @@ public class EnemyFSM : MonoBehaviour
             {
                 player.TakeHit(damage, transform.position); // 플레이어에게 피해 전달
             }
-
-            // 총알 삭제
-            Destroy(gameObject);
         }
     }
 

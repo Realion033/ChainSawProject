@@ -1,10 +1,14 @@
+using TMPro;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class AttackState : IEnemyState
 {
     private float attackCooldown = 2f;
     private float lastAttackTime = 0f;
+    public bool isAttackState;
 
+    
     public void EnterState(EnemyFSM enemy)
     {
         enemy.ResetAllTriggers();  // 모든 트리거 초기화
@@ -15,6 +19,9 @@ public class AttackState : IEnemyState
 
     public void UpdateState(EnemyFSM enemy)
     {
+
+        isAttackState = true;
+        
         float distanceToPlayer = Vector2.Distance(enemy.transform.position, enemy.player.position);
 
         if (Time.time - lastAttackTime >= attackCooldown && distanceToPlayer <= enemy.attackRange)
@@ -42,5 +49,6 @@ public class AttackState : IEnemyState
     {
         Debug.Log("Enemy attacks!");
         lastAttackTime = Time.time;  // 공격 타임스탬프 갱신
+        isAttackState = false;
     }
 }

@@ -72,8 +72,24 @@ public class RoyalEnemy : TestEnemy
 
         rb.velocity = Vector2.zero; // 속도 0으로 설정하여 공격 후 멈춤
         nextAttackTime = Time.time + attackCooldown; // 공격 쿨타임 설정
+
+
+        
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("KPlayer"))
+        {
+            Player player = other.GetComponent<Player>(); // Player 스크립트 참조
+
+            if (player != null)
+            {
+                player.TakeHit(damage, transform.position); // 플레이어에게 피해 전달
+            }
+
+        }
+    }
     // 적이 죽었을 때 호출되는 함수
     public override void DieEffect()
     {
@@ -87,21 +103,7 @@ public class RoyalEnemy : TestEnemy
     }
 
     // 플레이어와 충돌 시 처리하는 함수
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("KPlayer"))
-        {
-            Player player = other.GetComponent<Player>(); // Player 스크립트 참조
-
-            if (player != null)
-            {
-                player.TakeHit(damage, transform.position); // 플레이어에게 피해 전달
-            }
-
-            // 총알 삭제
-            Destroy(gameObject);
-        }
-    }
+    
 
     // 적이 피해를 받는 함수
     public override void TakeHit(float damage, Vector2 hitPos)

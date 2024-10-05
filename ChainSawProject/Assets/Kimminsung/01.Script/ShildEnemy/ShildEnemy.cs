@@ -109,6 +109,19 @@ public class ShieldEnemy : MonoBehaviour
 
             isDashing = false; // 돌진 완료 후 다시 돌진 가능하게 설정
         }
+
+        void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.CompareTag("KPlayer"))
+            {
+                Player player = other.GetComponent<Player>(); // Player 스크립트 참조
+
+                if (player != null)
+                {
+                    player.TakeHit(damage, transform.position); // 플레이어에게 피해 전달
+                }
+            }
+        }
     }
 
     // 방패 무적 상태 활성화
@@ -156,22 +169,6 @@ public class ShieldEnemy : MonoBehaviour
             {
                 Die();
             }
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("KPlayer"))
-        {
-            Player player = other.GetComponent<Player>(); // Player 스크립트 참조
-
-            if (player != null)
-            {
-                player.TakeHit(damage, transform.position); // 플레이어에게 피해 전달
-            }
-
-            // 총알 삭제
-            Destroy(gameObject);
         }
     }
 }
