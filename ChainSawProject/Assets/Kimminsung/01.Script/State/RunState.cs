@@ -22,7 +22,10 @@ public class RunState : IEnemyState
         {
             // 플레이어를 계속 따라가도록 이동
             Vector2 direction = (enemy.player.position - enemy.transform.position).normalized;
-            enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, enemy.player.position, Time.deltaTime * 2);  // 이동 속도 조절 가능
+
+            // Y축 위치를 고정하고 X축만 이동
+            Vector2 newPosition = Vector2.MoveTowards(enemy.transform.position, enemy.player.position, Time.deltaTime * 2);
+            enemy.transform.position = new Vector2(newPosition.x, enemy.transform.position.y); // Y축 고정
         }
     }
 

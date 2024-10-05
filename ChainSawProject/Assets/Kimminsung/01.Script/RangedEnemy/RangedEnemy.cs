@@ -18,6 +18,7 @@ public class RangedEnemy : TestEnemy
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>(); // Rigidbody2D 컴포넌트 가져오기
+        rb.constraints = RigidbodyConstraints2D.FreezePositionY; // Y축 움직임 고정
         player = GameObject.FindGameObjectWithTag("KPlayer").transform; // 플레이어 오브젝트 찾기
         animator = GetComponent<Animator>(); // Animator 컴포넌트 가져오기
         health = 25f; // RangedEnemy의 초기 체력

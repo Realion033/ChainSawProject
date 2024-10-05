@@ -18,11 +18,13 @@ public class RoyalEnemy : TestEnemy
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>(); // Rigidbody2D 컴포넌트 가져오기
+        rb.constraints = RigidbodyConstraints2D.FreezePositionY; // Y축 움직임 고정
         player = GameObject.FindGameObjectWithTag("KPlayer").transform; // 플레이어 오브젝트 찾기
         health = 100f; // RoyalEnemy의 초기 체력
         maxHealth = health; // 최대 체력 설정
         animator = GetComponent<Animator>();
     }
+
 
     private void Update()
     {
@@ -62,13 +64,9 @@ public class RoyalEnemy : TestEnemy
         animator.SetBool("RoyalRun", false); // RoyalRun 멈춤
         animator.SetBool("RoyalIdle", true); // RoyalIdle 대기 애니메이션 실행
 
-        // 위로 점프
-        rb.velocity = new Vector2(0, jumpHeight);
-        yield return new WaitForSeconds(0.5f); // 점프 후 대기 시간
-
-        // 대각선 아래로 빠르게 낙하하며 공격
+        // 공격 동작을 X축으로만 하도록 수정
         Vector2 attackDirection = (player.position - transform.position).normalized;
-        rb.velocity = new Vector2(attackDirection.x, -1) * fallSpeed;
+        rb.velocity = new Vector2(attackDirection.x, 0) * fallSpeed; // X축으로 공격
 
         yield return new WaitForSeconds(0.3f); // 공격 후 대기
 
