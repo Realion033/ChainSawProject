@@ -11,6 +11,7 @@ public class EnemyFSM : MonoBehaviour
 {
     public IEnemyState currentState;
     public Animator animator;  // Animator 추가
+    public int damage = 5;
 
     public IdleState idleState = new IdleState();
     public RunState runState = new RunState();
@@ -39,6 +40,23 @@ public class EnemyFSM : MonoBehaviour
         else
         {
             currentState.UpdateState(this);
+        }
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("KPlayer"))
+        {
+            Player player = other.GetComponent<Player>(); // Player 스크립트 참조
+
+            if (player != null)
+            {
+                player.TakeHit(damage, transform.position); // 플레이어에게 피해 전달
+            }
+
+            // 총알 삭제
+            Destroy(gameObject);
         }
     }
 

@@ -101,6 +101,7 @@ public class ShieldEnemy : MonoBehaviour
             {
                 playerScript.TakeHit(damage, transform.position); // 플레이어에게 데미지 전달
             }
+            
 
             // 돌진 후 잠깐의 대기시간 (2초 동안 멈춤)
             rb.velocity = Vector2.zero; // 속도 0으로 설정하여 멈추게 함
@@ -155,6 +156,22 @@ public class ShieldEnemy : MonoBehaviour
             {
                 Die();
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("KPlayer"))
+        {
+            Player player = other.GetComponent<Player>(); // Player 스크립트 참조
+
+            if (player != null)
+            {
+                player.TakeHit(damage, transform.position); // 플레이어에게 피해 전달
+            }
+
+            // 총알 삭제
+            Destroy(gameObject);
         }
     }
 }
