@@ -224,7 +224,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &4336872524034374096
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -385,6 +385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96125bd90ea661748b27bd3959acde3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
   isDead: 0
   isPanic: 0
   _playerStat: {fileID: 11400000, guid: b499f422d7f95af4bbda3ba1f1c27da7, type: 2}

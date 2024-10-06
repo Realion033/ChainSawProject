@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -82,6 +83,15 @@ public class RangedEnemy : TestEnemy
     {
         base.DieEffect(); // TestEnemy의 DieEffect() 실행
         StartCoroutine(RemoveAfterDeath()); // 2초 후 오브젝트 제거
+        StartCoroutine(Hitstop());
+        player.GetComponent<LivingEntity>().health = player.GetComponent<Player>()._playerStat.playerHealth;
+    }
+
+    private IEnumerator Hitstop()
+    {
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(0.16f);
+        Time.timeScale = 1;
     }
 
     // 2초 후 오브젝트 제거 코루틴

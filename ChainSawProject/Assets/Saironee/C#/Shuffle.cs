@@ -1,6 +1,9 @@
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class Shuffle : MonoBehaviour
 {
@@ -14,7 +17,8 @@ public class Shuffle : MonoBehaviour
 
     private void Awake()
     {
-        while(true)
+#if UNITY_EDITOR
+        while (true)
         {
             string assetPath = $"Assets/Saironee/SO/{i}.asset";
             if (AssetDatabase.LoadAssetAtPath<Card>(assetPath) == null)
@@ -22,6 +26,7 @@ public class Shuffle : MonoBehaviour
             _cards.Add(AssetDatabase.LoadAssetAtPath<Card>(assetPath));
             i++;
         }
+#endif
     }
 
     private void Update()

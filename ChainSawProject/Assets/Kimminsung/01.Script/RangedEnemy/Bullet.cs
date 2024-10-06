@@ -16,6 +16,11 @@ public class Bullet : MonoBehaviour
             }
 
             // 총알 삭제
+            
+            Destroy(gameObject);
+        }
+        if (other.CompareTag("Ground"))
+        {
             Destroy(gameObject);
         }
     }

@@ -1,5 +1,8 @@
-using UnityEditor;
 using UnityEngine;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 [CreateAssetMenu(fileName = "SO", menuName = "CreateSO / card")]
 public class Card : ScriptableObject
@@ -12,8 +15,9 @@ public class Card : ScriptableObject
         UNLOCK,
     }
 
+    // name 충돌을 피하기 위해 필드 이름을 변경
     [SerializeField]
-    private string name;
+    private string cardName;
 
     public short level;
     public RANK rank;
@@ -30,10 +34,12 @@ public class Card : ScriptableObject
 
     private string assetPath;
 
-    [HideInInspector] public string discription => $"{text1}{points[level]}{text2}";
+    [HideInInspector]
+    public string discription => $"{text1}{points[level]}{text2}";
 
     private void OnValidate()
     {
+#if UNITY_EDITOR
         switch (rank)
         {
             case RANK.COMMON:
@@ -45,8 +51,9 @@ public class Card : ScriptableObject
             case RANK.UNLOCK:
                 assetPath = "Assets/Saironee/SO/blas/BGBGBGB.asset";
                 break;
-
         }
+
         bg = AssetDatabase.LoadAssetAtPath<CardBg>(assetPath);
+#endif
     }
 }

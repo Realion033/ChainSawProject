@@ -11,32 +11,26 @@ public class MainGameManager : MonoBehaviour
     public LivingEntity livinPlayer;
     public Player playerPlayer;
     public GameObject Playerobj;
-    
+
     public Volume Volume;
     private ColorAdjustments _colorAdjustments;
 
     public LevelSO[] levelSOs;
     private GameObject CurrentLevelObj;
-    
+
     public VideoPlayer videoPlayer;
-    
-    private int CurrentLevel;
-    
+
+    public int CurrentLevel;
+
     private float playerMaxHealth;
+
+    public GameObject GameClearflag;
 
     private void Awake()
     {
         playerMaxHealth = playerPlayer._playerStat.playerHealth;
+        Volume.profile.TryGet(out _colorAdjustments);
 
-        if (Volume.profile.TryGet<ColorAdjustments>(out _colorAdjustments))
-        {
-            Debug.Log("Color Adjustments Ï†ÅÏö©Îê®");
-        }
-        else
-        {
-            Debug.LogError("Color AdjustmentsÎ•º Ï∞æÏùÑ Ïàò ÏóÜÏùå!");
-        }
-        
         GameStart();
     }
 
@@ -49,22 +43,40 @@ public class MainGameManager : MonoBehaviour
         {
             GameOver();
         }
-            
+
         _colorAdjustments.saturation.value = Mathf.Lerp(-100, 0, healthPercentage);
-        
     }
 
     private void GameStart()
     {
-        CurrentLevelObj = Instantiate(levelSOs[CurrentLevel].level, new Vector3(0, 0, 0), Quaternion.identity);
+        CurrentLevelObj = Instantiate(levelSOs[CurrentLevel].level, Vector3.zero, Quaternion.identity);
         livinPlayer.health = playerMaxHealth;
         Playerobj.transform.position = levelSOs[CurrentLevel].SpawnPoints;
     }
 
-    private void GameOver()
+    public void GameOver()
     {
         videoPlayer.Play();
         Destroy(CurrentLevelObj);
         GameStart();
+    }
+
+    public void Thanks()
+    {
+        GameClearflag.SetActive(true);
+        Time.timeScale = 0;
+
+        StartCoroutine(ShotDownWait());
+    }
+
+    private IEnumerator ShotDownWait()
+    {
+        yield return new WaitForSeconds(1.0f);
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false; // ¿Ø¥œ∆º ø°µ≈Õø°º≠ ¡æ∑·
+#else
+        Application.Quit(); // ∫ÙµÂµ» ∞‘¿”ø°º≠ ¡æ∑·
+#endif
     }
 }
