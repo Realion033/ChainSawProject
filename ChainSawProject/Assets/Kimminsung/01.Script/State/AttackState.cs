@@ -1,12 +1,12 @@
 using System.Collections;
-using TMPro;
 using UnityEngine;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class AttackState : IEnemyState
 {
-    private float attackCooldown = 2f;  // 공격 쿨타임
+    public float attackCooldown = 5f;  // 공격 쿨타임
     public bool isAttackState;
+    private bool canAttack = true; // 공격 가능 여부를 나타내는 플래그
 
     public void EnterState(EnemyFSM enemy)
     {
@@ -31,8 +31,8 @@ public class AttackState : IEnemyState
     public void ExitState(EnemyFSM enemy)
     {
         Debug.Log("Exiting Attack state.");
+        isAttackState = false;
         enemy.StopCoroutine(AttackRoutine(enemy));  // 코루틴 정지
-        isAttackState=false;
     }
 
     private IEnumerator AttackRoutine(EnemyFSM enemy)
@@ -42,14 +42,21 @@ public class AttackState : IEnemyState
             float distanceToPlayer = Vector2.Distance(enemy.transform.position, enemy.player.position);
 
             // 플레이어가 공격 범위 내에 있을 때만 공격
-            if (distanceToPlayer <= enemy.attackRange)
+            if (distanceToPlayer <= enemy.attackRange && canAttack)
             {
                 enemy.animator.SetTrigger("Attack");  // 공격 애니메이션 트리거
                 Debug.Log("Enemy attacks!");
-            }
 
-            // 공격 후 대기 시간
-            yield return new WaitForSeconds(attackCooldown);  // 공격 쿨타임 대기
+                // 공격 후 쿨타임 설정
+                canAttack = false;
+                yield return new WaitForSeconds(attackCooldown);  // 공격 쿨타임 대기
+                canAttack = true; // 쿨타임이 끝나면 다시 공격 가능
+            }
+            else
+            {
+                // 플레이어가 공격 범위를 벗어난 경우 대기
+                yield return null; // 다음 프레임으로 이동
+            }
         }
     }
 }

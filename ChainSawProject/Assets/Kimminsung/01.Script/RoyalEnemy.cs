@@ -9,12 +9,13 @@ public class RoyalEnemy : TestEnemy
     public float attackRange = 5f; // 공격 범위
     public float chaseSpeed = 3f; // 추적 속도
     public ParticleSystem deathParticles; // 죽을 때 사용할 파티클 시스템
-    public float damage = 10f; // 총알 데미지 설정
+    public float damage = 10f;
 
     private Animator animator;
     private Transform player; // 플레이어의 위치를 추적하기 위한 변수
     private Rigidbody2D rb; // Rigidbody2D 참조
     private float nextAttackTime = 0f; // 다음 공격까지 남은 시간
+    private bool isAttacking = false; // 공격 중인지 여부를 나타내는 변수
 
     private void Start()
     {
@@ -24,7 +25,6 @@ public class RoyalEnemy : TestEnemy
         maxHealth = health; // 최대 체력 설정
         animator = GetComponent<Animator>();
     }
-
 
     private void Update()
     {
@@ -69,6 +69,7 @@ public class RoyalEnemy : TestEnemy
     // 점프 공격 패턴
     private IEnumerator PerformJumpAttack()
     {
+        isAttacking = true; // 공격 상태로 설정
         animator.SetBool("RoyalRun", false); // RoyalRun 멈춤
         animator.SetBool("RoyalIdle", true); // RoyalIdle 대기 애니메이션 실행
 
@@ -80,25 +81,15 @@ public class RoyalEnemy : TestEnemy
 
         rb.velocity = Vector2.zero; // 속도 0으로 설정하여 공격 후 멈춤
         nextAttackTime = Time.time + attackCooldown; // 공격 쿨타임 설정
+
+        isAttacking = false; // 공격 상태 해제
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.collider.CompareTag("KPlayer"))
+        if (other.collider.CompareTag("KPlayer") && isAttacking) // 공격 중일 때만 데미지 입힘
         {
             Player player = other.collider.GetComponent<Player>(); // Player 스크립트 참조
-
-            if (player != null)
-            {
-                player.TakeHit(damage, transform.position); // 플레이어에게 피해 전달
-            }
-        }
-    }
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("KPlayer"))
-        {
-            Player player = other.GetComponent<Player>(); // Player 스크립트 참조
 
             if (player != null)
             {
