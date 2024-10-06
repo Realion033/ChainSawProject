@@ -5,7 +5,7 @@ using UnityEngine;
 
 public abstract class LivingEntity : MonoBehaviour, IDamageable_real
 {
-    protected float health;
+    public float health;
     public bool isDead = false;
     public bool isPanic = false;
     public virtual void TakeHit(float damage, Vector2 hitPos)

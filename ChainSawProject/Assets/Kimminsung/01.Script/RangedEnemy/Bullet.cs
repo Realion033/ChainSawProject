@@ -2,20 +2,20 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float damage = 10f; // ÃÑ¾Ë µ¥¹ÌÁö ¼³Á¤
+    public float damage = 10f; // ì´ì•Œ ë°ë¯¸ì§€ ì„¤ì •
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("KPlayer"))
         {
-            Player player = other.GetComponent<Player>(); // Player ½ºÅ©¸³Æ® ÂüÁ¶
+            Player player = other.GetComponent<Player>(); // Player ìŠ¤í¬ë¦½íŠ¸ ì°¸ì¡°
 
             if (player != null)
             {
-                player.TakeHit(damage, transform.position); // ÇÃ·¹ÀÌ¾î¿¡°Ô ÇÇÇØ Àü´Ş
+                player.TakeHit(damage, transform.position); // í”Œë ˆì´ì–´ì—ê²Œ í”¼í•´ ì „ë‹¬
             }
 
-            // ÃÑ¾Ë »èÁ¦
+            // ì´ì•Œ ì‚­ì œ
             Destroy(gameObject);
         }
     }

@@ -277,7 +277,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GroundLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 257
 --- !u!61 &5302527037384421717
 BoxCollider2D:
   m_ObjectHideFlags: 0
