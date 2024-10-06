@@ -82,6 +82,18 @@ public class RoyalEnemy : TestEnemy
         nextAttackTime = Time.time + attackCooldown; // 공격 쿨타임 설정
     }
 
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.collider.CompareTag("KPlayer"))
+        {
+            Player player = other.collider.GetComponent<Player>(); // Player 스크립트 참조
+
+            if (player != null)
+            {
+                player.TakeHit(damage, transform.position); // 플레이어에게 피해 전달
+            }
+        }
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("KPlayer"))
