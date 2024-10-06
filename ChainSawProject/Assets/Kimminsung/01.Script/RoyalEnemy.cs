@@ -82,6 +82,18 @@ public class RoyalEnemy : TestEnemy
         nextAttackTime = Time.time + attackCooldown; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     }
 
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.collider.CompareTag("KPlayer"))
+        {
+            Player player = other.collider.GetComponent<Player>(); // Player ½ºÅ©¸³Æ® ÂüÁ¶
+
+            if (player != null)
+            {
+                player.TakeHit(damage, transform.position); // ÇÃ·¹ÀÌ¾î¿¡°Ô ÇÇÇØ Àü´Þ
+            }
+        }
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("KPlayer"))

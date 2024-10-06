@@ -47,11 +47,11 @@ public class EnemyFSM : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.CompareTag("KPlayer") && attackState.isAttackState == true)
+        if (other.collider.CompareTag("KPlayer") && attackState.isAttackState == true)
         {
-            Player player = other.GetComponent<Player>(); // Player 스크립트 참조
+            Player player = other.collider.GetComponent<Player>(); // Player 스크립트 참조
 
             if (player != null)
             {
@@ -59,6 +59,7 @@ public class EnemyFSM : MonoBehaviour
             }
         }
     }
+
 
     // 체력을 깎는 함수
     public void TakeHit(float damage)
