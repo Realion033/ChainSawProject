@@ -8184,6 +8184,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: KnifeEnemy (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1356547671467324475, guid: 721b62efe5f8cc844b7e446f1a001bcf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8136035255908864750, guid: 721b62efe5f8cc844b7e446f1a001bcf, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8245,6 +8253,14 @@ PrefabInstance:
     - target: {fileID: 1356547671467324475, guid: 721b62efe5f8cc844b7e446f1a001bcf, type: 3}
       propertyPath: m_Name
       value: KnifeEnemy (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1356547671467324475, guid: 721b62efe5f8cc844b7e446f1a001bcf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8136035255908864750, guid: 721b62efe5f8cc844b7e446f1a001bcf, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8308,6 +8324,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: KnifeEnemy (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 1356547671467324475, guid: 721b62efe5f8cc844b7e446f1a001bcf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8136035255908864750, guid: 721b62efe5f8cc844b7e446f1a001bcf, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8369,6 +8393,14 @@ PrefabInstance:
     - target: {fileID: 1356547671467324475, guid: 721b62efe5f8cc844b7e446f1a001bcf, type: 3}
       propertyPath: m_Name
       value: KnifeEnemy (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1356547671467324475, guid: 721b62efe5f8cc844b7e446f1a001bcf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8136035255908864750, guid: 721b62efe5f8cc844b7e446f1a001bcf, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8432,6 +8464,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: KnifeEnemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1356547671467324475, guid: 721b62efe5f8cc844b7e446f1a001bcf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8136035255908864750, guid: 721b62efe5f8cc844b7e446f1a001bcf, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8493,6 +8533,10 @@ PrefabInstance:
     - target: {fileID: 1356547671467324475, guid: 721b62efe5f8cc844b7e446f1a001bcf, type: 3}
       propertyPath: m_Name
       value: KnifeEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8136035255908864750, guid: 721b62efe5f8cc844b7e446f1a001bcf, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8556,6 +8600,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: KnifeEnemy (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 1356547671467324475, guid: 721b62efe5f8cc844b7e446f1a001bcf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8136035255908864750, guid: 721b62efe5f8cc844b7e446f1a001bcf, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8617,6 +8669,14 @@ PrefabInstance:
     - target: {fileID: 1356547671467324475, guid: 721b62efe5f8cc844b7e446f1a001bcf, type: 3}
       propertyPath: m_Name
       value: KnifeEnemy (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1356547671467324475, guid: 721b62efe5f8cc844b7e446f1a001bcf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8136035255908864750, guid: 721b62efe5f8cc844b7e446f1a001bcf, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8680,6 +8740,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: KnifeEnemy (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1356547671467324475, guid: 721b62efe5f8cc844b7e446f1a001bcf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8136035255908864750, guid: 721b62efe5f8cc844b7e446f1a001bcf, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8741,6 +8809,14 @@ PrefabInstance:
     - target: {fileID: 1356547671467324475, guid: 721b62efe5f8cc844b7e446f1a001bcf, type: 3}
       propertyPath: m_Name
       value: KnifeEnemy (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1356547671467324475, guid: 721b62efe5f8cc844b7e446f1a001bcf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8136035255908864750, guid: 721b62efe5f8cc844b7e446f1a001bcf, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
