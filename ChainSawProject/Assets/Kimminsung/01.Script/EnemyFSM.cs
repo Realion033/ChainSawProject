@@ -33,6 +33,7 @@ public class EnemyFSM : MonoBehaviour
         currentState = idleState; // 초기 상태는 Idle
         currentState.EnterState(this);
         player = GameObject.FindGameObjectWithTag("KPlayer").transform;
+        
     }
 
     private void Update()
@@ -49,13 +50,16 @@ public class EnemyFSM : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.collider.CompareTag("KPlayer") && attackState.isAttackState == true)
+        if(attackState.isAttackState == true)
         {
-            Player player = other.collider.GetComponent<Player>(); // Player 스크립트 참조
-
-            if (player != null)
+            if (other.collider.CompareTag("KPlayer"))
             {
-                player.TakeHit(damage, transform.position); // 플레이어에게 피해 전달
+                Player player = other.collider.GetComponent<Player>(); // Player 스크립트 참조
+
+                if (player != null)
+                {
+                    player.TakeHit(damage, transform.position); // 플레이어에게 피해 전달
+                }
             }
         }
     }
