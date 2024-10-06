@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: 1
   m_EditorClassIdentifier: 
   level: {fileID: 6675637871147116856, guid: 2e9dfdd5a20cf6a48851163833c26def, type: 3}
+  SpawnPoints: {x: -15, y: -5, z: 0}

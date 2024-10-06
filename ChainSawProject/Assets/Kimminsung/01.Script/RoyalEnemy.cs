@@ -9,7 +9,7 @@ public class RoyalEnemy : TestEnemy
     public float attackRange = 5f; // ���� ����
     public float chaseSpeed = 3f; // ���� �ӵ�
     public ParticleSystem deathParticles; // ���� �� ����� ��ƼŬ �ý���
-    public float damage = 10f; // �Ѿ� ������ ����
+    public float damage = 1.6f; // �Ѿ� ������ ����
 
     private Animator animator;
     private Transform player; // �÷��̾��� ��ġ�� �����ϱ� ���� ����
