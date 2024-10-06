@@ -138035,7 +138035,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3643352000813898878}
   - component: {fileID: 1256414884285743634}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Level1
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -138085,7 +138085,7 @@ GameObject:
   - component: {fileID: 1048486530102398287}
   - component: {fileID: 1683017485522179204}
   - component: {fileID: 463909175344346139}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: BG_Iside
   m_TagString: Ground
   m_Icon: {fileID: 0}
