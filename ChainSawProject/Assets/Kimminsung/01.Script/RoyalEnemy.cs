@@ -89,7 +89,7 @@ public class RoyalEnemy : TestEnemy
         nextAttackTime = Time.time + attackCooldown; // ���� ��Ÿ�� ����
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnCollisionStay2D(Collision2D other)
     {
         if (other.collider.CompareTag("KPlayer"))
         {
@@ -101,7 +101,7 @@ public class RoyalEnemy : TestEnemy
             }
         }
     }
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("KPlayer"))
         {
