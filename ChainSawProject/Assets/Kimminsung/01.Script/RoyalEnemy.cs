@@ -12,7 +12,7 @@ public class RoyalEnemy : TestEnemy
     public float damage = 10f;
 
     private Animator animator;
-    private Transform player; // 플레이어의 위치를 추적하기 위한 변수
+    private Transform player ; // 플레이어의 위치를 추적하기 위한 변수
     private Rigidbody2D rb; // Rigidbody2D 참조
     private float nextAttackTime = 0f; // 다음 공격까지 남은 시간
     private bool isAttacking = false; // 공격 중인지 여부를 나타내는 변수
