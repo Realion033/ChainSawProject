@@ -1,174 +1,146 @@
 using System.Collections;
 using UnityEngine;
 
-public class ShieldEnemy : MonoBehaviour
+public class ShildEnemy : TestEnemy
 {
-    public float health = 25f; // 적 체력
-    public float shieldHealth = 200f; // 방패 체력
-    public float damage = 10f; // 공격 데미지
-    public float dashSpeed = 5f; // 돌진 속도
-    public float dashDistance = 3f; // 돌진 거리
-    public float invulnerableTime = 3f; // 무적 시간
-    public float chaseSpeed = 2f; // 플레이어 추적 속도
-    public float chaseRange = 10f; // 플레이어를 추적할 범위
-    public float dashRange = 3f; // 돌진 공격을 실행할 범위
-    public GameObject deathEffect; // 사망 이펙트 파티클 시스템
+    public float jumpHeight = 5f; // 점프 높이
+    public float fallSpeed = 10f; // 낙하 속도
+    public float attackCooldown = 7f; // 공격 쿨타임
+    public float attackRange = 10f; // 공격 범위
+    public float chaseSpeed = 3f; // 추적 속도
+    public ParticleSystem deathParticles; // 죽을 때 사용할 파티클 시스템
+    public float damage = 10f;
 
-    private bool isDashing = false;
-    private bool isInvulnerable = false;
-
+    private Animator animator;
     private Transform player; // 플레이어의 위치를 추적하기 위한 변수
     private Rigidbody2D rb; // Rigidbody2D 참조
-    private Animator animator; // 애니메이터 참조
+    private float nextAttackTime = 0f; // 다음 공격까지 남은 시간
+    private bool isAttacking = false; // 공격 중인지 여부를 나타내는 변수
 
-    void Start()
+    private void Start()
     {
-        rb = GetComponent<Rigidbody2D>(); // Rigidbody2D 컴포넌트 가져오기
-        rb.constraints = RigidbodyConstraints2D.FreezePositionY; // Y축 움직임 고정
-        player = GameObject.FindGameObjectWithTag("KPlayer").transform; // 플레이어 오브젝트 찾기
-        animator = GetComponent<Animator>(); // Animator 컴포넌트 가져오기
+        rb = GetComponent<Rigidbody2D>(); // Rigidbody2D 컴포넌트
+        player = GameObject.FindGameObjectWithTag("KPlayer").transform; // 플레이어 게임 오브젝트 찾기
+        health = 100f; // RoyalEnemy의 체력
+        maxHealth = health; // 최대 체력 설정
+        animator = GetComponent<Animator>();
     }
 
-    void Update()
+    private void Update()
     {
-        if (health > 0 && player != null)
+        if (isDead) return;
+
+        if (health <= 0)
         {
-            float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+            Die();
+            return;
+        }
 
-            // 플레이어가 추적 범위 내에 있을 때
-            if (distanceToPlayer < chaseRange && distanceToPlayer > dashRange)
-            {
-                ChasePlayer();
-                animator.SetBool("ShieldRun", true); // 걷는 애니메이션 재생
-                animator.SetBool("ShieldIdle", false); // 대기 상태는 끔
-            }
-            // 추적 범위를 벗어났을 때
-            else
-            {
-                rb.velocity = Vector2.zero; // 멈춤
-                animator.SetBool("ShieldRun", false); // 걷기 애니메이션 끔
-                animator.SetBool("ShieldIdle", true); // 대기 애니메이션 재생
-            }
+        float distanceToPlayer = Mathf.Abs(player.position.x - transform.position.x); // 플레이어와의 거리 계산
 
-            // 플레이어가 돌진 공격 범위 내에 있을 때
-            if (distanceToPlayer <= dashRange && !isDashing)
-            {
-                StartCoroutine(DashAttack());
-            }
+        // 쿨다운 체크 추가
+        if (Time.time < nextAttackTime)
+        {
+            // 쿨다운 동안 플레이어를 추적만 하도록 설정
+            Vector2 direction = new Vector2(player.position.x - transform.position.x, 0).normalized;
+            rb.velocity = new Vector2(direction.x * chaseSpeed, rb.velocity.y);
+            return;
+        }
 
-            // 방패 방어 무적 패턴
-            if (Input.GetKeyDown(KeyCode.LeftShift)) // 방패 방어 트리거
-            {
-                StartCoroutine(ActivateInvulnerability());
-            }
+        Vector2 chaseDirection = new Vector2(player.position.x - transform.position.x, 0).normalized;
 
-            // 적이 죽었을 때
-            if (health <= 0)
-            {
-                Die();
-            }
+        if (distanceToPlayer > attackRange)
+        {
+            ChasePlayer();
+        }
+        else if (distanceToPlayer <= attackRange)
+        {
+            StartCoroutine(PerformJumpAttack());
+        }
+    }
+
+    private void ChasePlayer()
+    {
+        Vector2 direction = new Vector2(player.position.x - transform.position.x, 0).normalized;
+        if (direction.x > 0.3f)
+        {
+            rb.velocity = new Vector2(direction.x * chaseSpeed, rb.velocity.y);
+
+            animator.SetBool("SheildRun", true);
+            animator.SetBool("SheildIdle", false);
         }
         else
         {
-            Destroy(gameObject); // 적이 죽으면 오브젝트 제거
+            rb.velocity = Vector2.zero;
         }
     }
 
-    // 플레이어를 추적하는 함수
-    void ChasePlayer()
+    private IEnumerator PerformJumpAttack()
     {
-        Vector2 direction = (player.position - transform.position).normalized; // 플레이어 쪽으로 방향 계산
-        rb.velocity = direction * chaseSpeed; // 추적 속도만큼 이동
+        if (isAttacking) yield break; // 이미 공격 중이면 종료
+
+        isAttacking = true;
+        animator.SetBool("SheildRun", true);
+        animator.SetBool("SheildIdle", false);
+
+        // 공격 방향 계산
+        Vector2 attackDirection = new Vector2(player.position.x - transform.position.x, 0).normalized;
+
+        // X축으로만 이동하기 위한 속도 설정
+        float xMovement = 10f;
+        rb.velocity = new Vector2(xMovement * Mathf.Sign(attackDirection.x), 0);
+
+        // X축으로 이동 유지
+        yield return new WaitForSeconds(0.5f);
+
+        // 공격 종료 후 상태 설정
+        rb.velocity = Vector2.zero;
+        nextAttackTime = Time.time + attackCooldown; // 쿨다운 시간 설정
+
+        isAttacking = false;
     }
 
-    // 돌진 공격 패턴
-    IEnumerator DashAttack()
+    private void OnCollisionStay2D(Collision2D other)
     {
-        if (!isDashing)
+        if (other.collider.CompareTag("KPlayer") && isAttacking)
         {
-            isDashing = true;
-            Debug.Log("돌진 공격 시작"); // 돌진 전 디버그 메시지
+            Player player = other.collider.GetComponent<Player>();
 
-            Vector2 dashDirection = (player.position - transform.position).normalized; // 플레이어 쪽으로 돌진
-            Vector2 targetPosition = (Vector2)transform.position + dashDirection * dashDistance; // 돌진 목표 위치 계산
-
-            // 돌진하는 동안 바로 목표 위치로 이동
-            rb.MovePosition(targetPosition);
-
-            // 플레이어에게 피해를 주기
-            Player playerScript = player.GetComponent<Player>(); // 플레이어 스크립트 참조
-            if (playerScript != null)
+            if (player != null)
             {
-                playerScript.TakeHit(damage, transform.position); // 플레이어에게 데미지 전달
-            }
-            
-
-            // 돌진 후 잠깐의 대기시간 (2초 동안 멈춤)
-            rb.velocity = Vector2.zero; // 속도 0으로 설정하여 멈추게 함
-            yield return new WaitForSeconds(2f); // 2초 동안 멈춤
-
-            isDashing = false; // 돌진 완료 후 다시 돌진 가능하게 설정
-        }
-
-        void OnTriggerEnter2D(Collider2D other)
-        {
-            if (other.CompareTag("KPlayer"))
-            {
-                Player player = other.GetComponent<Player>(); // Player 스크립트 참조
-
-                if (player != null)
-                {
-                    player.TakeHit(damage, transform.position); // 플레이어에게 피해 전달
-                }
+                player.TakeHit(damage, transform.position);
             }
         }
     }
 
-    // 방패 무적 상태 활성화
-    IEnumerator ActivateInvulnerability()
+    public override void DieEffect()
     {
-        if (!isInvulnerable)
-        {
-            isInvulnerable = true;
-            yield return new WaitForSeconds(invulnerableTime);
-            isInvulnerable = false;
-        }
-    }
+        base.DieEffect();
 
-    // 적이 죽는 함수
-    void Die()
-    {
-        animator.SetBool("ShieldDie", true); // 죽는 애니메이션 재생
-        rb.velocity = Vector2.zero; // 멈추게 함
-
-        // 사망 이펙트 파티클 시스템 생성
-        if (deathEffect != null)
+        if (deathParticles != null)
         {
-            Instantiate(deathEffect, transform.position, Quaternion.identity);
+            Instantiate(deathParticles, transform.position, Quaternion.identity);
         }
 
-        Destroy(gameObject, 2f); // 2초 후 오브젝트 제거
+        StartCoroutine(DieAndPause());
+        player.GetComponent<LivingEntity>().health = player.GetComponent<Player>()._playerStat.playerHealth;
     }
 
-    // 피해 받는 함수
-    public void TakeDamage(float amount)
+    private IEnumerator DieAndPause()
     {
-        if (!isInvulnerable)
-        {
-            if (shieldHealth > 0)
-            {
-                shieldHealth -= amount; // 방패 체력 소모
-            }
-            else
-            {
-                health -= amount; // 방패 체력이 0이면 실제 체력 소모
-            }
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(0.16f);
+        Time.timeScale = 1;
+        Destroy(gameObject);
+    }
 
-            // 적이 죽었을 경우
-            if (health <= 0)
-            {
-                Die();
-            }
+    public override void TakeHit(float damage, Vector2 hitPos)
+    {
+        base.TakeHit(damage, hitPos);
+
+        if (health <= 0)
+        {
+            DieEffect();
         }
     }
 }

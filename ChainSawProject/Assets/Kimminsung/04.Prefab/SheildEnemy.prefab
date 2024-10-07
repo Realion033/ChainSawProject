@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8136035255908864750}
   - component: {fileID: 5363739328013936833}
   - component: {fileID: 6374155584112330355}
-  - component: {fileID: 3059391276086558866}
+  - component: {fileID: 5145682210671364915}
   m_Layer: 7
   m_Name: SheildEnemy
   m_TagString: Enemy
@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 449e82b4b981cac4b897a58ebbe4722c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3059391276086558866
+--- !u!114 &5145682210671364915
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -194,20 +194,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1356547671467324475}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0294876054f954478a756ad9a31d8b3, type: 3}
+  m_Script: {fileID: 11500000, guid: f9143f49bf87cb64fa3f0eb433d5b85d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
   isDead: 0
   isPanic: 0
-  f: {fileID: 1356547671467324475}
-  _blood: {fileID: 4537264005920015897, guid: 2861bf13598eac14ebc11a587e1b3712, type: 3}
-  maxHealth: 5
+  f: {fileID: 0}
+  _blood: {fileID: 0}
+  maxHealth: 0
   jumpHeight: 5
   fallSpeed: 10
-  attackCooldown: 7
-  attackRange: 5
+  attackCooldown: 3
+  attackRange: 3
   chaseSpeed: 3
-  deathParticles: {fileID: 4537264005920015897, guid: 2861bf13598eac14ebc11a587e1b3712, type: 3}
+  deathParticles: {fileID: 0}
   damage: 10
 --- !u!1 &6873289890842453368
 GameObject:

@@ -170,6 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0294876054f954478a756ad9a31d8b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
   isDead: 0
   isPanic: 0
   f: {fileID: 1356547671467324475}
@@ -177,8 +178,8 @@ MonoBehaviour:
   maxHealth: 5
   jumpHeight: 5
   fallSpeed: 10
-  attackCooldown: 3
-  attackRange: 7
+  attackCooldown: 2
+  attackRange: 12.66
   chaseSpeed: 3
   deathParticles: {fileID: 4537264005920015897, guid: 2861bf13598eac14ebc11a587e1b3712, type: 3}
   damage: 10

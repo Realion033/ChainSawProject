@@ -174,6 +174,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: KnifeEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 1356547671467324475, guid: 721b62efe5f8cc844b7e446f1a001bcf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -234,10 +238,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: SheildEnemy
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 1356547671467324475, guid: 1ea2f117afb73fa46831308b87fa82f1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3059391276086558866, guid: 1ea2f117afb73fa46831308b87fa82f1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1356547671467324475, guid: 1ea2f117afb73fa46831308b87fa82f1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1978206959}
   m_SourcePrefab: {fileID: 100100000, guid: 1ea2f117afb73fa46831308b87fa82f1, type: 3}
 --- !u!1001 &1139977525
 PrefabInstance:
@@ -313,6 +325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76a91cb37d575064abe3ddad4ea44d9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
   isDead: 0
   isPanic: 0
   f: {fileID: 0}
@@ -377,11 +390,49 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoyalEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 1356547671467324475, guid: 6b691a8844918f04d912774e9cbe4bb6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2787599521480177036, guid: 6b691a8844918f04d912774e9cbe4bb6, type: 3}
+      propertyPath: attackRange
+      value: 12.66
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b691a8844918f04d912774e9cbe4bb6, type: 3}
+--- !u!1 &1978206951 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1356547671467324475, guid: 1ea2f117afb73fa46831308b87fa82f1, type: 3}
+  m_PrefabInstance: {fileID: 928297200}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1978206959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978206951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9143f49bf87cb64fa3f0eb433d5b85d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  isDead: 0
+  isPanic: 0
+  f: {fileID: 0}
+  _blood: {fileID: 0}
+  maxHealth: 0
+  jumpHeight: 5
+  fallSpeed: 10
+  attackCooldown: 3
+  attackRange: 3
+  chaseSpeed: 3
+  deathParticles: {fileID: 0}
+  damage: 10
 --- !u!1001 &2776547970686885462
 PrefabInstance:
   m_ObjectHideFlags: 0
