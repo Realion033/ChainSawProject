@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class RoyalEnemy : TestEnemy
 {
+<<<<<<< HEAD
     public float jumpHeight = 5f; // 占쏙옙占쏙옙 占쏙옙占쏙옙
     public float fallSpeed = 10f; // 占쏙옙占쏙옙 占쌈듸옙
     public float attackCooldown = 7f; // 占쏙옙占쏙옙 占쏙옙타占쏙옙
@@ -15,6 +16,21 @@ public class RoyalEnemy : TestEnemy
     private Transform player; // 占시뤄옙占싱억옙占쏙옙 占쏙옙치占쏙옙 占쏙옙占쏙옙占싹깍옙 占쏙옙占쏙옙 占쏙옙占쏙옙
     private Rigidbody2D rb; // Rigidbody2D 占쏙옙占쏙옙
     private float nextAttackTime = 0f; // 占쏙옙占쏙옙 占쏙옙占쌥깍옙占쏙옙 占쏙옙占쏙옙 占시곤옙
+=======
+    public float jumpHeight = 5f; // ���� ����
+    public float fallSpeed = 10f; // ���� �ӵ�
+    public float attackCooldown = 7f; // ���� ��Ÿ��
+    public float attackRange = 10f; // ���� ����
+    public float chaseSpeed = 3f; // ���� �ӵ�
+    public ParticleSystem deathParticles; // ���� �� ����� ��ƼŬ �ý���
+    public float damage = 10f;
+
+    private Animator animator;
+    private Transform player ; // �÷��̾��� ��ġ�� �����ϱ� ���� ����
+    private Rigidbody2D rb; // Rigidbody2D ����
+    private float nextAttackTime = 0f; // ���� ���ݱ��� ���� �ð�
+    private bool isAttacking = false; // ���� ������ ���θ� ��Ÿ���� ����
+>>>>>>> Kiminsung
 
     private void Start()
     {
@@ -71,6 +87,7 @@ public class RoyalEnemy : TestEnemy
     // 占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙
     private IEnumerator PerformJumpAttack()
     {
+<<<<<<< HEAD
         animator.SetBool("RoyalRun", false); // RoyalRun 占쏙옙占쏙옙
         animator.SetBool("RoyalIdle", true); // RoyalIdle 占쏙옙占?占쌍니몌옙占싱쇽옙 占쏙옙占쏙옙
 
@@ -79,6 +96,22 @@ public class RoyalEnemy : TestEnemy
         rb.velocity = new Vector2(attackDirection.x, 0) * fallSpeed; // X占쏙옙占쏙옙占싸몌옙 占쏙옙占쏙옙
 
         yield return new WaitForSeconds(0.3f); // 占쏙옙占쏙옙 占쏙옙 占쏙옙占?
+=======
+        isAttacking = true;
+        animator.SetBool("RoyalRun", true);
+        animator.SetBool("RoyalIdle", false);
+
+        Vector2 attackDirection = new Vector2(player.position.x - transform.position.x, jumpHeight).normalized;
+
+        rb.velocity = new Vector2(attackDirection.x * chaseSpeed, jumpHeight);
+    
+        yield return new WaitForSeconds(0.5f);
+        float xMovement = 20f;
+
+        rb.velocity = new Vector2(xMovement * Mathf.Sign(attackDirection.x), -fallSpeed);
+
+        yield return new WaitForSeconds(0.1f);
+>>>>>>> Kiminsung
 
         rb.velocity = Vector2.zero; // 占쌈듸옙 0占쏙옙占쏙옙 占쏙옙占쏙옙占싹울옙 占쏙옙占쏙옙 占쏙옙 占쏙옙占쏙옙
         nextAttackTime = Time.time + attackCooldown; // 占쏙옙占쏙옙 占쏙옙타占쏙옙 占쏙옙占쏙옙
