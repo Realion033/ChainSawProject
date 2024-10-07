@@ -33,7 +33,6 @@ public class EnemyFSM : MonoBehaviour
         currentState = idleState; // 초기 상태는 Idle
         currentState.EnterState(this);
         player = GameObject.FindGameObjectWithTag("KPlayer").transform;
-        
     }
 
     private void Update()
@@ -47,10 +46,10 @@ public class EnemyFSM : MonoBehaviour
             currentState.UpdateState(this);
         }
     }
-
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnCollisionStay2D(Collision2D other)
     {
-        if(attackState.isAttackState == true)
+        // 공격 상태일 때만 플레이어에게 피해를 줌
+        if (currentState is AttackState attackState && attackState.isAttackState)
         {
             if (other.collider.CompareTag("KPlayer"))
             {
@@ -63,7 +62,6 @@ public class EnemyFSM : MonoBehaviour
             }
         }
     }
-
 
     // 체력을 깎는 함수
     public void TakeHit(float damage)
