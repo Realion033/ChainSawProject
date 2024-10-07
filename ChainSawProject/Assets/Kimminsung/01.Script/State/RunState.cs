@@ -18,17 +18,6 @@ public class RunState : IEnemyState
         {
             enemy.ChangeState(enemy.attackState);
         }
-        else
-        {
-            // 플레이어를 계속 따라가도록 이동
-            Vector2 direction = (enemy.player.position - enemy.transform.position).normalized;
-
-            // X축과 Y축 모두 이동 가능
-            enemy.transform.position = new Vector2(
-                enemy.transform.position.x + direction.x * Time.deltaTime * 2, // X축 이동
-                enemy.transform.position.y + direction.y * Time.deltaTime * 2  // Y축 이동
-            );
-        }
     }
 
     public void ExitState(EnemyFSM enemy)

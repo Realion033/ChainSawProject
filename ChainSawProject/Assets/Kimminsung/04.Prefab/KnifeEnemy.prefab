@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1523326393554045264}
   - component: {fileID: 8136035255908864750}
   - component: {fileID: 6374155584112330355}
-  - component: {fileID: 1959764793297030116}
   - component: {fileID: 3604558969697000622}
   m_Layer: 7
   m_Name: KnifeEnemy
@@ -158,26 +157,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 449e82b4b981cac4b897a58ebbe4722c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1959764793297030116
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1356547671467324475}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d000f06800d8be47bc0cc7604009abc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 2097320952890032511}
-  damage: 5
-  health: 2
-  maxHealth: 2
-  player: {fileID: 0}
-  detectionRange: 5
-  attackRange: 1
-  deathParticles: {fileID: 4537264005920015897, guid: 2861bf13598eac14ebc11a587e1b3712, type: 3}
 --- !u!50 &3604558969697000622
 Rigidbody2D:
   serializedVersion: 4

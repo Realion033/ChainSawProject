@@ -46,8 +46,7 @@ public class EnemyFSM : MonoBehaviour
             currentState.UpdateState(this);
         }
     }
-
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnCollisionStay2D(Collision2D other)
     {
         // 공격 상태일 때만 플레이어에게 피해를 줌
         if (currentState is AttackState attackState && attackState.isAttackState)

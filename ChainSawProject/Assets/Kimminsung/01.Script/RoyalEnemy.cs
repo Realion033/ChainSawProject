@@ -84,8 +84,7 @@ public class RoyalEnemy : TestEnemy
 
         isAttacking = false; // 공격 상태 해제
     }
-
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnCollisionStay2D(Collision2D other)
     {
         if (other.collider.CompareTag("KPlayer") && isAttacking) // 공격 중일 때만 데미지 입힘
         {
@@ -97,6 +96,7 @@ public class RoyalEnemy : TestEnemy
             }
         }
     }
+
 
     // 적이 죽었을 때 호출되는 함수
     public override void DieEffect()
