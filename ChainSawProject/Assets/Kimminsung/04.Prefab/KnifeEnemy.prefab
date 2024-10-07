@@ -14,13 +14,14 @@ GameObject:
   - component: {fileID: 8136035255908864750}
   - component: {fileID: 6374155584112330355}
   - component: {fileID: 3604558969697000622}
+  - component: {fileID: 5459235966854979326}
   m_Layer: 7
   m_Name: KnifeEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &436697386499619840
 Transform:
   m_ObjectHideFlags: 0
@@ -184,6 +185,31 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &5459235966854979326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356547671467324475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76a91cb37d575064abe3ddad4ea44d9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  isDead: 0
+  isPanic: 0
+  f: {fileID: 0}
+  _blood: {fileID: 0}
+  maxHealth: 0
+  jumpHeight: 5
+  fallSpeed: 10
+  attackCooldown: 3
+  attackRange: 5
+  chaseSpeed: 3
+  deathParticles: {fileID: 0}
+  damage: 10
 --- !u!1 &5939217119104761474
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ public class RoyalEnemy : TestEnemy
     public float jumpHeight = 5f; // 점프 높이
     public float fallSpeed = 10f; // 낙하 속도
     public float attackCooldown = 7f; // 공격 쿨타임
-    public float attackRange = 5f; // 공격 범위
+    public float attackRange = 10f; // 공격 범위
     public float chaseSpeed = 3f; // 추적 속도
     public ParticleSystem deathParticles; // 죽을 때 사용할 파티클 시스템
     public float damage = 10f;
@@ -70,13 +70,19 @@ public class RoyalEnemy : TestEnemy
     private IEnumerator PerformJumpAttack()
     {
         isAttacking = true;
-        animator.SetBool("RoyalRun", false);
-        animator.SetBool("RoyalIdle", true);
+        animator.SetBool("RoyalRun", true);
+        animator.SetBool("RoyalIdle", false);
 
-        Vector2 attackDirection = new Vector2(player.position.x - transform.position.x, 0).normalized;
-        rb.velocity = new Vector2(attackDirection.x, 0) * fallSpeed;
+        Vector2 attackDirection = new Vector2(player.position.x - transform.position.x, jumpHeight).normalized;
 
-        yield return new WaitForSeconds(0.3f);
+        rb.velocity = new Vector2(attackDirection.x * chaseSpeed, jumpHeight);
+    
+        yield return new WaitForSeconds(0.5f);
+        float xMovement = 20f;
+
+        rb.velocity = new Vector2(xMovement * Mathf.Sign(attackDirection.x), -fallSpeed);
+
+        yield return new WaitForSeconds(0.1f);
 
         rb.velocity = Vector2.zero;
         nextAttackTime = Time.time + attackCooldown;

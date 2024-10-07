@@ -21,7 +21,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &436697386499619840
 Transform:
   m_ObjectHideFlags: 0
@@ -179,7 +179,7 @@ MonoBehaviour:
   jumpHeight: 5
   fallSpeed: 10
   attackCooldown: 2
-  attackRange: 7
+  attackRange: 12.66
   chaseSpeed: 3
   deathParticles: {fileID: 4537264005920015897, guid: 2861bf13598eac14ebc11a587e1b3712, type: 3}
   damage: 10
