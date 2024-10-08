@@ -24,7 +24,7 @@ public class Skill : MonoBehaviour
         _playerInput = GetComponentInParent<PlayerInput>();
         _playerCooldownSO = new PlayerCooldownSO();
 
-        _skillEnum = Skills.GiantChange;
+        _skillEnum = Skills.FinalAttack;
     }
 
     private void Awake()

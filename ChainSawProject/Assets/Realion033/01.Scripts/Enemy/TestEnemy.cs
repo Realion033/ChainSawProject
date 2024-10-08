@@ -20,8 +20,8 @@ public class TestEnemy : LivingEntity
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _collider2 = GetComponent<CapsuleCollider2D>();
         _slider = GetComponentInChildren<Slider>();
-        maxHealth = 300;
-        health = 300;
+        maxHealth = 50;
+        health = 50;
     }
     private void Update()
     {
@@ -103,7 +103,7 @@ public class TestEnemy : LivingEntity
     {
         yield return new WaitForSeconds(2f);
         _collider2.isTrigger = false;
-        health = 300;
+        health = 50;
         _spriteRenderer.color = new Color(1f, 0f, 0f, 1f);
         _spriteRenderer.color = Color.white;
         isDead = false;

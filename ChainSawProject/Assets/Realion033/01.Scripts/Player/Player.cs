@@ -3,11 +3,12 @@ using System.Collections;
 using Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : LivingEntity
 {
     public PlayerStatSO _playerStat;
-
+    public Slider _healthBar;
     private SpriteRenderer _spriteRenderer;
     private CinemachineImpulseSource _source;
     private PlayerInput playerInput;
@@ -39,6 +40,9 @@ public class Player : LivingEntity
         {
             TakeHit(10, Vector2.zero);
         }
+
+        //health bar
+        _healthBar.value = health / _playerStat.playerHealth;
     }
 
     public override void TakeHit(float damage, Vector2 hitPos)
