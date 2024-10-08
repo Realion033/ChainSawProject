@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class RoyalEnemy : TestEnemy
+public class RoyalEnemy : LivingEntity
 {
     public float jumpHeight = 5f; // ���� ����
     public float fallSpeed = 10f; // ���� �ӵ�
@@ -10,6 +10,7 @@ public class RoyalEnemy : TestEnemy
     public float chaseSpeed = 3f; // ���� �ӵ�
     public ParticleSystem deathParticles; // ���� �� ������ ��ƼŬ �ý���
     public float damage = 10f;
+    public float maxHealth;
 
     private Animator animator;
     private Transform player ; // �÷��̾��� ��ġ�� �����ϱ� ���� ����
@@ -129,7 +130,7 @@ public class RoyalEnemy : TestEnemy
         }
 
         // 占쌘뤄옙틴 占쏙옙占쏙옙: Time.timeScale 0 -> 占쏙옙占?-> Time.timeScale 1 占쏙옙占쏙옙
-        StartCoroutine(DieAndPause());
+        //StartCoroutine(DieAndPause());
 
         player.GetComponent<LivingEntity>().health = player.GetComponent<Player>()._playerStat.playerHealth;
     }

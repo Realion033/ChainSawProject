@@ -1,28 +1,29 @@
 using System.Collections;
 using UnityEngine;
 
-public class ShildEnemy : TestEnemy
+public class ShildEnemy : LivingEntity
 {
-    public float jumpHeight = 5f; // Á¡ÇÁ ³ôÀÌ
-    public float fallSpeed = 10f; // ³«ÇÏ ¼Óµµ
-    public float attackCooldown = 7f; // °ø°Ý ÄðÅ¸ÀÓ
-    public float attackRange = 10f; // °ø°Ý ¹üÀ§
-    public float chaseSpeed = 3f; // ÃßÀû ¼Óµµ
-    public ParticleSystem deathParticles; // Á×À» ¶§ »ç¿ëÇÒ ÆÄÆ¼Å¬ ½Ã½ºÅÛ
+    public float jumpHeight = 5f; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    public float fallSpeed = 10f; // ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½
+    public float attackCooldown = 7f; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½
+    public float attackRange = 10f; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    public float chaseSpeed = 3f; // ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½
+    public ParticleSystem deathParticles; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ¼Å¬ ï¿½Ã½ï¿½ï¿½ï¿½
     public float damage = 10f;
+    public float maxHealth;
 
     private Animator animator;
-    private Transform player; // ÇÃ·¹ÀÌ¾îÀÇ À§Ä¡¸¦ ÃßÀûÇÏ±â À§ÇÑ º¯¼ö
-    private Rigidbody2D rb; // Rigidbody2D ÂüÁ¶
-    private float nextAttackTime = 0f; // ´ÙÀ½ °ø°Ý±îÁö ³²Àº ½Ã°£
-    private bool isAttacking = false; // °ø°Ý ÁßÀÎÁö ¿©ºÎ¸¦ ³ªÅ¸³»´Â º¯¼ö
+    private Transform player; // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    private Rigidbody2D rb; // Rigidbody2D ï¿½ï¿½ï¿½ï¿½
+    private float nextAttackTime = 0f; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ý±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½
+    private bool isAttacking = false; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î¸ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>(); // Rigidbody2D ÄÄÆ÷³ÍÆ®
-        player = GameObject.FindGameObjectWithTag("KPlayer").transform; // ÇÃ·¹ÀÌ¾î °ÔÀÓ ¿ÀºêÁ§Æ® Ã£±â
-        health = 100f; // RoyalEnemyÀÇ Ã¼·Â
-        maxHealth = health; // ÃÖ´ë Ã¼·Â ¼³Á¤
+        rb = GetComponent<Rigidbody2D>(); // Rigidbody2D ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
+        player = GameObject.FindGameObjectWithTag("KPlayer").transform; // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® Ã£ï¿½ï¿½
+        health = 100f; // RoyalEnemyï¿½ï¿½ Ã¼ï¿½ï¿½
+        maxHealth = health; // ï¿½Ö´ï¿½ Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         animator = GetComponent<Animator>();
     }
 
@@ -36,12 +37,12 @@ public class ShildEnemy : TestEnemy
             return;
         }
 
-        float distanceToPlayer = Mathf.Abs(player.position.x - transform.position.x); // ÇÃ·¹ÀÌ¾î¿ÍÀÇ °Å¸® °è»ê
+        float distanceToPlayer = Mathf.Abs(player.position.x - transform.position.x); // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ ï¿½ï¿½ï¿½
 
-        // Äð´Ù¿î Ã¼Å© Ãß°¡
+        // ï¿½ï¿½Ù¿ï¿½ Ã¼Å© ï¿½ß°ï¿½
         if (Time.time < nextAttackTime)
         {
-            // Äð´Ù¿î µ¿¾È ÇÃ·¹ÀÌ¾î¸¦ ÃßÀû¸¸ ÇÏµµ·Ï ¼³Á¤
+            // ï¿½ï¿½Ù¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾î¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ïµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             Vector2 direction = new Vector2(player.position.x - transform.position.x, 0).normalized;
             rb.velocity = new Vector2(direction.x * chaseSpeed, rb.velocity.y);
             return;
@@ -77,25 +78,25 @@ public class ShildEnemy : TestEnemy
 
     private IEnumerator PerformJumpAttack()
     {
-        if (isAttacking) yield break; // ÀÌ¹Ì °ø°Ý ÁßÀÌ¸é Á¾·á
+        if (isAttacking) yield break; // ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½
 
         isAttacking = true;
         animator.SetBool("SheildRun", true);
         animator.SetBool("SheildIdle", false);
 
-        // °ø°Ý ¹æÇâ °è»ê
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
         Vector2 attackDirection = new Vector2(player.position.x - transform.position.x, 0).normalized;
 
-        // XÃàÀ¸·Î¸¸ ÀÌµ¿ÇÏ±â À§ÇÑ ¼Óµµ ¼³Á¤
+        // Xï¿½ï¿½ï¿½ï¿½ï¿½Î¸ï¿½ ï¿½Ìµï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½ ï¿½ï¿½ï¿½ï¿½
         float xMovement = 10f;
         rb.velocity = new Vector2(xMovement * Mathf.Sign(attackDirection.x), 0);
 
-        // XÃàÀ¸·Î ÀÌµ¿ À¯Áö
+        // Xï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½
         yield return new WaitForSeconds(0.5f);
 
-        // °ø°Ý Á¾·á ÈÄ »óÅÂ ¼³Á¤
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         rb.velocity = Vector2.zero;
-        nextAttackTime = Time.time + attackCooldown; // Äð´Ù¿î ½Ã°£ ¼³Á¤
+        nextAttackTime = Time.time + attackCooldown; // ï¿½ï¿½Ù¿ï¿½ ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½
 
         isAttacking = false;
     }
@@ -122,7 +123,7 @@ public class ShildEnemy : TestEnemy
             Instantiate(deathParticles, transform.position, Quaternion.identity);
         }
 
-        StartCoroutine(DieAndPause());
+        //StartCoroutine(DieAndPause());
         player.GetComponent<LivingEntity>().health = player.GetComponent<Player>()._playerStat.playerHealth;
     }
 

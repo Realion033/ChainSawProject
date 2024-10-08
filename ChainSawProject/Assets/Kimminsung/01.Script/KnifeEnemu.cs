@@ -1,51 +1,52 @@
 using System.Collections;
 using UnityEngine;
 
-public class KnifeEnemy : TestEnemy
+public class KnifeEnemy : LivingEntity
 {
-    public float jumpHeight = 5f; // Á¡ÇÁ ³ôÀÌ
-    public float fallSpeed = 10f; // ³«ÇÏ ¼Óµµ
-    public float attackCooldown = 7f; // °ø°Ý ÄðÅ¸ÀÓ
-    public float attackRange = 5f; // °ø°Ý ¹üÀ§
-    public float chaseSpeed = 3f; // ÃßÀû ¼Óµµ
-    public ParticleSystem deathParticles; // Á×À» ¶§ »ç¿ëÇÒ ÆÄÆ¼Å¬ ½Ã½ºÅÛ
+    public float jumpHeight = 5f; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    public float fallSpeed = 10f; // ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½
+    public float attackCooldown = 7f; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½
+    public float attackRange = 5f; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    public float chaseSpeed = 3f; // ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½
+    public ParticleSystem deathParticles; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ¼Å¬ ï¿½Ã½ï¿½ï¿½ï¿½
     public float damage = 10f;
+    public float maxHealth;
 
     private Animator animator;
-    private Transform player; // ÇÃ·¹ÀÌ¾îÀÇ À§Ä¡¸¦ ÃßÀûÇÏ±â À§ÇÑ º¯¼ö
-    private Rigidbody2D rb; // Rigidbody2D ÂüÁ¶
-    private float nextAttackTime = 0f; // ´ÙÀ½ °ø°Ý±îÁö ³²Àº ½Ã°£
-    private bool isAttacking = false; // °ø°Ý ÁßÀÎÁö ¿©ºÎ¸¦ ³ªÅ¸³»´Â º¯¼ö
+    private Transform player; // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    private Rigidbody2D rb; // Rigidbody2D ï¿½ï¿½ï¿½ï¿½
+    private float nextAttackTime = 0f; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ý±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½
+    private bool isAttacking = false; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î¸ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>(); // Rigidbody2D ÄÄÆ÷³ÍÆ® °¡Á®¿À±â
-        player = GameObject.FindGameObjectWithTag("KPlayer").transform; // ÇÃ·¹ÀÌ¾î ¿ÀºêÁ§Æ® Ã£±â
-        health = 100f; // RoyalEnemyÀÇ ÃÊ±â Ã¼·Â
-        maxHealth = health; // ÃÖ´ë Ã¼·Â ¼³Á¤
+        rb = GetComponent<Rigidbody2D>(); // Rigidbody2D ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        player = GameObject.FindGameObjectWithTag("KPlayer").transform; // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® Ã£ï¿½ï¿½
+        health = 100f; // RoyalEnemyï¿½ï¿½ ï¿½Ê±ï¿½ Ã¼ï¿½ï¿½
+        maxHealth = health; // ï¿½Ö´ï¿½ Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         animator = GetComponent<Animator>();
     }
 
     private void Update()
     {
-        if (isDead) return; // ÀûÀÌ Á×À¸¸é ¾Æ¹«°Íµµ ¾È ÇÔ
+        if (isDead) return; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Æ¹ï¿½ï¿½Íµï¿½ ï¿½ï¿½ ï¿½ï¿½
 
         if (health <= 0)
         {
             Die();
-            return; // Á×¾úÀ» ¶§´Â ´õ ÀÌ»ó ÁøÇàÇÏÁö ¾ÊÀ½
+            return; // ï¿½×¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ì»ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         }
 
-        float distanceToPlayer = Mathf.Abs(player.position.x - transform.position.x); // XÃà °Å¸® °è»ê
+        float distanceToPlayer = Mathf.Abs(player.position.x - transform.position.x); // Xï¿½ï¿½ ï¿½Å¸ï¿½ ï¿½ï¿½ï¿½
 
-        // ÇÃ·¹ÀÌ¾îÀÇ À§Ä¡¿¡¼­ X ÁÂÇ¥¸¸ »ç¿ëÇÏ°í, Y´Â ÇöÀç ÀûÀÇ Y À§Ä¡¸¦ °íÁ¤
+        // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½ X ï¿½ï¿½Ç¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï°ï¿½, Yï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Y ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         Vector2 direction = new Vector2(player.position.x - transform.position.x, 0).normalized;
 
-        // °ø°Ý ÁßÀÌ ¾Æ´Ò ¶§¸¸ ÃßÀû
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Æ´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (!isAttacking)
         {
-            animator.SetTrigger("Run"); // ´Þ¸®´Â ¾Ö´Ï¸ÞÀÌ¼Ç Æ®¸®°Å
-            rb.velocity = new Vector2(direction.x * chaseSpeed, rb.velocity.y); // ÃßÀû ¼Óµµ¸¸Å­ ÀÌµ¿
+            animator.SetTrigger("Run"); // ï¿½Þ¸ï¿½ï¿½ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ Æ®ï¿½ï¿½ï¿½ï¿½
+            rb.velocity = new Vector2(direction.x * chaseSpeed, rb.velocity.y); // ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½ï¿½ï¿½Å­ ï¿½Ìµï¿½
         }
 
         if (distanceToPlayer <= attackRange && Time.time >= nextAttackTime)
@@ -54,71 +55,71 @@ public class KnifeEnemy : TestEnemy
         }
     }
 
-    // Á¡ÇÁ °ø°Ý ÆÐÅÏ
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     private IEnumerator PerformJumpAttack()
     {
-        isAttacking = true; // °ø°Ý »óÅÂ·Î ¼³Á¤
-        animator.SetTrigger("Idle"); // Idle ¾Ö´Ï¸ÞÀÌ¼Ç Æ®¸®°Å
-        animator.SetTrigger("Attack"); // °ø°Ý ¾Ö´Ï¸ÞÀÌ¼Ç Æ®¸®°Å
+        isAttacking = true; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â·ï¿½ ï¿½ï¿½ï¿½ï¿½
+        animator.SetTrigger("Idle"); // Idle ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ Æ®ï¿½ï¿½ï¿½ï¿½
+        animator.SetTrigger("Attack"); // ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ Æ®ï¿½ï¿½ï¿½ï¿½
 
-        // °ø°Ý µ¿ÀÛÀ» XÃàÀ¸·Î¸¸ ÇÏµµ·Ï ¼öÁ¤
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Xï¿½ï¿½ï¿½ï¿½ï¿½Î¸ï¿½ ï¿½Ïµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         Vector2 attackDirection = new Vector2(player.position.x - transform.position.x, 0).normalized;
-        rb.velocity = new Vector2(attackDirection.x, 0) * fallSpeed; // XÃàÀ¸·Î¸¸ °ø°Ý
+        rb.velocity = new Vector2(attackDirection.x, 0) * fallSpeed; // Xï¿½ï¿½ï¿½ï¿½ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-        yield return new WaitForSeconds(0.3f); // °ø°Ý ÈÄ ´ë±â
+        yield return new WaitForSeconds(0.3f); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½
 
-        rb.velocity = Vector2.zero; // ¼Óµµ 0À¸·Î ¼³Á¤ÇÏ¿© °ø°Ý ÈÄ ¸ØÃã
-        nextAttackTime = Time.time + attackCooldown; // °ø°Ý ÄðÅ¸ÀÓ ¼³Á¤
+        rb.velocity = Vector2.zero; // ï¿½Óµï¿½ 0ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        nextAttackTime = Time.time + attackCooldown; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-        isAttacking = false; // °ø°Ý »óÅÂ ÇØÁ¦
+        isAttacking = false; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     }
 
     private void OnCollisionStay2D(Collision2D other)
     {
-        if (other.collider.CompareTag("KPlayer") && isAttacking) // °ø°Ý ÁßÀÏ ¶§¸¸ µ¥¹ÌÁö ÀÔÈû
+        if (other.collider.CompareTag("KPlayer") && isAttacking) // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         {
-            Player player = other.collider.GetComponent<Player>(); // Player ½ºÅ©¸³Æ® ÂüÁ¶
+            Player player = other.collider.GetComponent<Player>(); // Player ï¿½ï¿½Å©ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
 
             if (player != null)
             {
-                player.TakeHit(damage, transform.position); // ÇÃ·¹ÀÌ¾î¿¡°Ô ÇÇÇØ Àü´Þ
+                player.TakeHit(damage, transform.position); // ï¿½Ã·ï¿½ï¿½Ì¾î¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             }
         }
     }
 
-    // ÀûÀÌ Á×¾úÀ» ¶§ È£ÃâµÇ´Â ÇÔ¼ö
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½×¾ï¿½ï¿½ï¿½ ï¿½ï¿½ È£ï¿½ï¿½Ç´ï¿½ ï¿½Ô¼ï¿½
     public override void DieEffect()
     {
-        base.DieEffect(); // TestEnemyÀÇ DieEffect() È£Ãâ
+        base.DieEffect(); // TestEnemyï¿½ï¿½ DieEffect() È£ï¿½ï¿½
 
-        // ÆÄÆ¼Å¬ ½Ã½ºÅÛ ½ÇÇà
+        // ï¿½ï¿½Æ¼Å¬ ï¿½Ã½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (deathParticles != null)
         {
             Instantiate(deathParticles, transform.position, Quaternion.identity);
         }
 
-        // ÄÚ·çÆ¾ ½ÇÇà: Time.timeScale 0 -> ´ë±â -> Time.timeScale 1 º¹¿ø
-        StartCoroutine(DieAndPause());
+        // ï¿½Ú·ï¿½Æ¾ ï¿½ï¿½ï¿½ï¿½: Time.timeScale 0 -> ï¿½ï¿½ï¿½ -> Time.timeScale 1 ï¿½ï¿½ï¿½ï¿½
+        //StartCoroutine(DieAndPause());
     }
 
-    // ÄÚ·çÆ¾: Á×À» ¶§ Å¸ÀÓ½ºÄÉÀÏ º¯°æ ÈÄ ÀÏÁ¤ ½Ã°£ ´ë±â
+    // ï¿½Ú·ï¿½Æ¾: ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Å¸ï¿½Ó½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½
     private IEnumerator DieAndPause()
     {
-        Time.timeScale = 0; // °ÔÀÓ ÀÏ½ÃÁ¤Áö
-        yield return new WaitForSecondsRealtime(0.1f); // ½ÇÁ¦ ½Ã°£À¸·Î 0.1ÃÊ ´ë±â
-        Time.timeScale = 1; // ´Ù½Ã °ÔÀÓ Àç°³
-        Destroy(gameObject); // Àû ¿ÀºêÁ§Æ® »èÁ¦
+        Time.timeScale = 0; // ï¿½ï¿½ï¿½ï¿½ ï¿½Ï½ï¿½ï¿½ï¿½ï¿½ï¿½
+        yield return new WaitForSecondsRealtime(0.1f); // ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ï¿½ï¿½ 0.1ï¿½ï¿½ ï¿½ï¿½ï¿½
+        Time.timeScale = 1; // ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ç°³
+        Destroy(gameObject); // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
     }
 
-    // ÀûÀÌ ÇÇÇØ¸¦ ¹Þ´Â ÇÔ¼ö
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¸ï¿½ ï¿½Þ´ï¿½ ï¿½Ô¼ï¿½
     public override void TakeHit(float damage, Vector2 hitPos)
     {
         base.TakeHit(damage, hitPos);
 
-        // ÀûÀÌ Á×¾úÀ» ¶§ Ã³¸®
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½×¾ï¿½ï¿½ï¿½ ï¿½ï¿½ Ã³ï¿½ï¿½
         if (health <= 0)
         {
-            DieEffect(); // »ç¸Á ÀÌÆåÆ® È£Ãâ
+            DieEffect(); // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® È£ï¿½ï¿½
         }
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 public class Giman : Skill
 {
     public float DamageMultiple = 2f;
-    public float EffectTime = 3f;
+    public float EffectTime = 5f;
 
     public PlayerStatSO _playerStat;
 

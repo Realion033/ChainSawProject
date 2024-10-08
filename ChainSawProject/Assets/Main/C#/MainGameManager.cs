@@ -8,6 +8,7 @@ using UnityEngine.Video;
 
 public class MainGameManager : MonoBehaviour
 {
+    public PlayerStatSO _playerStat;
     public LivingEntity livinPlayer;
     public Player playerPlayer;
     public GameObject Playerobj;
@@ -28,7 +29,7 @@ public class MainGameManager : MonoBehaviour
 
     private void Awake()
     {
-        playerMaxHealth = playerPlayer._playerStat.playerHealth;
+        playerMaxHealth = _playerStat.playerHealth;
         Volume.profile.TryGet(out _colorAdjustments);
 
         GameStart();
@@ -74,9 +75,9 @@ public class MainGameManager : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
 
 #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false; // À¯´ÏÆ¼ ¿¡µðÅÍ¿¡¼­ Á¾·á
+        UnityEditor.EditorApplication.isPlaying = false; // ï¿½ï¿½ï¿½ï¿½Æ¼ ï¿½ï¿½ï¿½ï¿½ï¿½Í¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 #else
-        Application.Quit(); // ºôµåµÈ °ÔÀÓ¿¡¼­ Á¾·á
+        Application.Quit(); // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ó¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 #endif
     }
 }

@@ -105,7 +105,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &867223151151659714
 Transform:
   m_ObjectHideFlags: 0
@@ -199,17 +199,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1af166b2835174aa92c89e3eaa0a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
   isDead: 0
   isPanic: 0
-  f: {fileID: 1860872783663062230}
-  _blood: {fileID: 4537264005920015897, guid: 2861bf13598eac14ebc11a587e1b3712, type: 3}
-  maxHealth: 5
   chaseSpeed: 2
   chaseRange: 10
   stopDistance: 5
-  attackRange: 1.5
-  attackDamage: 10
-  attackCooldown: 1
+  maxHealth: 5
 --- !u!50 &2873988308708624148
 Rigidbody2D:
   serializedVersion: 4

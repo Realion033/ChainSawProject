@@ -1,29 +1,55 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
 
-public class RangedEnemy : TestEnemy
+public class RangedEnemy : LivingEntity
 {
-    public float chaseSpeed = 2f; // ÇÃ·¹ÀÌ¾î ÃßÀû ¼Óµµ
-    public float chaseRange = 10f; // ÇÃ·¹ÀÌ¾î¸¦ ÃßÀûÇÒ ¹üÀ§
-    public float stopDistance = 2f; // ÀÏÁ¤ °Å¸®±îÁö ÇÃ·¹ÀÌ¾î ÃßÀû ÈÄ ¸ØÃã
+    [SerializeField] GameObject f;
+    [SerializeField] protected ParticleSystem _blood;
+    public float chaseSpeed = 2f; // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½
+    public float chaseRange = 10f; // ï¿½Ã·ï¿½ï¿½Ì¾î¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    public float stopDistance = 2f; // ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-    private Transform player; // ÇÃ·¹ÀÌ¾îÀÇ À§Ä¡¸¦ ÃßÀûÇÏ±â À§ÇÑ º¯¼ö
-    private Rigidbody2D rb; // Rigidbody2D ÂüÁ¶
-    private Animator animator; // ¾Ö´Ï¸ŞÀÌÅÍ ÂüÁ¶
+    private SpriteRenderer _spriteRenderer;
+    private Slider _slider;
+    private float maxHealth;
+    private Transform player; // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    private Rigidbody2D rb; // Rigidbody2D ï¿½ï¿½ï¿½ï¿½
+    private Animator animator; // ï¿½Ö´Ï¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+
+    private int cnt = 0;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>(); // Rigidbody2D ÄÄÆ÷³ÍÆ® °¡Á®¿À±â
-        player = GameObject.FindGameObjectWithTag("KPlayer").transform; // ÇÃ·¹ÀÌ¾î ¿ÀºêÁ§Æ® Ã£±â
-        animator = GetComponent<Animator>(); // Animator ÄÄÆ÷³ÍÆ® °¡Á®¿À±â
-        health = 25f; // RangedEnemyÀÇ ÃÊ±â Ã¼·Â
-        maxHealth = health; // Ã¼·Â ½½¶óÀÌ´õ¸¦ À§ÇÑ ÃÖ´ë Ã¼·Â ¼³Á¤
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>(); // Rigidbody2D ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        player = GameObject.FindGameObjectWithTag("KPlayer").transform; // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® Ã£ï¿½ï¿½
+        animator = GetComponent<Animator>(); // Animator ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        _slider = GetComponentInChildren<Slider>();
+
+        maxHealth = health;
     }
 
+    public override void TakeHit(float damage, Vector2 hitPos)
+    {
+        base.TakeHit(damage, hitPos);
+        if (!isDead)
+        {
+            Instantiate(_blood, hitPos, Quaternion.identity);
+            StartCoroutine(FlashRed());
+        }
+        if (isDead && cnt == 0)
+        {
+            Instantiate(_blood, hitPos, Quaternion.identity);
+            cnt++;
+        }
+    }
     private void Update()
     {
-        // ÀûÀÌ Á×¾úÀ¸¸é ´õ ÀÌ»ó ·ÎÁ÷À» ½ÇÇàÇÏÁö ¾ÊÀ½
+        ui();
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½×¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ì»ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (isDead) return;
 
 
@@ -31,75 +57,105 @@ public class RangedEnemy : TestEnemy
         {
             float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
-            // ÇÃ·¹ÀÌ¾î°¡ ÃßÀû ¹üÀ§ ³»¿¡ ÀÖÀ» ¶§¸¸ ÀÌµ¿
+            // ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
             if (distanceToPlayer < chaseRange && distanceToPlayer > stopDistance)
             {
                 ChasePlayer();
-                animator.SetBool("BulletRun", true); // ÀÌµ¿ ÁßÀÎ ¾Ö´Ï¸ŞÀÌ¼Ç Àç»ı
-                animator.SetBool("BulletIdle", false); // ´ë±â »óÅÂ´Â ²û
+                animator.SetBool("BulletRun", true); // ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½
+                animator.SetBool("BulletIdle", false); // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â´ï¿½ ï¿½ï¿½
             }
             else
             {
-                rb.velocity = Vector2.zero; // ¸ØÃã
-                animator.SetBool("BulletRun", false); // ÀÌµ¿ ÁßÀÎ ¾Ö´Ï¸ŞÀÌ¼Ç ²û
-                animator.SetBool("BulletIdle", true); // ´ë±â »óÅÂ·Î ÀüÈ¯
+                rb.velocity = Vector2.zero; // ï¿½ï¿½ï¿½ï¿½
+                animator.SetBool("BulletRun", false); // ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½
+                animator.SetBool("BulletIdle", true); // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â·ï¿½ ï¿½ï¿½È¯
             }
         }
 
-        // ÀûÀÌ Á×À¸¸é »ç¸Á Ã³¸®
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
         if (health <= 0 && !isDead)
         {
-            DieEffect(); // TestEnemyÀÇ »ç¸Á ÀÌÆåÆ® ÇÔ¼ö È£Ãâ
+            DieEffect(); // TestEnemyï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ô¼ï¿½ È£ï¿½ï¿½
         }
     }
 
-    // ÇÃ·¹ÀÌ¾î¸¦ ÃßÀûÇÏ´Â ÇÔ¼ö
+    private void ui()
+    {
+        _slider.value = health / maxHealth;
+
+        if (isDead)
+        {
+            f.SetActive(false);
+        }
+        else
+        {
+            f.SetActive(true);
+        }
+    }
+
+    // ï¿½Ã·ï¿½ï¿½Ì¾î¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ô¼ï¿½
     private void ChasePlayer()
     {
-        // ÇÃ·¹ÀÌ¾îÀÇ À§Ä¡¿¡¼­ X ÁÂÇ¥¸¸ »ç¿ëÇÏ°í, Y´Â ÇöÀç ÀûÀÇ Y À§Ä¡¸¦ °íÁ¤
+        // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½ X ï¿½ï¿½Ç¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï°ï¿½, Yï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Y ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         Vector2 direction = new Vector2(player.position.x - transform.position.x, 0).normalized;
 
-        // ÃßÀû ¼Óµµ¸¸Å­ ÀÌµ¿ (YÃàÀº 0À¸·Î °íÁ¤µÊ)
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½ï¿½ï¿½Å­ ï¿½Ìµï¿½ (Yï¿½ï¿½ï¿½ï¿½ 0ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
         rb.velocity = new Vector2(direction.x * chaseSpeed, rb.velocity.y);
     }
 
-    // ÇÇÇØ ¹Ş´Â ÇÔ¼ö (TestEnemyÀÇ TakeHit() È°¿ë)
-    public override void TakeHit(float damage, Vector2 hitPos)
-    {
-        if (isDead) return; // ÀÌ¹Ì Á×Àº ÀûÀº µ¥¹ÌÁö Ã³¸® ¾È ÇÔ
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½Ş´ï¿½ ï¿½Ô¼ï¿½ (TestEnemyï¿½ï¿½ TakeHit() È°ï¿½ï¿½)
 
-        // Ã¼·Â °¨¼Ò Ã³¸®
-        base.TakeHit(damage, hitPos);
-
-        // ÀûÀÌ Á×¾úÀ» ¶§ Ã³¸®
-        if (health <= 0 && !isDead)
-        {
-            DieEffect(); // »ç¸Á ÀÌÆåÆ® È£Ãâ
-        }
-    }
-
-    // DieEffect ¿À¹ö¶óÀÌµå (TestEnemyÀÇ DieEffect() È£Ãâ)
+    // DieEffect ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½ (TestEnemyï¿½ï¿½ DieEffect() È£ï¿½ï¿½)
     public override void DieEffect()
     {
-        base.DieEffect(); // TestEnemyÀÇ DieEffect() ½ÇÇà
-        StartCoroutine(RemoveAfterDeath()); // 2ÃÊ ÈÄ ¿ÀºêÁ§Æ® Á¦°Å
-        StartCoroutine(Hitstop());
+        base.DieEffect(); // TestEnemyï¿½ï¿½ DieEffect() ï¿½ï¿½ï¿½ï¿½
+        StartCoroutine(Dieef());
+        StartCoroutine(RemoveAfterDeath()); // 2ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
         player.GetComponent<LivingEntity>().health = player.GetComponent<Player>()._playerStat.playerHealth;
     }
 
-    private IEnumerator Hitstop()
-    {
-        Time.timeScale = 0;
-        yield return new WaitForSecondsRealtime(0.16f);
-        Time.timeScale = 1;
-    }
 
-    // 2ÃÊ ÈÄ ¿ÀºêÁ§Æ® Á¦°Å ÄÚ·çÆ¾
+    // 2ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½Ú·ï¿½Æ¾
     private IEnumerator RemoveAfterDeath()
     {
         yield return new WaitForSeconds(0.1f);
-        // ºÎ¸ğ ¿ÀºêÁ§Æ®¸¦ »èÁ¦ÇÏ¿© ÀÚ½Ä ¿ÀºêÁ§Æ®µµ ÇÔ²² Á¦°Å
-        Destroy(gameObject); // 2ÃÊ ÈÄ Àû Á¦°Å
+        // ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½Ú½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ô²ï¿½ ï¿½ï¿½ï¿½ï¿½
+        Destroy(gameObject); // 2ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    }
+    private IEnumerator Dieef()
+    {
+        // ì²˜ìŒì— ë¹¨ê°„ìƒ‰ìœ¼ë¡œ ë³€í™˜
+        _spriteRenderer.color = new Color(1f, 0f, 0f, 1f); // ë¹¨ê°„ìƒ‰, ì•ŒíŒŒê°’ 1 (ë¶ˆíˆ¬ëª…)
+
+        float fadeDuration = 0.2f; // í˜ì´ë“œ ì•„ì›ƒì´ ê±¸ë¦¬ëŠ” ì‹œê°„ (ì´ˆ)
+        float fadeSpeed = 1f / fadeDuration; // í˜ì´ë“œ ì•„ì›ƒ ì†ë„
+
+        for (float t = 0; t < 1; t += Time.deltaTime * fadeSpeed)
+        {
+            Color newColor = _spriteRenderer.color;
+            newColor.a = Mathf.Lerp(1f, 0f, t); // ì•ŒíŒŒê°’ì„ 1ì—ì„œ 0ìœ¼ë¡œ ì„œì„œíˆ ì¤„ì„
+            _spriteRenderer.color = newColor;
+            yield return null;
+        }
+        // ì™„ì „íˆ íˆ¬ëª…í•´ì§€ë©´ ì˜¤ë¸Œì íŠ¸ë¥¼ ë¹„í™œì„±í™”í•˜ê±°ë‚˜ ì œê±°
+        _spriteRenderer.color = new Color(1f, 0f, 0f, 0f); // ì™„ì „íˆ íˆ¬ëª…í•œ ìƒíƒœ
+    }
+
+    private IEnumerator FlashRed()
+    {
+        _spriteRenderer.color = Color.red;
+
+        float duration = 0.1f;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            _spriteRenderer.color = Color.Lerp(Color.red, Color.white, elapsed / duration);
+            yield return null;
+        }
+
+        _spriteRenderer.color = Color.white;
     }
 
 }

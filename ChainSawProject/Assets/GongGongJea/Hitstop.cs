@@ -19,20 +19,21 @@ public class Hitstop : MonoBehaviour
 
     private IEnumerator HitStopCoroutine()
     {
-        isHitStopping = true;
+        // isHitStopping = true;
 
-        // Save the original timescale
-        originalTimeScale = Time.timeScale;
+        // // Save the original timescale
+        // originalTimeScale = Time.timeScale;
 
-        // Set timescale to zero (completely stopping time)
-        Time.timeScale = 0f;
+        // // Set timescale to zero (completely stopping time)
+        // Time.timeScale = 0f;
 
-        // Wait for the specified duration in real time (ignores timescale)
-        yield return new WaitForSecondsRealtime(hitStopDuration);
+        // // Wait for the specified duration in real time (ignores timescale)
+        // yield return new WaitForSecondsRealtime(hitStopDuration);
 
-        // Reset timescale to the original value
-        Time.timeScale = originalTimeScale;
+        // // Reset timescale to the original value
+        // Time.timeScale = originalTimeScale;
 
-        isHitStopping = false;
+        // isHitStopping = false;
+        yield return null;
     }
 }

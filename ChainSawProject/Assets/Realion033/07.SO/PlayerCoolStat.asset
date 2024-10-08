@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c077d1afe5a407144b99928e82721b1f, type: 3}
   m_Name: PlayerCoolStat
   m_EditorClassIdentifier: 
-  DashCoolDown: 1
+  DashCoolDown: 2
   AttackMaxEnergyCoolDown: 8
-  AttackTick: 0.15
-  UltmateSkill: 1
+  AttackTick: 0.2
+  UltmateSkill: 15

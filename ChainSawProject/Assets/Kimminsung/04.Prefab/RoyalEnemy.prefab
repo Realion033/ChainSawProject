@@ -21,7 +21,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &436697386499619840
 Transform:
   m_ObjectHideFlags: 0
@@ -173,9 +173,6 @@ MonoBehaviour:
   health: 0
   isDead: 0
   isPanic: 0
-  f: {fileID: 1356547671467324475}
-  _blood: {fileID: 4537264005920015897, guid: 2861bf13598eac14ebc11a587e1b3712, type: 3}
-  maxHealth: 5
   jumpHeight: 5
   fallSpeed: 10
   attackCooldown: 2
@@ -183,6 +180,7 @@ MonoBehaviour:
   chaseSpeed: 3
   deathParticles: {fileID: 4537264005920015897, guid: 2861bf13598eac14ebc11a587e1b3712, type: 3}
   damage: 10
+  maxHealth: 5
 --- !u!50 &4083950026539165997
 Rigidbody2D:
   serializedVersion: 4

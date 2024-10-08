@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class TestEnemy : LivingEntity
 {
     [SerializeField] GameObject f;
-    [SerializeField] ParticleSystem _blood;
+    [SerializeField] protected ParticleSystem _blood;
     private SpriteRenderer _spriteRenderer;
     private CapsuleCollider2D _collider2;
     private Slider _slider;

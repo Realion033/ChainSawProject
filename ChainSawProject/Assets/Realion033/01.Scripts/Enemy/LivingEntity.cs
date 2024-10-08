@@ -8,6 +8,7 @@ public abstract class LivingEntity : MonoBehaviour, IDamageable_real
     public float health;
     public bool isDead = false;
     public bool isPanic = false;
+
     public virtual void TakeHit(float damage, Vector2 hitPos)
     {
         health -= damage;
@@ -15,6 +16,7 @@ public abstract class LivingEntity : MonoBehaviour, IDamageable_real
         if (health <= 0 & !isDead)
         {
             Die();
+            DieEffect();
         }
     }
     public virtual void Die()

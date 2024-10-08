@@ -21,7 +21,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &436697386499619840
 Transform:
   m_ObjectHideFlags: 0
@@ -200,16 +200,14 @@ MonoBehaviour:
   health: 0
   isDead: 0
   isPanic: 0
-  f: {fileID: 0}
-  _blood: {fileID: 0}
-  maxHealth: 0
   jumpHeight: 5
   fallSpeed: 10
   attackCooldown: 3
   attackRange: 5
   chaseSpeed: 3
-  deathParticles: {fileID: 0}
+  deathParticles: {fileID: 4537264005920015897, guid: 2861bf13598eac14ebc11a587e1b3712, type: 3}
   damage: 10
+  maxHealth: 0
 --- !u!1 &5939217119104761474
 GameObject:
   m_ObjectHideFlags: 0
