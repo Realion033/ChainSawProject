@@ -14,6 +14,9 @@ public class PlayerInput : MonoBehaviour
 
     public event Action isSkillUse;
 
+    private bool isEsc = false;
+    [SerializeField] GameObject SettingUI;
+
     private void Awake()
     {
         _playerPhysics = GetComponent<PlayerPhysics>();
@@ -25,6 +28,16 @@ public class PlayerInput : MonoBehaviour
         DashInput();
         AttackInput();
         AirControlInput();
+        SettingInput();
+    }
+
+    private void SettingInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            isEsc = !isEsc;  // Toggle the state of isEsc
+            SettingUI.SetActive(isEsc);  // Activate or deactivate the UI
+        }
     }
 
     private void AirControlInput()
@@ -53,13 +66,6 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             isSkillUse?.Invoke();
-        }
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            foreach (var item in _skill)
-            {
-                item._skillEnum = Skills.GiantChange;
-            }
         }
     }
 
