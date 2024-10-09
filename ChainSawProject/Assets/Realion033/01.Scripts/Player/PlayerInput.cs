@@ -57,7 +57,10 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             isSlash = true;
-            PlayerCooldownManager.Instance.UseEnery();
+            if (PlayerCooldownManager.Instance.UseEnery())
+            {
+                PlayerCooldownManager.Instance.sssss();
+            }
         }
         if (Input.GetMouseButtonUp(0))
         {

@@ -50,10 +50,18 @@ public class RocketBrust : RocketLuncher
 
         foreach (var enemy in enemys)
         {
-            enemy.GetComponent<LivingEntity>().TakeHit(LuncherDamage, enemy.transform.position);
+            LivingEntity livingEntity = enemy.GetComponent<LivingEntity>();
+            if (livingEntity != null)
+            {
+                livingEntity.TakeHit(LuncherDamage, enemy.transform.position);
+            }
+            else
+            {
+                Debug.LogWarning($"No LivingEntity component found on {enemy.gameObject.name}");
+            }
         }
 
-        Debug.Log(enemys);
+        Debug.Log(enemys.Length); // 배열 길이 출력
     }
 
     private void OnDrawGizmos()

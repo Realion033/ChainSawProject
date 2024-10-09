@@ -4,6 +4,10 @@ using UnityEngine.UI;
 
 public class PlayerCooldownManager : MonoSingleton<PlayerCooldownManager>
 {
+    public AudioClip Rocket;
+    public AudioClip Fianl;
+    public AudioClip Core;
+    public GameObject chosse;
     public AudioSource audioSource;
     public AudioClip sattack;
     public AudioClip sdash;
@@ -139,11 +143,17 @@ public class PlayerCooldownManager : MonoSingleton<PlayerCooldownManager>
     public bool UseEnery()
     {
         if (_attackEnergeCool >= 0.1f)
-        {   
-            audioSource.PlayOneShot(sattack);
+        {
             return true;
         }
         return false;
+    }
+    public void sssss()
+    {
+        if (!chosse.activeSelf)
+        {
+            audioSource.PlayOneShot(sattack);
+        }
     }
 
     public bool UseUlt()
@@ -154,5 +164,18 @@ public class PlayerCooldownManager : MonoSingleton<PlayerCooldownManager>
             return true;
         }
         return false;
+    }
+
+    public void RS()
+    {
+        audioSource.PlayOneShot(Rocket);
+    }
+    public void CS()
+    {
+        audioSource.PlayOneShot(Core);
+    }
+    public void FS()
+    {
+        audioSource.PlayOneShot(Fianl);
     }
 }

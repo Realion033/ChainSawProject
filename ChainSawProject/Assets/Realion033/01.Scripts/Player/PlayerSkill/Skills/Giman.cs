@@ -32,6 +32,7 @@ public class Giman : Skill
         {
             if (PlayerCooldownManager.Instance.UseUlt())
             {
+                PlayerCooldownManager.Instance.CS();
                 isGiman();
                 _isTimer = true;
             }

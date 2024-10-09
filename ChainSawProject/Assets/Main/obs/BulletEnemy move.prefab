@@ -727,9 +727,9 @@ MonoBehaviour:
   shoot: {fileID: 8300000, guid: da6e9a828a3c9014b8755782f864ce22, type: 3}
   laserPrefab: {fileID: 2691892181399547730, guid: 99368771e9671b64c87a7fd672ff94fa, type: 3}
   firePoint: {fileID: 8723108108463304470}
-  laserSpeed: 12
-  minFireRate: 0.3
-  maxFireRate: 0.6
+  laserSpeed: 9
+  minFireRate: 0.2
+  maxFireRate: 0.5
   fireRange: 12
   targetLayer:
     serializedVersion: 2

@@ -25,6 +25,7 @@ public class RocketLuncher : Skill
         {
             if (PlayerCooldownManager.Instance.UseUlt())
             {
+                PlayerCooldownManager.Instance.RS();
                 RocketAttack();
             }
         }

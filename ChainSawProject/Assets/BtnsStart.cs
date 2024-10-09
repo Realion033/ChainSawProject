@@ -32,6 +32,6 @@ public class BtnsStart : MonoBehaviour
 
     public void goMain()
     {
-        LoadingSceneManager.LoadScene(_gameScene);
+        LoadingSceneManager.LoadScene(_mainScene);
     }
 }

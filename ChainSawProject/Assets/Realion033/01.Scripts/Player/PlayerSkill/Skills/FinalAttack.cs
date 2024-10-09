@@ -26,6 +26,7 @@ public class FinalAttack : Skill
             {
                 UltAttack();
                 OnAnimation();
+                PlayerCooldownManager.Instance.FS();
             }
         }
     }
@@ -49,8 +50,18 @@ public class FinalAttack : Skill
 
         foreach (var enemy in enemys)
         {
-            enemy.GetComponent<LivingEntity>().TakeHit(FinalAttackDamage, enemy.transform.position);
+            LivingEntity livingEntity = enemy.GetComponent<LivingEntity>();
+            if (livingEntity != null)
+            {
+                livingEntity.TakeHit(FinalAttackDamage, enemy.transform.position);
+            }
+            else
+            {
+                Debug.LogWarning($"No LivingEntity component found on {enemy.gameObject.name}");
+            }
         }
+
+        Debug.Log(enemys.Length);
     }
 
     private void OnDrawGizmos()

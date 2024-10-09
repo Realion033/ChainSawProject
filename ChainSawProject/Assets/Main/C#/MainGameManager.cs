@@ -8,6 +8,8 @@ using UnityEngine.Video;
 
 public class MainGameManager : MonoBehaviour
 {
+    public AudioSource al;
+    public AudioClip cac;
     public PlayerStatSO _playerStat;
     public LivingEntity livinPlayer;
     public Player playerPlayer;
@@ -52,13 +54,14 @@ public class MainGameManager : MonoBehaviour
     private void GameStart()
     {
         CurrentLevelObj = Instantiate(levelSOs[CurrentLevel].level, Vector3.zero, Quaternion.identity);
-        //livinPlayer.health = playerMaxHealth;
+        livinPlayer.health = playerMaxHealth;
         _player.isDashing = false;
         Playerobj.transform.position = levelSOs[CurrentLevel].SpawnPoints;
     }
 
     public void GameOver()
     {
+        al.PlayOneShot(cac);
         videoPlayer.Play();
         playerPlayer.health = 100;
         Destroy(CurrentLevelObj);

@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class TestEnemy : LivingEntity
 {
+    private AudioSource audioSource;
+    public AudioClip tick;
     [SerializeField] GameObject f;
     [SerializeField] protected ParticleSystem _blood;
     private SpriteRenderer _spriteRenderer;
@@ -20,6 +22,7 @@ public class TestEnemy : LivingEntity
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _collider2 = GetComponent<CapsuleCollider2D>();
         _slider = GetComponentInChildren<Slider>();
+        audioSource = GetComponent<AudioSource>();
         maxHealth = 50;
         health = 50;
     }
@@ -39,6 +42,7 @@ public class TestEnemy : LivingEntity
 
     public override void TakeHit(float damage, Vector2 hitPos)
     {
+        audioSource.PlayOneShot(tick);
         base.TakeHit(damage, hitPos);
         if (!isDead)
         {
