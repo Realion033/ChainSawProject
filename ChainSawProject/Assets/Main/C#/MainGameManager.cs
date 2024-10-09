@@ -53,11 +53,18 @@ public class MainGameManager : MonoBehaviour
 
     private void GameStart()
     {
+        if (CurrentLevel < 0 || CurrentLevel >= levelSOs.Length)
+        {
+            Debug.LogWarning("Invalid CurrentLevel value, resetting to level 0.");
+            CurrentLevel = 0;  // 기본값으로 초기화
+        }
+
         CurrentLevelObj = Instantiate(levelSOs[CurrentLevel].level, Vector3.zero, Quaternion.identity);
         livinPlayer.health = playerMaxHealth;
         _player.isDashing = false;
         Playerobj.transform.position = levelSOs[CurrentLevel].SpawnPoints;
     }
+
 
     public void GameOver()
     {
@@ -71,7 +78,6 @@ public class MainGameManager : MonoBehaviour
     public void Thanks()
     {
         GameClearflag.SetActive(true);
-        Time.timeScale = 0;
         _player.isDashing = false;
         StartCoroutine(ShotDownWait());
     }

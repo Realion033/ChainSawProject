@@ -46,7 +46,7 @@ public class RocketBrust : RocketLuncher
 
     private void GiveDmg()
     {
-        Collider2D[] enemys = Physics2D.OverlapCircleAll(transform.position, 2.5f, WhatisEnemy);
+        Collider2D[] enemys = Physics2D.OverlapCircleAll(transform.position, Distace, WhatisEnemy);
 
         foreach (var enemy in enemys)
         {

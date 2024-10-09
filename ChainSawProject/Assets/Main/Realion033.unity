@@ -2733,7 +2733,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &629625248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3717,7 +3717,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _skillEnum: 0
-  DamageMultiple: 2
+  DamageMultiple: 3
   EffectTime: 4
   _playerStat: {fileID: 11400000, guid: b499f422d7f95af4bbda3ba1f1c27da7, type: 2}
 --- !u!114 &863016409
@@ -6558,8 +6558,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2fc1855219266247bf0b2eeb5f2dc8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _finalAttackCool: 12
-  _rocketCool: 5
+  _finalAttackCool: 10
+  _rocketCool: 6
   _coreUpgradeCool: 8
   Playerm: {fileID: 751261345}
   _skill:

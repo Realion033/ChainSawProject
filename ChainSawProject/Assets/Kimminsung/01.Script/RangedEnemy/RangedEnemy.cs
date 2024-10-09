@@ -122,7 +122,7 @@ public class RangedEnemy : LivingEntity
         col.isTrigger = true;
         gdd.SetActive(false);
         StartCoroutine(RemoveAfterDeath()); // 2�� �� ������Ʈ ����
-        player.GetComponent<LivingEntity>().health += UnityEngine.Random.Range(5, 7);
+        player.GetComponent<LivingEntity>().health += UnityEngine.Random.Range(3, 5);
     }
 
 

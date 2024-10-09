@@ -25,11 +25,6 @@ public class EndPoint : MonoBehaviour
             // Check if all LivingEntities are dead
             if (AllEnemiesAreDead())
             {
-                if (_mainGameManager.CurrentLevel >= 4)
-                {
-                    _player.isDashing = false;
-                    _mainGameManager.Thanks();
-                }
                 _mainGameManager.CurrentLevel++;
                 _mainGameManager.GameOver();
             }

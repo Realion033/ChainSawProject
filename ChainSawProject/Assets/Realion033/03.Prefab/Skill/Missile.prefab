@@ -168,7 +168,7 @@ MonoBehaviour:
   Rocket: {fileID: 0}
   rocketSpeed: 20
   LuncherDamage: 150
-  Distace: 3
+  Distace: 1.5
 --- !u!50 &458679696593931830
 Rigidbody2D:
   serializedVersion: 4
