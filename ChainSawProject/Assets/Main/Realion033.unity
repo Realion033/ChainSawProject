@@ -5244,7 +5244,7 @@ MonoBehaviour:
   pi: {fileID: 688613871}
   _gameScene: MainScene
   _tutorialScene: Realion033
-  _mainScene: MainScene
+  _mainScene: StartScene
 --- !u!114 &1325416319
 MonoBehaviour:
   m_ObjectHideFlags: 0
