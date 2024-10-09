@@ -34,6 +34,8 @@ public class MainGameManager : MonoBehaviour
 
     private void Awake()
     {
+        Screen.SetResolution(1920, 1080, true);
+
         playerMaxHealth = _playerStat.playerHealth;
         Volume.profile.TryGet(out _colorAdjustments);
 

@@ -245,26 +245,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93b2cffdb0c9c0141826e9b3ae3ecdcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rocket: {fileID: 8300000, guid: d90820dfd147fca4fb86c9a3d5068aa8, type: 3}
-  Fianl: {fileID: 8300000, guid: 9883de9f34199d143be84b0a80cb4c9d, type: 3}
-  Core: {fileID: 8300000, guid: 9fd50f2a7ecb6e4469d5915b441b05ed, type: 3}
-  chosse: {fileID: 205355744}
-  audioSource: {fileID: 1875829301}
-  sattack: {fileID: 8300000, guid: c92d74aa3e74fd846bf2a51c36363ef7, type: 3}
-  sdash: {fileID: 8300000, guid: e61fb675924614d4e807c16ca5e54fd5, type: 3}
+  Rocket: {fileID: 0}
+  Fianl: {fileID: 0}
+  Core: {fileID: 0}
+  chosse: {fileID: 0}
+  audioSource: {fileID: 0}
+  sattack: {fileID: 0}
+  sdash: {fileID: 0}
   playerCooldownSO: {fileID: 11400000, guid: f3434f42ab3b1e342b0f3bfc8799f6f1, type: 2}
-  playerInput: {fileID: 1875829295}
-  slider: {fileID: 861690856}
+  playerInput: {fileID: 0}
+  slider: {fileID: 0}
   _dashCool: 0
   _attackEnergeCool: 0
   _attackTick: 0
   _ultmateCool: 0
   _rultmateCool: 0
-  SkillSetting: {fileID: 746287556}
-  _tultCool: {fileID: 1516065739}
-  _tdashCool: {fileID: 618140711}
-  _tui: {fileID: 609124588}
-  _tdi: {fileID: 1879730823}
+  SkillSetting: {fileID: 0}
+  _tultCool: {fileID: 0}
+  _tdashCool: {fileID: 0}
+  _tui: {fileID: 0}
+  _tdi: {fileID: 0}
 --- !u!1 &116970171
 GameObject:
   m_ObjectHideFlags: 0
@@ -595,7 +595,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: af7198c7dd1caa44c89b9c2300ec4ea8, type: 3}
     m_FontSize: 40
     m_FontStyle: 1
     m_BestFit: 0
@@ -1682,7 +1682,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9bb8c92b473ba9443a94f2d4918c69ec, type: 3}
     m_FontSize: 40
     m_FontStyle: 1
     m_BestFit: 0
@@ -1810,7 +1810,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9bb8c92b473ba9443a94f2d4918c69ec, type: 3}
     m_FontSize: 40
     m_FontStyle: 1
     m_BestFit: 0
@@ -2391,7 +2391,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9bb8c92b473ba9443a94f2d4918c69ec, type: 3}
     m_FontSize: 50
     m_FontStyle: 1
     m_BestFit: 0
@@ -2825,7 +2825,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9bb8c92b473ba9443a94f2d4918c69ec, type: 3}
     m_FontSize: 40
     m_FontStyle: 1
     m_BestFit: 0
@@ -3037,7 +3037,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9bb8c92b473ba9443a94f2d4918c69ec, type: 3}
     m_FontSize: 40
     m_FontStyle: 1
     m_BestFit: 0
@@ -3433,7 +3433,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9bb8c92b473ba9443a94f2d4918c69ec, type: 3}
     m_FontSize: 40
     m_FontStyle: 1
     m_BestFit: 0
@@ -4266,7 +4266,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9bb8c92b473ba9443a94f2d4918c69ec, type: 3}
     m_FontSize: 40
     m_FontStyle: 1
     m_BestFit: 0
@@ -4496,7 +4496,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9bb8c92b473ba9443a94f2d4918c69ec, type: 3}
     m_FontSize: 40
     m_FontStyle: 1
     m_BestFit: 0
@@ -5183,7 +5183,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1719302717
@@ -5552,7 +5552,7 @@ MonoBehaviour:
   - {fileID: 1259646004}
   isSlash: 0
   isEsc: 0
-  SettingUI: {fileID: 1375615230}
+  SettingUI: {fileID: 0}
 --- !u!114 &1875829296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5585,9 +5585,9 @@ MonoBehaviour:
   health: 0
   isDead: 0
   isPanic: 0
-  Mm: {fileID: 1963702777}
+  Mm: {fileID: 0}
   _playerStat: {fileID: 11400000, guid: b499f422d7f95af4bbda3ba1f1c27da7, type: 2}
-  _healthBar: {fileID: 1370642583}
+  _healthBar: {fileID: 0}
 --- !u!96 &1875829298
 TrailRenderer:
   serializedVersion: 3
@@ -5965,9 +5965,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daaab8374c029744bb0f34b86383e279, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  al: {fileID: 1963702780}
-  cac: {fileID: 8300000, guid: b87614c9066b5474ba578507520e2d88, type: 3}
-  _playerStat: {fileID: 11400000, guid: b499f422d7f95af4bbda3ba1f1c27da7, type: 2}
+  al: {fileID: 0}
+  cac: {fileID: 0}
+  _playerStat: {fileID: 0}
   livinPlayer: {fileID: 1875829297}
   playerPlayer: {fileID: 1875829297}
   Playerobj: {fileID: 1875829289}
@@ -6296,7 +6296,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9bb8c92b473ba9443a94f2d4918c69ec, type: 3}
     m_FontSize: 40
     m_FontStyle: 1
     m_BestFit: 0
