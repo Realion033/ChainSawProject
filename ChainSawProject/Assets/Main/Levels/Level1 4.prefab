@@ -220,8 +220,6 @@ MonoBehaviour:
   - {fileID: 1556766631120130596}
   - {fileID: 8841289146825500640}
   - {fileID: 1436538931757325442}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 6698049449312707602}
   - {fileID: 8020492103733190355}
   - {fileID: 729419480874524583}
@@ -230,6 +228,8 @@ MonoBehaviour:
   - {fileID: 9046214651659582537}
   - {fileID: 5719348465467645727}
   - {fileID: 5575390065510248394}
+  - {fileID: 1359573725776035478}
+  - {fileID: 5647984781064296643}
 --- !u!1 &5034532634579604123
 GameObject:
   m_ObjectHideFlags: 0
@@ -24378,6 +24378,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4197365590474275064, guid: 8d05e8be8d3780a45a8a2d689887af7a, type: 3}
   m_PrefabInstance: {fileID: 4319234473930238846}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5647984781064296643 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8471460999774204861, guid: 8d05e8be8d3780a45a8a2d689887af7a, type: 3}
+  m_PrefabInstance: {fileID: 4319234473930238846}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1af166b2835174aa92c89e3eaa0a94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4402257268213167078
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25095,6 +25106,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d05e8be8d3780a45a8a2d689887af7a, type: 3}
+--- !u!114 &1359573725776035478 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8471460999774204861, guid: 8d05e8be8d3780a45a8a2d689887af7a, type: 3}
+  m_PrefabInstance: {fileID: 7444030157427854635}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1af166b2835174aa92c89e3eaa0a94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6705446673501582803 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4197365590474275064, guid: 8d05e8be8d3780a45a8a2d689887af7a, type: 3}

@@ -2919,7 +2919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93b2cffdb0c9c0141826e9b3ae3ecdcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rocket: {fileID: 8300000, guid: 4e24411b2ac6df449ab5bc9c4b094ed2, type: 3}
+  Rocket: {fileID: 8300000, guid: d90820dfd147fca4fb86c9a3d5068aa8, type: 3}
   Fianl: {fileID: 8300000, guid: 9883de9f34199d143be84b0a80cb4c9d, type: 3}
   Core: {fileID: 8300000, guid: 9fd50f2a7ecb6e4469d5915b441b05ed, type: 3}
   chosse: {fileID: 629625247}
@@ -3529,7 +3529,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _skillEnum: 0
   DamageMultiple: 2
-  EffectTime: 3
+  EffectTime: 4
   _playerStat: {fileID: 11400000, guid: b499f422d7f95af4bbda3ba1f1c27da7, type: 2}
 --- !u!114 &863016409
 MonoBehaviour:
