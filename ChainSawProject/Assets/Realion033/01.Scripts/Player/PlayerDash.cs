@@ -1,15 +1,16 @@
 using System;
 using System.Collections;
+using Unity.Burst.Intrinsics;
 using UnityEngine;
 
 public class PlayerDash : PlayerInput
 {
     private Player player;
     private TrailRenderer _trailRender;
-    private Rigidbody2D rb;
-    private Vector2 dashTarget;
-
-    private bool isDashing = false;
+    public Rigidbody2D rb;
+    public Vector2 dashTarget;
+    public Vector2 direction;
+    public bool isDashing = false;
 
     private void Awake()
     {
@@ -23,6 +24,10 @@ public class PlayerDash : PlayerInput
         if (isDashing)
         {
             CheckDashTargetReached();
+        }
+        if (!isDashing)
+        {
+            dashTarget = transform.position;
         }
     }
 
@@ -49,7 +54,7 @@ public class PlayerDash : PlayerInput
     {
         mousePos.z = 0;  // 아아아
 
-        Vector2 direction = (mousePos - transform.position).normalized;
+        direction = (mousePos - transform.position).normalized;
 
         dashTarget = (Vector2)transform.position + direction * player._playerStat.dashDistance;
         isDashing = true;  // ?�� ????

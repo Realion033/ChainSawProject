@@ -9,12 +9,12 @@ public class PlayerInput : MonoBehaviour
 
     public Vector3 mousePos { get; private set; }
     public bool isDash { get; private set; } = false;
-    public bool isSlash { get; private set; } = false;
+    public bool isSlash = false;
     public bool isLeft { get; private set; } = false;
 
     public event Action isSkillUse;
 
-    private bool isEsc = false;
+    public bool isEsc = false;
     [SerializeField] GameObject SettingUI;
 
     private void Awake()
@@ -57,6 +57,7 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             isSlash = true;
+            PlayerCooldownManager.Instance.UseEnery();
         }
         if (Input.GetMouseButtonUp(0))
         {

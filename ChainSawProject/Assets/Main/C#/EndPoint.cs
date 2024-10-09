@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,22 +5,47 @@ using UnityEngine;
 public class EndPoint : MonoBehaviour
 {
     private MainGameManager _mainGameManager;
+    private Transform _playerT;
+    private PlayerDash _player;
+    public List<LivingEntity> livingEntities; // List to store all LivingEntity objects
 
     private void Awake()
     {
         _mainGameManager = GameObject.Find("GameOwner").GetComponent<MainGameManager>();
+        _playerT = GameObject.FindGameObjectWithTag("KPlayer").transform;
+        _player = _playerT.GetComponent<PlayerDash>();
+
+        // Find all LivingEntity objects in the scen
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("KPlayer"))
         {
-            if (_mainGameManager.CurrentLevel >= 4)
+            // Check if all LivingEntities are dead
+            if (AllEnemiesAreDead())
             {
-                _mainGameManager.Thanks();
+                if (_mainGameManager.CurrentLevel >= 4)
+                {
+                    _player.isDashing = false;
+                    _mainGameManager.Thanks();
+                }
+                _mainGameManager.CurrentLevel++;
+                _mainGameManager.GameOver();
             }
-            _mainGameManager.CurrentLevel++;
-            _mainGameManager.GameOver();
         }
+    }
+
+    // Method to check if all LivingEntities are dead
+    private bool AllEnemiesAreDead()
+    {
+        foreach (LivingEntity entity in livingEntities)
+        {
+            if (!entity.isDead) // Check if any LivingEntity is still alive
+            {
+                return false;
+            }
+        }
+        return true; // Return true if all LivingEntities are dead
     }
 }

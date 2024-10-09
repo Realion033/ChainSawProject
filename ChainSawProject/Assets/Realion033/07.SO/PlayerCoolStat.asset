@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PlayerCoolStat
   m_EditorClassIdentifier: 
   DashCoolDown: 2
-  AttackMaxEnergyCoolDown: 8
+  AttackMaxEnergyCoolDown: 6
   AttackTick: 0.2
   UltmateSkill: 15

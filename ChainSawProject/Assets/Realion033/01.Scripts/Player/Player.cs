@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class Player : LivingEntity
 {
+    public MainGameManager Mm;
     public PlayerStatSO _playerStat;
     public Slider _healthBar;
     private SpriteRenderer _spriteRenderer;
@@ -36,6 +37,10 @@ public class Player : LivingEntity
     {
         Move();
         Dash();
+        if (health > _playerStat.playerHealth)
+        {
+            health = _playerStat.playerHealth;
+        }
         if (Input.GetKeyDown(KeyCode.O))
         {
             TakeHit(10, Vector2.zero);
@@ -94,5 +99,6 @@ public class Player : LivingEntity
     public override void Die()
     {
         Debug.Log("Die");
+        Mm.GameOver();
     }
 }

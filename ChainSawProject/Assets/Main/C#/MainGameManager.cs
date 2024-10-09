@@ -27,10 +27,16 @@ public class MainGameManager : MonoBehaviour
 
     public GameObject GameClearflag;
 
+    private Transform _playerT;
+    private PlayerDash _player;
+
     private void Awake()
     {
         playerMaxHealth = _playerStat.playerHealth;
         Volume.profile.TryGet(out _colorAdjustments);
+
+        _playerT = GameObject.FindGameObjectWithTag("KPlayer").transform;
+        _player = _playerT.GetComponent<PlayerDash>();
 
         GameStart();
     }
@@ -40,24 +46,21 @@ public class MainGameManager : MonoBehaviour
         float currentHealth = livinPlayer.health;
         float healthPercentage = currentHealth / playerMaxHealth;
 
-        if (currentHealth <= 0)
-        {
-            GameOver();
-        }
-
         _colorAdjustments.saturation.value = Mathf.Lerp(-100, 0, healthPercentage);
     }
 
     private void GameStart()
     {
         CurrentLevelObj = Instantiate(levelSOs[CurrentLevel].level, Vector3.zero, Quaternion.identity);
-        livinPlayer.health = playerMaxHealth;
+        //livinPlayer.health = playerMaxHealth;
+        _player.isDashing = false;
         Playerobj.transform.position = levelSOs[CurrentLevel].SpawnPoints;
     }
 
     public void GameOver()
     {
         videoPlayer.Play();
+        playerPlayer.health = 100;
         Destroy(CurrentLevelObj);
         GameStart();
     }
@@ -66,18 +69,12 @@ public class MainGameManager : MonoBehaviour
     {
         GameClearflag.SetActive(true);
         Time.timeScale = 0;
-
+        _player.isDashing = false;
         StartCoroutine(ShotDownWait());
     }
 
     private IEnumerator ShotDownWait()
     {
         yield return new WaitForSeconds(1.0f);
-
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false; // ����Ƽ �����Ϳ��� ����
-#else
-        Application.Quit(); // ����� ���ӿ��� ����
-#endif
     }
 }

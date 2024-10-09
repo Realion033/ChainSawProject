@@ -2,18 +2,34 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-    public GameObject laserPrefab; // ·¹ÀÌÀú ÇÁ¸®ÆÕ
-    public Transform firePoint; // ·¹ÀÌÀú¸¦ ¹ß»çÇÒ À§Ä¡
-    public float laserSpeed = 10f; // ·¹ÀÌÀú ¼Óµµ
-    public float fireRate = 1f; // ¹ß»ç ¼Óµµ (ÃÊ´ç ¹ß»ç ¼ö)
-    private float nextFireTime; // ´ÙÀ½ ¹ß»ç ½Ã°£
+    private AudioSource audioSource;
+    public AudioClip shoot;
+    public GameObject laserPrefab; // ë°œì‚¬í•  ë ˆì´ì € í”„ë¦¬íŒ¹
+    public Transform firePoint; // ë°œì‚¬ ìœ„ì¹˜
+    public float laserSpeed = 10f; // ë ˆì´ì € ì†ë„
+    public float minFireRate = 0.5f; // ìµœì†Œ ë°œì‚¬ ì†ë„
+    public float maxFireRate = 2f; // ìµœëŒ€ ë°œì‚¬ ì†ë„
+    public float fireRange = 15f; // ë°œì‚¬ ë²”ìœ„
+    public LayerMask targetLayer; // íƒ€ê²Ÿì„ ê°ì§€í•  ë ˆì´ì–´
+    private float nextFireTime; // ë‹¤ìŒ ë°œì‚¬ ì‹œê°„
+    private Collider2D target; // í˜„ì¬ ê°ì§€ëœ íƒ€ê²Ÿ
 
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     private void Update()
     {
-        if (Time.time >= nextFireTime)
+        // ë°œì‚¬ ë²”ìœ„ ë‚´ì— ìˆëŠ” ì  íƒìƒ‰ (ì˜¤ë²„ë© ê°ì§€)
+        target = Physics2D.OverlapCircle(firePoint.position, fireRange, targetLayer);
+
+        // íƒ€ê²Ÿì´ ë²”ìœ„ ì•ˆì— ìˆê³ , ë°œì‚¬ ì‹œê°„ì´ ë˜ì—ˆì„ ë•Œ ë°œì‚¬
+        if (target != null && Time.time >= nextFireTime)
         {
-                FireLaser();
-                nextFireTime = Time.time + 1f / fireRate;
+            FireLaser();
+            // ë°œì‚¬ í›„ ëœë¤í•œ ì†ë„ë¡œ ë‹¤ìŒ ë°œì‚¬ ì‹œê°„ ì„¤ì •
+            float randomFireRate = Random.Range(minFireRate, maxFireRate);
+            nextFireTime = Time.time + 1f / randomFireRate;
         }
     }
 
@@ -21,18 +37,27 @@ public class Gun : MonoBehaviour
     {
         if (laserPrefab && firePoint)
         {
-            // ·¹ÀÌÀú »ı¼º
+            // ë ˆì´ì € ìƒì„±
+            audioSource.PlayOneShot(shoot);
             GameObject laser = Instantiate(laserPrefab, firePoint.position, firePoint.rotation);
 
-            // ·¹ÀÌÀúÀÇ Rigidbody2D¸¦ °¡Á®¿Í ¼Óµµ¸¦ ¼³Á¤
+            // ë ˆì´ì €ì— Rigidbody2D ì¶”ê°€ ë° ì†ë„ ì ìš©
             Rigidbody2D rb = laser.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
-                rb.velocity = firePoint.right * laserSpeed; // ·¹ÀÌÀú¸¦ ¹ß»ç ¹æÇâÀ¸·Î ÀÌµ¿
+                rb.velocity = firePoint.right * laserSpeed; // ë ˆì´ì €ë¥¼ ë°œì‚¬ ì§€ì ì˜ ë°©í–¥ìœ¼ë¡œ ì´ë™
             }
 
-            // ·¹ÀÌÀúÀÇ »ı¸í ÁÖ±â¸¦ ¼³Á¤ (¿¹: 3ÃÊ ÈÄ »èÁ¦)
-            Destroy(laser, 3f);
+            // ë ˆì´ì €ê°€ 20ì´ˆ í›„ì— ì‚¬ë¼ì§€ë„ë¡ ì„¤ì •
+            Destroy(laser, 10f);
         }
+    }
+
+    // ê¸°ì§€ëª¨ë¡œ ë°œì‚¬ ë²”ìœ„ ì‹œê°í™”
+    private void OnDrawGizmosSelected()
+    {
+        // ë°œì‚¬ ë²”ìœ„ë¥¼ í‘œì‹œ (ê¸°ì§€ëª¨ ìƒ‰ìƒ ì„¤ì •)
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(firePoint.position, fireRange);
     }
 }

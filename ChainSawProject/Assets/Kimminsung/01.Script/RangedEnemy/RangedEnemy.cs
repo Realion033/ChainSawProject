@@ -6,6 +6,11 @@ using UnityEngine.UI;
 
 public class RangedEnemy : LivingEntity
 {
+    private Collider2D col;
+    public GameObject gun;
+    public GameObject gdd;
+    public AudioClip _hit;
+    private AudioSource _audio;
     [SerializeField] GameObject f;
     [SerializeField] protected ParticleSystem _blood;
     public float chaseSpeed = 2f; // �÷��̾� ���� �ӵ�
@@ -23,6 +28,8 @@ public class RangedEnemy : LivingEntity
 
     private void Start()
     {
+        col = GetComponent<Collider2D>();
+        _audio = GetComponent<AudioSource>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>(); // Rigidbody2D ������Ʈ ��������
         player = GameObject.FindGameObjectWithTag("KPlayer").transform; // �÷��̾� ������Ʈ ã��
@@ -34,6 +41,7 @@ public class RangedEnemy : LivingEntity
 
     public override void TakeHit(float damage, Vector2 hitPos)
     {
+        _audio.PlayOneShot(_hit);
         base.TakeHit(damage, hitPos);
         if (!isDead)
         {
@@ -49,33 +57,33 @@ public class RangedEnemy : LivingEntity
     private void Update()
     {
         ui();
-        // ���� �׾����� �� �̻� ������ �������� ����
-        if (isDead) return;
 
+        // Do nothing if dead
+        if (isDead) return;
 
         if (player != null && health > 0)
         {
             float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
-            // �÷��̾ ���� ���� ���� ���� ���� �̵�
-            if (distanceToPlayer < chaseRange && distanceToPlayer > stopDistance)
+            // If player is beyond the stop distance, chase them
+            if (distanceToPlayer > stopDistance)
             {
                 ChasePlayer();
-                animator.SetBool("BulletRun", true); // �̵� ���� �ִϸ��̼� ���
-                animator.SetBool("BulletIdle", false); // ��� ���´� ��
+                animator.SetBool("BulletRun", true); // Set run animation
+                animator.SetBool("BulletIdle", false); // Disable idle animation
             }
             else
             {
-                rb.velocity = Vector2.zero; // ����
-                animator.SetBool("BulletRun", false); // �̵� ���� �ִϸ��̼� ��
-                animator.SetBool("BulletIdle", true); // ��� ���·� ��ȯ
+                rb.velocity = Vector2.zero; // Stop moving
+                animator.SetBool("BulletRun", false); // Disable run animation
+                animator.SetBool("BulletIdle", true); // Enable idle animation
             }
         }
 
-        // ���� ������ ��� ó��
+        // Handle death
         if (health <= 0 && !isDead)
         {
-            DieEffect(); // TestEnemy�� ��� ����Ʈ �Լ� ȣ��
+            DieEffect(); // Trigger death effect
         }
     }
 
@@ -110,15 +118,18 @@ public class RangedEnemy : LivingEntity
     {
         base.DieEffect(); // TestEnemy�� DieEffect() ����
         StartCoroutine(Dieef());
+        gun.SetActive(false);
+        col.isTrigger = true;
+        gdd.SetActive(false);
         StartCoroutine(RemoveAfterDeath()); // 2�� �� ������Ʈ ����
-        player.GetComponent<LivingEntity>().health = player.GetComponent<Player>()._playerStat.playerHealth;
+        player.GetComponent<LivingEntity>().health += UnityEngine.Random.Range(3, 6);
     }
 
 
     // 2�� �� ������Ʈ ���� �ڷ�ƾ
     private IEnumerator RemoveAfterDeath()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.8f);
         // �θ� ������Ʈ�� �����Ͽ� �ڽ� ������Ʈ�� �Բ� ����
         Destroy(gameObject); // 2�� �� �� ����
     }

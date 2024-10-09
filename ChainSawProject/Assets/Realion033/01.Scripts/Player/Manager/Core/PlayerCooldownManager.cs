@@ -4,12 +4,19 @@ using UnityEngine.UI;
 
 public class PlayerCooldownManager : MonoSingleton<PlayerCooldownManager>
 {
+    public AudioSource audioSource;
+    public AudioClip sattack;
+    public AudioClip sdash;
     public PlayerCooldownSO playerCooldownSO;
+    public PlayerInput playerInput;
+    public Slider slider;
 
     public float _dashCool;
     public float _attackEnergeCool;
     public float _attackTick;
     public float _ultmateCool;
+    public float _rultmateCool;
+    public SkillSetting SkillSetting;
 
     public Text _tultCool;
     public Text _tdashCool;
@@ -17,16 +24,22 @@ public class PlayerCooldownManager : MonoSingleton<PlayerCooldownManager>
     public GameObject _tui;
     public GameObject _tdi;
 
-    protected override void Awake()
+    private float deAtk;
+
+    private void Start()
     {
         _dashCool = playerCooldownSO.DashCoolDown;
         _attackEnergeCool = playerCooldownSO.AttackMaxEnergyCoolDown;
         _attackTick = playerCooldownSO.AttackTick;
-        _ultmateCool = playerCooldownSO.UltmateSkill;   
+        _ultmateCool = 0;
+        _rultmateCool = 15;
+
+        deAtk = _attackEnergeCool;
     }
 
     private void Update()
     {
+        slider.value = _attackEnergeCool / deAtk;
         CooltimeManage();
 
         // "ready"로 표시하거나 소수점 없는 숫자 출력
@@ -53,6 +66,10 @@ public class PlayerCooldownManager : MonoSingleton<PlayerCooldownManager>
         }
 
     }
+    public void setCoolz()
+    {
+        _ultmateCool = 0;
+    }
 
     private void CooltimeManage()
     {
@@ -76,12 +93,33 @@ public class PlayerCooldownManager : MonoSingleton<PlayerCooldownManager>
             _ultmateCool -= Time.deltaTime;
             if (_ultmateCool < 0) _ultmateCool = 0;
         }
+
+        if (playerInput.isSlash == true)
+        {
+            if (_attackEnergeCool > 0)
+            {
+                _attackEnergeCool -= Time.deltaTime;
+                if (_attackEnergeCool < 0.1f)
+                {
+                    playerInput.isSlash = false;
+                }
+            }
+        }
+        if (playerInput.isSlash == false)
+        {
+            if (_attackEnergeCool > 0)
+            {
+                _attackEnergeCool += Time.deltaTime;
+                if (_attackEnergeCool > deAtk) _attackEnergeCool = deAtk;
+            }
+        }
     }
 
     public bool UseDash()
     {
         if (_dashCool == 0)
         {
+            audioSource.PlayOneShot(sdash);
             _dashCool = playerCooldownSO.DashCoolDown;
             return true;
         }
@@ -98,16 +136,21 @@ public class PlayerCooldownManager : MonoSingleton<PlayerCooldownManager>
         return false;
     }
 
-    private bool AttackEnerge()
+    public bool UseEnery()
     {
-        throw new NotImplementedException();
+        if (_attackEnergeCool >= 0.1f)
+        {   
+            audioSource.PlayOneShot(sattack);
+            return true;
+        }
+        return false;
     }
 
     public bool UseUlt()
     {
         if (_ultmateCool == 0)
         {
-            _ultmateCool = playerCooldownSO.UltmateSkill;
+            _ultmateCool = _rultmateCool;
             return true;
         }
         return false;

@@ -19,9 +19,5 @@ public class Bullet : MonoBehaviour
             
             Destroy(gameObject);
         }
-        if (other.CompareTag("Ground"))
-        {
-            Destroy(gameObject);
-        }
     }
 }
