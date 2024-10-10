@@ -2219,7 +2219,7 @@ RectTransform:
   - {fileID: 1094574458}
   - {fileID: 116970172}
   - {fileID: 1734580366}
-  - {fileID: 1167864135}
+  - {fileID: 1803850354}
   - {fileID: 243212379}
   - {fileID: 772762114}
   m_Father: {fileID: 0}
@@ -2791,19 +2791,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1167864134}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1803850354}
-  m_Father: {fileID: 929710744}
+  m_Children: []
+  m_Father: {fileID: 1803850354}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -740.28, y: 442.9}
-  m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 276.92, y: -34.332}
+  m_SizeDelta: {x: 337.058, y: 57.4621}
+  m_Pivot: {x: 0.76197314, y: 0.49999997}
 --- !u!114 &1167864136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2837,7 +2836,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Kill alll enemy
+  m_Text: Kill alll enemy!!!
 --- !u!222 &1167864137
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5256,17 +5255,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1803850353}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1167864135}
+  m_Children:
+  - {fileID: 1167864135}
+  m_Father: {fileID: 929710744}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: 80}
+  m_AnchoredPosition: {x: -728.21173, y: 434.3988}
+  m_SizeDelta: {x: 377.2308, y: 68.6634}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1803850355
 MonoBehaviour:
