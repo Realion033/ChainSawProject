@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class PlayerCooldownManager : MonoSingleton<PlayerCooldownManager>
 {
+    // 매애ㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐ우 나쁜예시코드
     public AudioClip Rocket;
     public AudioClip Fianl;
     public AudioClip Core;

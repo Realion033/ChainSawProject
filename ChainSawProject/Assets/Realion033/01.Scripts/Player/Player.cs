@@ -62,8 +62,24 @@ public class Player : LivingEntity
             base.TakeHit(damage, hitPos);
             StartCoroutine(FlashRed());
             _source.GenerateImpulse();
+            StartCoroutine(HitStopCoroutine(0.2f, 0.33f));
             Debug.Log(health);
         }
+    }
+
+    private IEnumerator HitStopCoroutine(float slowDuration, float recoveryTime)
+    {
+        Time.timeScale = 0f; // 매우 느린 상태로 전환 (0.2배속)
+        yield return new WaitForSecondsRealtime(slowDuration); // 느린 상태 유지
+
+        float elapsed = 0f;
+        while (elapsed < recoveryTime)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            Time.timeScale = Mathf.Lerp(0.2f, 1.0f, elapsed / recoveryTime); // 점진적 복구
+            yield return null;
+        }
+        Time.timeScale = 1.0f; // 완전히 복구
     }
 
     private IEnumerator FlashRed()
