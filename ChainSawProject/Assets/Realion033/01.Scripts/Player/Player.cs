@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using Cinemachine;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,7 +12,7 @@ public class Player : LivingEntity
     private SpriteRenderer _spriteRenderer;
     private CinemachineImpulseSource _source;
     private PlayerInput playerInput;
-    private PlayerMovement playerMovement;
+    private PlayerMovement playerMovement;  
     private PlayerDash playerDash;
 
     private void Start()
@@ -62,7 +61,7 @@ public class Player : LivingEntity
             base.TakeHit(damage, hitPos);
             StartCoroutine(FlashRed());
             _source.GenerateImpulse();
-            StartCoroutine(HitStopCoroutine(0.2f, 0.33f));
+            //StartCoroutine(HitStopCoroutine(0.2f, 0.33f));
             Debug.Log(health);
         }
     }

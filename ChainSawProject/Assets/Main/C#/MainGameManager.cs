@@ -37,7 +37,7 @@ public class MainGameManager : MonoBehaviour
         Screen.SetResolution(1920, 1080, true);
 
         playerMaxHealth = _playerStat.playerHealth;
-        Volume.profile.TryGet(out _colorAdjustments);
+        //Volume.profile.TryGet(out _colorAdjustments);
 
         _playerT = GameObject.FindGameObjectWithTag("KPlayer").transform;
         _player = _playerT.GetComponent<PlayerDash>();
@@ -50,7 +50,7 @@ public class MainGameManager : MonoBehaviour
         float currentHealth = livinPlayer.health;
         float healthPercentage = currentHealth / playerMaxHealth;
 
-        _colorAdjustments.saturation.value = Mathf.Lerp(-100, 0, healthPercentage);
+        //_colorAdjustments.saturation.value = Mathf.Lerp(-100, 0, healthPercentage);
     }
 
     private void GameStart()

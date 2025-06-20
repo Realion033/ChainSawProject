@@ -20,7 +20,7 @@ public abstract class LivingEntity : MonoBehaviour, IDamageable_real
     {
         if (health == defultHealth)
         {
-            StartCoroutine(HitStopCoroutine(0.2f, 0.33f));
+            //StartCoroutine(HitStopCoroutine(0.2f, 0.33f));
         }
 
         health -= damage;
@@ -34,25 +34,25 @@ public abstract class LivingEntity : MonoBehaviour, IDamageable_real
     public virtual void Die()
     {
         isDead = true;
-        StartCoroutine(HitStopCoroutine(0f, 0.33f)); // (완전 정지 시간, 느린 상태 유지, 복구 시간)
+        //StartCoroutine(HitStopCoroutine(0f, 0.33f)); // (완전 정지 시간, 느린 상태 유지, 복구 시간)
         DieEffect();
         StartCoroutine(waitDieEffect());
     }
 
-    private IEnumerator HitStopCoroutine(float slowDuration, float recoveryTime)
-    {
-        Time.timeScale = 0f; // 매우 느린 상태로 전환 (0.2배속)
-        yield return new WaitForSecondsRealtime(slowDuration); // 느린 상태 유지
+    // private IEnumerator HitStopCoroutine(float slowDuration, float recoveryTime)
+    // {
+    //     Time.timeScale = 0f; // 매우 느린 상태로 전환 (0.2배속)
+    //     yield return new WaitForSecondsRealtime(slowDuration); // 느린 상태 유지
 
-        float elapsed = 0f;
-        while (elapsed < recoveryTime)
-        {
-            elapsed += Time.unscaledDeltaTime;
-            Time.timeScale = Mathf.Lerp(0.2f, 1.0f, elapsed / recoveryTime); // 점진적 복구
-            yield return null;
-        }
-        Time.timeScale = 1.0f; // 완전히 복구
-    }
+    //     float elapsed = 0f;
+    //     while (elapsed < recoveryTime)
+    //     {
+    //         elapsed += Time.unscaledDeltaTime;
+    //         Time.timeScale = Mathf.Lerp(0.2f, 1.0f, elapsed / recoveryTime); // 점진적 복구
+    //         yield return null;
+    //     }
+    //     Time.timeScale = 1.0f; // 완전히 복구
+    // }
 
     public virtual void DieEffect()
     {
